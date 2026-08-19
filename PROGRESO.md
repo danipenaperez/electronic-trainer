@@ -101,6 +101,63 @@ python3 -m http.server 8000
 
 > ~~Versión imprimible A4~~ — **descartada** por el usuario (2026-08-19). No retomar.
 
+## HECHO ✅ — Rediseño a "curso por capítulos" (2026-08-19, verificado en navegador)
+Implementado y desplegado. Flujo probado: intro → capítulo → examen (fallar/reintentar/
+aprobar) → gating → Siguiente → menú con candados → persistencia y reanudar → un capítulo
+aprobado se muestra ya resuelto. Todo en `index.html` (un `<script>` controlador + los
+exámenes como datos `COURSE`), estático, estado en `localStorage` (clave `electro-curso-v1`:
+`{passed:[...], current:idx}`). Notas de implementación:
+- El JS reparte los nodos existentes en 15 pantallas (intro + 13 caps + final) y añade
+  topbar, navegación y menú. Los `div.stage` (Bloque A–E) se leen para la etiqueta y se
+  retiran.
+- Bug corregido: `.cta{display:inline-flex}` ganaba al `[hidden]` del navegador → añadido
+  `.cta[hidden]{display:none}` para poder ocultar el botón "Reintentar".
+- Aprobar = todas correctas; reintentos ilimitados. Opciones barajadas salvo V/F.
+
+<details><summary>Notas originales del planteamiento (histórico)</summary>
+
+### EN CURSO 🚧 — Rediseño a "curso por capítulos" (2026-08-19)
+Nuevo rumbo pedido por el usuario: convertir el scroll único en un **curso por
+capítulos** con navegación *Siguiente*, interactivo, y un **examen al final de cada
+capítulo**. Se mantiene el mismo diseño/HTML (le gusta) y sigue siendo estático
+(un solo `index.html` + `localStorage`, mostrando/ocultando pantallas con JS).
+
+**Decisiones tomadas (vía preguntas):**
+- **13 capítulos**, uno por práctica/concepto (no agrupar por bloques).
+- Examen **obligatorio para avanzar, con reintentos ilimitados** sin penalización
+  (aprobar = todas correctas; se puede repetir cuantas veces haga falta).
+- Preguntas **mezcla**: opción múltiple + verdadero/falso, con explicación al responder.
+
+**Estructura de pantallas prevista:**
+- Intro (hero + `#metodo` + `#seguridad` + `#materiales` + `#agua`) + botón "Empezar".
+- 13 capítulos: cada `article.exp#pN` + su examen + navegación Anterior/Siguiente.
+- Final: `#proyecto` + `#glosario` + `footer` + celebración.
+- Los divisores `div.stage` (Bloque A–E) se usan para etiquetar el bloque de cada
+  capítulo y luego se retiran del flujo. Mapa: A=p1–p3, B=p4–p5, C=p6–p8, D=p9–p12, E=p13.
+
+**HECHO en esta sesión (en local, NO pusheado):**
+- ✅ CSS completo del nuevo modelo (reemplaza al CSS del checklist): `.topbar`,
+  `.screen`, `.cta`, `.exam`/`.question`/`.opt`, `.chapnav`/`.navbtn`,
+  `.menu-panel`/`.m-item`, `.finale`. Usa los tokens `--green`/`--danger` ya existentes.
+- ✅ Eliminado el panel de progreso viejo (`.progress-panel`) del HTML.
+
+**⚠️ Estado intermedio — NO desplegar aún:** el `index.html` local tiene el CSS nuevo
+pero **todavía el script viejo** (inyecta `.done-toggle`); el controlador del curso NO
+existe aún, así que la navegación por capítulos no se activa. Por eso no se ha hecho
+`git push`. La web publicada sigue con la versión buena anterior.
+
+**PENDIENTE para terminarlo (por orden):**
+1. Escribir el **controlador JS** (sustituye al `<script>` viejo del final): reorganizar
+   nodos en pantallas, Anterior/Siguiente, gating aprobar-para-avanzar con reintentos,
+   `localStorage` (capítulos aprobados + capítulo actual para "reanudar"), menú lateral
+   de capítulos con candado/✓, topbar con progreso.
+2. Redactar los **exámenes** como datos JS (~2–3 preguntas × 13 caps, mezcla test/VF,
+   con explicación). Borrador ya pensado a partir del "¿por qué?" de cada práctica.
+3. **Verificar en navegador** (navegación, gating, aprobar/fallar/reintentar,
+   persistencia al recargar) y luego `git push` para redesplegar.
+
+</details>
+
 ## Contexto extra
 - Nació al buscar un "manual de electrónica para niños" que el usuario recordaba: no
   estaba en el ordenador ni en su Google Drive (allí solo hay libros de Arduino para

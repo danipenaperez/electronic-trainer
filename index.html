@@ -225,39 +225,144 @@
     a,.chip{transition:color .15s ease}
   }
 
-  /* ---- Progreso interactivo ---- */
-  .progress-panel{position:sticky;top:0;z-index:40;margin:0 -22px 24px;padding:11px 22px;
-    background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(9px);
+  /* ===================== CURSO POR CAPÍTULOS ===================== */
+  /* Topbar */
+  .topbar{position:sticky;top:0;z-index:60;margin:0 -22px 26px;padding:10px 22px;
+    background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(9px);
     -webkit-backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}
-  .pp-inner{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:14px}
-  .pp-text{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--ink-soft);font-weight:600;white-space:nowrap}
-  #pp-count{color:var(--green);font-weight:700}
-  .pp-track{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden;min-width:60px}
-  .pp-fill{height:100%;width:0;border-radius:99px;background:var(--green);transition:width .4s ease}
-  .pp-reset{border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);
-    font-family:inherit;font-size:.72rem;padding:5px 13px;border-radius:99px;cursor:pointer;white-space:nowrap;
-    transition:color .15s ease,border-color .15s ease}
-  .pp-reset:hover{color:var(--danger);border-color:var(--danger)}
-  .pp-reset[hidden]{display:none}
+  .tb-inner{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:14px}
+  .tb-brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.95rem;
+    letter-spacing:-.02em;color:var(--ink);white-space:nowrap;background:none;border:0;cursor:pointer;padding:0}
+  .tb-brand .spark{color:var(--copper)}
+  .tb-step{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-faint);font-weight:600;white-space:nowrap}
+  .tb-track{flex:1;height:7px;border-radius:99px;background:var(--line);overflow:hidden;min-width:50px}
+  .tb-fill{height:100%;width:0;border-radius:99px;background:var(--green);transition:width .45s ease}
+  .tb-menu-btn{border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);
+    font-family:inherit;font-size:.72rem;font-weight:600;padding:6px 12px;border-radius:99px;cursor:pointer;
+    white-space:nowrap;transition:color .15s,border-color .15s}
+  .tb-menu-btn:hover{color:var(--copper);border-color:var(--copper)}
   @media (max-width:560px){
-    .progress-panel{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}
-    .pp-text .full{display:none}
+    .topbar{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}
+    .tb-brand .full,.tb-step .full{display:none}
   }
 
-  /* ---- Botón "marcar como hecha" ---- */
-  .done-toggle{margin-top:16px;display:inline-flex;align-items:center;gap:9px;
-    border:1px solid var(--line-strong);background:var(--card-2);color:var(--ink-soft);
-    font-family:inherit;font-size:.85rem;font-weight:600;padding:7px 15px 7px 8px;border-radius:99px;
-    cursor:pointer;transition:color .18s ease,border-color .18s ease,background .18s ease}
-  .done-toggle:hover{border-color:var(--green);color:var(--green)}
-  .dt-box{width:22px;height:22px;flex:none;border-radius:50%;border:2px solid var(--line-strong);
-    display:grid;place-items:center;font-size:.78rem;line-height:1;color:transparent;
-    transition:background .18s ease,border-color .18s ease,color .18s ease}
-  .done-toggle[aria-pressed="true"]{background:var(--green-bg);border-color:var(--green);color:var(--green)}
-  .done-toggle[aria-pressed="true"] .dt-box{background:var(--green);border-color:var(--green);color:#fff}
-  .exp.done{border-color:color-mix(in srgb,var(--green) 42%,var(--line))}
-  .exp.done .exp-num{color:var(--green);opacity:.55}
+  /* Pantallas */
+  .screen{display:none;animation:screenIn .32s ease both}
+  .screen.active{display:block}
+  @keyframes screenIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.screen{animation:none}}
+
+  /* CTA grande (Empezar / Siguiente principal) */
+  .cta{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem;
+    color:#fff;background:var(--copper);padding:13px 24px;border-radius:99px;
+    box-shadow:var(--shadow);transition:background .18s,transform .18s}
+  .cta:hover{background:var(--copper-deep);transform:translateY(-1px)}
+  .cta.ghost{background:var(--card);color:var(--ink-soft);border:1px solid var(--line-strong);box-shadow:none}
+  .cta.ghost:hover{color:var(--ink);border-color:var(--ink-faint);background:var(--card-2)}
+  .cta[hidden]{display:none}
+  .intro-start{margin:32px 0 8px;text-align:center}
+
+  /* Cabecera de capítulo */
+  .ch-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--copper);font-weight:600;margin:4px 0 14px;display:flex;
+    align-items:center;gap:10px}
+  .ch-eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--line-strong)}
+
+  /* Examen */
+  .exam{background:var(--card-2);border:1px solid var(--line);border-radius:18px;
+    margin:26px 0 6px;padding:26px 26px 22px;position:relative}
+  .exam.passed{border-color:color-mix(in srgb,var(--green) 45%,var(--line))}
+  .exam-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .exam-head .x-tag{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--plum);font-weight:700}
+  .exam-head h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.35rem;
+    letter-spacing:-.01em;margin:0}
+  .exam-sub{color:var(--ink-soft);font-size:.95rem;margin:2px 0 18px}
+  .question{border-top:1px solid var(--line);padding:18px 0 4px}
+  .question:first-of-type{border-top:0;padding-top:6px}
+  .q-prompt{font-weight:600;color:var(--ink);margin:0 0 12px;line-height:1.5}
+  .q-prompt .qn{color:var(--ink-faint);font-family:"IBM Plex Mono",monospace;font-size:.85em;margin-right:8px}
+  .q-opts{display:flex;flex-direction:column;gap:9px}
+  .opt{display:flex;align-items:center;gap:11px;border:1px solid var(--line-strong);
+    background:var(--card);border-radius:12px;padding:11px 14px;cursor:pointer;
+    font-size:.98rem;color:var(--ink);transition:border-color .15s,background .15s;position:relative}
+  .opt:hover{border-color:var(--copper)}
+  .opt input{position:absolute;opacity:0;width:0;height:0}
+  .opt .mark{width:20px;height:20px;flex:none;border-radius:50%;border:2px solid var(--line-strong);
+    display:grid;place-items:center;font-size:.7rem;color:transparent;transition:all .15s}
+  .opt.sel{border-color:var(--copper);background:color-mix(in srgb,var(--copper) 8%,var(--card))}
+  .opt.sel .mark{border-color:var(--copper);background:var(--copper);color:#fff}
+  .exam.graded .opt{cursor:default}
+  .exam.graded .opt:hover{border-color:var(--line-strong)}
+  .opt.correct{border-color:var(--green);background:var(--green-bg)}
+  .opt.correct .mark{border-color:var(--green);background:var(--green);color:#fff}
+  .opt.wrong{border-color:var(--danger);background:var(--danger-bg)}
+  .opt.wrong .mark{border-color:var(--danger);background:var(--danger);color:#fff}
+  .q-why{margin:11px 0 2px;font-size:.92rem;color:var(--ink-soft);line-height:1.55;
+    padding-left:14px;border-left:3px solid var(--line-strong)}
+  .q-why.ok{border-color:var(--green)}
+  .q-why.no{border-color:var(--danger)}
+  .q-why[hidden]{display:none}
+  .exam-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .exam-result{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem}
+  .exam-result.ok{color:var(--green)}
+  .exam-result.no{color:var(--danger)}
+  .exam-result[hidden]{display:none}
+
+  /* Navegación inferior del capítulo */
+  .chapnav{display:flex;align-items:center;justify-content:space-between;gap:14px;
+    margin:30px 0 10px;padding-top:22px;border-top:1px solid var(--line)}
+  .chapnav .nav-status{font-size:.86rem;color:var(--ink-faint);text-align:center;flex:1}
+  .chapnav .nav-status.locked{color:var(--plum)}
+  .chapnav .nav-status.done{color:var(--green);font-weight:600}
+  .navbtn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong);
+    background:var(--card);color:var(--ink);font-family:inherit;font-size:.9rem;font-weight:600;
+    padding:10px 18px;border-radius:99px;cursor:pointer;transition:all .15s;white-space:nowrap}
+  .navbtn:hover{border-color:var(--copper);color:var(--copper)}
+  .navbtn.next{background:var(--copper);border-color:var(--copper);color:#fff}
+  .navbtn.next:hover{background:var(--copper-deep);border-color:var(--copper-deep);color:#fff}
+  .navbtn:disabled{opacity:.45;cursor:not-allowed;background:var(--card);color:var(--ink-faint);
+    border-color:var(--line);box-shadow:none}
+  .navbtn.next:disabled{background:var(--card-2)}
+  .navbtn[hidden]{display:none}
+
+  /* Menú de capítulos (overlay) */
+  .menu-overlay{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.4);
+    display:none;opacity:0;transition:opacity .2s}
+  .menu-overlay.open{display:block;opacity:1}
+  .menu-panel{position:fixed;top:0;right:0;bottom:0;z-index:81;width:320px;max-width:86vw;
+    background:var(--card);border-left:1px solid var(--line);box-shadow:var(--shadow);
+    transform:translateX(100%);transition:transform .25s ease;overflow-y:auto;padding:22px 20px}
+  .menu-panel.open{transform:none}
+  .menu-panel h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.05rem;
+    margin:0 0 4px}
+  .menu-panel .m-sub{color:var(--ink-faint);font-size:.82rem;margin:0 0 16px}
+  .menu-close{position:absolute;top:16px;right:16px;border:0;background:none;cursor:pointer;
+    font-size:1.4rem;line-height:1;color:var(--ink-faint)}
+  .menu-close:hover{color:var(--ink)}
+  .m-item{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+    border:1px solid transparent;background:none;border-radius:10px;padding:9px 10px;cursor:pointer;
+    font-family:inherit;font-size:.92rem;color:var(--ink);transition:background .12s}
+  .m-item:hover:not(:disabled){background:var(--card-2)}
+  .m-item:disabled{cursor:not-allowed;color:var(--ink-faint)}
+  .m-item.current{background:var(--card-2);border-color:var(--line)}
+  .m-ic{width:24px;height:24px;flex:none;border-radius:50%;display:grid;place-items:center;
+    font-size:.72rem;font-weight:700;border:2px solid var(--line-strong);color:var(--ink-faint)}
+  .m-item.passed .m-ic{background:var(--green);border-color:var(--green);color:#fff}
+  .m-item.current .m-ic{border-color:var(--copper);color:var(--copper)}
+  .m-tt{flex:1;line-height:1.3}
+  .m-tt small{display:block;color:var(--ink-faint);font-size:.76rem;font-weight:400}
+  .m-reset{margin-top:18px;width:100%;border:1px solid var(--line-strong);background:var(--card);
+    color:var(--ink-soft);font-family:inherit;font-size:.82rem;padding:9px;border-radius:10px;cursor:pointer}
+  .m-reset:hover{color:var(--danger);border-color:var(--danger)}
+
+  /* Celebración final */
+  .finale{text-align:center;padding:20px 0 6px}
+  .finale .medal{font-size:3.4rem;line-height:1}
+  .finale h2{margin:10px 0 6px}
+  .finale p{color:var(--ink-soft);max-width:52ch;margin:0 auto 8px}
 </style>
 
 <div class="wrap">
@@ -274,15 +379,6 @@
       <span class="fact"><b>Sesiones:</b> 13 prácticas + proyecto</span>
     </div>
   </header>
-
-  <!-- PROGRESO -->
-  <div class="progress-panel" id="progress-panel">
-    <div class="pp-inner">
-      <div class="pp-text"><span id="pp-count">0</span>/13 <span class="full">prácticas </span>completadas</div>
-      <div class="pp-track"><div class="pp-fill" id="pp-fill"></div></div>
-      <button class="pp-reset" id="pp-reset" type="button" hidden>Reiniciar</button>
-    </div>
-  </div>
 
   <!-- METHOD -->
   <section class="block" id="metodo">
@@ -863,60 +959,456 @@
 
 <script>
 (function(){
-  var KEY = 'taller-electro-hechas';
-  var exps = [].slice.call(document.querySelectorAll('article.exp'));
-  var total = exps.length;
-  var fill = document.getElementById('pp-fill');
-  var countEl = document.getElementById('pp-count');
-  var resetBtn = document.getElementById('pp-reset');
+  "use strict";
 
-  function load(){
-    try { return new Set(JSON.parse(localStorage.getItem(KEY)) || []); }
-    catch(e){ return new Set(); }
-  }
-  function save(set){
-    try { localStorage.setItem(KEY, JSON.stringify(Array.from(set))); } catch(e){}
-  }
-  var done = load();
+  /* ===================== EXÁMENES (datos) =====================
+     Cada pregunta: { p:enunciado, o:[opciones], a:índice correcto, why:explicación }
+     vf:true  → verdadero/falso (no se barajan las opciones).           */
+  var COURSE = {
+    1: [
+      { p:"¿Qué necesita la electricidad para encender el LED?", o:["Un camino completo en anillo, del + al − de la pila","Solo tocar el + de la pila","Que el LED sea nuevo"], a:0, why:"La corriente necesita un circuito cerrado: un anillo que sale del + y vuelve al −." },
+      { p:"Si sueltas cualquiera de los dos cables, el LED se apaga al instante.", o:["Verdadero","Falso"], a:0, vf:true, why:"Al cortar el anillo por cualquier punto, se para la corriente en toda la tubería." },
+      { p:"En un LED, la pata larga es…", o:["el + (ánodo)","el − (cátodo)","da igual, no tiene lados"], a:0, why:"Pata larga = + (ánodo); pata corta = − (cátodo). Hay que respetar el sentido." }
+    ],
+    2: [
+      { p:"¿Cuál de estos conduce la electricidad?", o:["Una moneda de metal","Una goma de borrar","Un trozo de plástico"], a:0, why:"Casi todos los metales son conductores; la goma y el plástico son aislantes." },
+      { p:"El plástico que recubre los cables es un aislante: impide que la corriente se escape.", o:["Verdadero","Falso"], a:0, vf:true, why:"Por eso el cable es cobre por dentro (conduce) y plástico por fuera (aísla)." },
+      { p:"La mina de lápiz (grafito) enciende el LED pero más flojito porque…", o:["conduce, pero es un mal conductor (tiene resistencia)","no conduce nada","la pila está gastada"], a:0, why:"El grafito conduce 'a regañadientes': es el primer ejemplo de resistencia." }
+    ],
+    3: [
+      { p:"En la protoboard, los agujeros de una misma fila (dentro de un bloque) están…", o:["conectados entre sí por una tira metálica interna","aislados uno de otro","conectados directos a la pila"], a:0, why:"Cada fila corta comparte una tira metálica escondida: lo que pinchas ahí queda unido." },
+      { p:"Los dos carriles largos de los bordes (+ y −) sirven para llevar la alimentación a toda la placa.", o:["Verdadero","Falso"], a:0, vf:true, why:"Son los 'raíles' de alimentación: repartes el + y el − a lo largo de toda la protoboard." },
+      { p:"El canal central (la ranura del medio) sirve para…", o:["separar la mitad de arriba de la de abajo (no se tocan)","decorar la placa","juntar todas las filas"], a:0, why:"La ranura separa las dos mitades; por eso un componente puede ir 'a caballo' sin cruzar señales." }
+    ],
+    4: [
+      { p:"Si pones una resistencia más grande (más ohmios), el LED…", o:["brilla menos","brilla más","no cambia nada"], a:0, why:"Más resistencia = menos corriente pasa = menos brillo." },
+      { p:"La resistencia sirve para limitar la corriente y proteger el LED.", o:["Verdadero","Falso"], a:0, vf:true, why:"Sin resistencia, el LED recibe demasiada corriente y se quema." },
+      { p:"En la analogía del agua, una resistencia es como…", o:["una tubería más estrecha que deja pasar menos agua","una bomba que empuja más agua","un depósito que guarda agua"], a:0, why:"Resistencia = estrechamiento del tubo: cuesta más que pase el caudal (la corriente)." }
+    ],
+    5: [
+      { p:"Las bandas de colores de una resistencia sirven para…", o:["indicar su valor en ohmios","decorarla","saber de qué marca es"], a:0, why:"Cada color es una cifra; juntas dan el valor en ohmios." },
+      { p:"Rojo · rojo · marrón. ¿Cuánto vale?", o:["220 Ω","22 Ω","2200 Ω"], a:0, why:"Rojo=2, rojo=2, marrón=1 cero → 22 y un cero = 220 Ω." },
+      { p:"La banda dorada o plateada indica la tolerancia y se pone a la derecha para leer.", o:["Verdadero","Falso"], a:0, vf:true, why:"Se coloca a la derecha y se leen las bandas de izquierda a derecha." }
+    ],
+    6: [
+      { p:"Dos pilas de 1,5 V en serie (+ con −) dan…", o:["3 V","1,5 V","0 V"], a:0, why:"En serie los voltajes se suman: 1,5 + 1,5 = 3 V." },
+      { p:"Poner pilas en serie suma sus voltajes.", o:["Verdadero","Falso"], a:0, vf:true, why:"Serie = una detrás de otra; el empuje total es la suma." },
+      { p:"Con más voltaje (más pilas en serie), el LED con su resistencia tiende a…", o:["brillar más","brillar menos","apagarse"], a:0, why:"Más empuje (V) → más corriente → más brillo (siempre con su resistencia puesta)." }
+    ],
+    7: [
+      { p:"Dos LEDs en serie…", o:["comparten el mismo camino: la misma corriente pasa por los dos","tienen cada uno su propio camino","no pueden encenderse"], a:0, why:"En serie hay un único anillo; la corriente pasa por todos, uno detrás de otro." },
+      { p:"Dos LEDs en paralelo…", o:["tienen cada uno su propio camino y reciben el voltaje completo","comparten un solo camino","se apagan entre sí"], a:0, why:"En paralelo cada rama es independiente y recibe la misma tensión." },
+      { p:"En serie, si quitas una pieza se corta el anillo y se apagan todas.", o:["Verdadero","Falso"], a:0, vf:true, why:"Un solo camino: si lo cortas en un punto, se para todo (como las luces antiguas de árbol)." }
+    ],
+    8: [
+      { p:"Un interruptor sirve para…", o:["abrir o cerrar el circuito a voluntad","dar más voltaje","medir la corriente"], a:0, why:"Es un puente que puedes conectar (cerrado) o desconectar (abierto) cuando quieras." },
+      { p:"Un pulsador solo deja pasar la corriente mientras lo mantienes apretado.", o:["Verdadero","Falso"], a:0, vf:true, why:"Al soltarlo se abre el circuito y el LED se apaga (como un timbre)." },
+      { p:"Con el interruptor 'abierto', el LED…", o:["está apagado (el anillo está cortado)","brilla al máximo","parpadea"], a:0, why:"Abierto = camino cortado = no circula corriente = LED apagado." }
+    ],
+    9: [
+      { p:"Un potenciómetro es…", o:["una resistencia que puedes cambiar girando","una pila recargable","un interruptor de dos posiciones"], a:0, why:"Un mando que varía la resistencia de forma continua al girarlo." },
+      { p:"Girando el potenciómetro puedes hacer que el LED brille más o menos.", o:["Verdadero","Falso"], a:0, vf:true, why:"Cambias la resistencia en directo con la mano, y con ella el brillo." },
+      { p:"Cuanto más 'camino' recorre la corriente dentro del potenciómetro…", o:["más resistencia encuentra y menos brilla el LED","menos resistencia encuentra","el brillo no cambia"], a:0, why:"Más recorrido por el material resistivo = más ohmios = menos corriente." }
+    ],
+    10: [
+      { p:"Una LDR cambia su resistencia según…", o:["la luz que recibe","la temperatura","el sonido"], a:0, why:"LDR = resistencia dependiente de la luz (Light Dependent Resistor)." },
+      { p:"Al tapar la LDR (menos luz), su resistencia sube.", o:["Verdadero","Falso"], a:0, vf:true, why:"A oscuras la LDR tiene mucha resistencia; con luz, poca." },
+      { p:"Una LDR sirve para, por ejemplo…", o:["una luz que se enciende sola de noche","cargar el móvil","medir el peso"], a:0, why:"Detecta cuánta luz hay: base de farolas y luces automáticas." }
+    ],
+    11: [
+      { p:"Un condensador es como…", o:["un pequeño depósito que guarda carga y la suelta poco a poco","una pila que nunca se gasta","un cable más grueso"], a:0, why:"Almacena electricidad y la devuelve gradualmente." },
+      { p:"Un condensador puede mantener un LED encendido un ratito tras quitar la pila.", o:["Verdadero","Falso"], a:0, vf:true, why:"Suelta la carga que guardó, así que el LED se apaga suavemente, no de golpe." },
+      { p:"Los condensadores electrolíticos…", o:["tienen pata + y −: hay que respetar el sentido","se pueden poner en cualquier sentido","no se conectan a la pila"], a:0, why:"Tienen polaridad; puestos del revés no funcionan bien." }
+    ],
+    12: [
+      { p:"Un diodo es…", o:["una válvula de un solo sentido para la corriente","una resistencia variable","un almacén de electricidad"], a:0, why:"Deja pasar la corriente en un sentido y la bloquea en el contrario." },
+      { p:"Si conectas el LED del revés no enciende, porque el diodo bloquea el paso.", o:["Verdadero","Falso"], a:0, vf:true, why:"El LED es un diodo: solo conduce con la pata larga hacia el +." },
+      { p:"El misterio de la práctica 1 (el LED al revés no encendía) se explica porque…", o:["un LED es un diodo y solo conduce en un sentido","la pila estaba gastada","faltaba la resistencia"], a:0, why:"Al girarlo, el diodo bloquea la corriente: por eso no encendía." }
+    ],
+    13: [
+      { p:"La Ley de Ohm dice que…", o:["Voltaje = Corriente × Resistencia (V = I × R)","Voltaje = Corriente + Resistencia","Corriente = Voltaje × Resistencia"], a:0, why:"V = I × R: más empuje → más corriente; más obstáculo → menos corriente." },
+      { p:"Con más resistencia y el mismo voltaje, pasa menos corriente.", o:["Verdadero","Falso"], a:0, vf:true, why:"Es la Ley de Ohm en acción: I = V ÷ R, así que a más R, menos I." },
+      { p:"Un multímetro sirve para…", o:["medir voltaje, corriente y resistencia","dar corriente al circuito","sustituir a la pila"], a:0, why:"Mide V (voltios), A (amperios) y Ω (ohmios) para comprobar lo que ya sientes." }
+    ]
+  };
 
-  function refresh(){
-    var n = 0;
-    exps.forEach(function(exp){
-      var on = done.has(exp.id);
-      if(on) n++;
-      exp.classList.toggle('done', on);
-      var btn = exp.querySelector('.done-toggle');
-      if(btn){
-        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-        btn.querySelector('.dt-label').textContent = on ? 'Hecha' : 'Marcar como hecha';
-      }
-    });
-    if(countEl) countEl.textContent = n;
-    if(fill) fill.style.width = total ? Math.round(n / total * 100) + '%' : '0%';
-    if(resetBtn) resetBtn.hidden = (n === 0);
-  }
+  var KEY = 'electro-curso-v1';
 
-  exps.forEach(function(exp){
-    var head = exp.querySelector('.exp-head');
-    if(!head) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'done-toggle';
-    btn.setAttribute('aria-pressed', 'false');
-    btn.innerHTML = '<span class="dt-box" aria-hidden="true">✓</span><span class="dt-label">Marcar como hecha</span>';
-    btn.addEventListener('click', function(){
-      if(done.has(exp.id)) done.delete(exp.id); else done.add(exp.id);
-      save(done); refresh();
-    });
-    head.appendChild(btn);
+  /* ---- Estado ---- */
+  function loadState(){
+    try {
+      var s = JSON.parse(localStorage.getItem(KEY)) || {};
+      return { passed: new Set(s.passed || []), current: (typeof s.current === 'number' ? s.current : 0) };
+    } catch(e){ return { passed: new Set(), current: 0 }; }
+  }
+  function saveState(){
+    try { localStorage.setItem(KEY, JSON.stringify({ passed: Array.from(state.passed), current: state.current })); } catch(e){}
+  }
+  var state = loadState();
+
+  /* ---- Utilidades ---- */
+  function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
+  function shuffle(arr){ for(var i = arr.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = arr[i]; arr[i] = arr[j]; arr[j] = t; } return arr; }
+
+  var wrap = document.querySelector('.wrap');
+  var nodes = [].slice.call(wrap.children);
+
+  /* ---- Repartir los nodos existentes en pantallas ---- */
+  var introNodes = [], finalNodes = [], expEntries = [], currentBlock = '';
+  var introIds = { metodo:1, seguridad:1, materiales:1, agua:1 };
+  var finalIds = { proyecto:1, glosario:1 };
+
+  nodes.forEach(function(n){
+    if(n.classList && n.classList.contains('hero')){ introNodes.push(n); return; }
+    if(n.classList && n.classList.contains('stage')){
+      var tag = n.querySelector('.s-tag');
+      currentBlock = tag ? tag.textContent.trim() : '';
+      return; // los divisores de bloque no se muestran como tal
+    }
+    if(n.tagName === 'ARTICLE' && n.classList.contains('exp')){ expEntries.push({ node:n, block:currentBlock }); return; }
+    if(n.tagName === 'FOOTER'){ finalNodes.push(n); return; }
+    if(n.id && introIds[n.id]){ introNodes.push(n); return; }
+    if(n.id && finalIds[n.id]){ finalNodes.push(n); return; }
+    // cualquier otro nodo suelto → intro
+    introNodes.push(n);
   });
 
-  if(resetBtn){
-    resetBtn.addEventListener('click', function(){
-      done.clear(); save(done); refresh();
+  var TOTAL = expEntries.length; // 13
+
+  /* ---- Construir la topbar ---- */
+  var topbar = el('div', 'topbar');
+  topbar.innerHTML =
+    '<div class="tb-inner">' +
+      '<button class="tb-brand" id="tb-brand">Taller de <span class="spark">Electrónica</span></button>' +
+      '<div class="tb-step" id="tb-step"></div>' +
+      '<div class="tb-track"><div class="tb-fill" id="tb-fill"></div></div>' +
+      '<button class="tb-menu-btn" id="tb-menu-btn">Capítulos</button>' +
+    '</div>';
+
+  /* ---- Contenedor de pantallas ---- */
+  var screensWrap = el('div', 'screens');
+
+  wrap.innerHTML = '';
+  wrap.appendChild(topbar);
+  wrap.appendChild(screensWrap);
+
+  var screensEls = []; // array ordenado de pantallas
+
+  /* Pantalla intro */
+  var introScreen = el('section', 'screen');
+  introScreen.dataset.type = 'intro';
+  introNodes.forEach(function(n){ introScreen.appendChild(n); });
+  var introStart = el('div', 'intro-start');
+  var startBtn = el('button', 'cta', 'Empezar el curso →');
+  startBtn.type = 'button';
+  introStart.appendChild(startBtn);
+  introScreen.appendChild(introStart);
+  screensWrap.appendChild(introScreen);
+  screensEls.push(introScreen);
+
+  /* Pantallas de capítulo */
+  expEntries.forEach(function(entry, i){
+    var ch = i + 1;
+    var screen = el('section', 'screen');
+    screen.dataset.type = 'ch';
+    screen.dataset.ch = ch;
+
+    var eyebrow = el('div', 'ch-eyebrow');
+    eyebrow.innerHTML = (entry.block ? entry.block + '<span class="dot"></span>' : '') + 'Capítulo ' + ch + ' de ' + TOTAL;
+    screen.appendChild(eyebrow);
+    screen.appendChild(entry.node);
+
+    screen.appendChild(buildExam(ch));
+    screen.appendChild(buildChapNav(ch));
+
+    screensWrap.appendChild(screen);
+    screensEls.push(screen);
+  });
+
+  /* Pantalla final */
+  var finalScreen = el('section', 'screen');
+  finalScreen.dataset.type = 'final';
+  var finale = el('div', 'finale',
+    '<div class="medal">🏅</div>' +
+    '<h2>¡Curso completado!</h2>' +
+    '<p>Has terminado las 13 prácticas y aprobado todos los exámenes. Ya sabes leer un circuito, medir con el multímetro y explicar por qué encienden (o no) las cosas.</p>');
+  var finaleStart = el('div', 'intro-start');
+  var toProjectsBtn = el('button', 'cta', 'Ver el reto final ↓');
+  toProjectsBtn.type = 'button';
+  toProjectsBtn.addEventListener('click', function(){
+    var pr = document.getElementById('proyecto');
+    if(pr) pr.scrollIntoView({ behavior:'smooth' });
+  });
+  finaleStart.appendChild(toProjectsBtn);
+  finalScreen.appendChild(finale);
+  finalScreen.appendChild(finaleStart);
+  finalNodes.forEach(function(n){ finalScreen.appendChild(n); });
+  screensWrap.appendChild(finalScreen);
+  screensEls.push(finalScreen);
+
+  var INTRO_IDX = 0;
+  var FINAL_IDX = screensEls.length - 1;
+
+  /* ---- Examen ---- */
+  function buildExam(ch){
+    var qs = COURSE[ch] || [];
+    var exam = el('div', 'exam');
+    exam.dataset.ch = ch;
+    var head = el('div', 'exam-head', '<span class="x-tag">Examen</span><h3>Comprueba lo que has aprendido</h3>');
+    exam.appendChild(head);
+    exam.appendChild(el('p', 'exam-sub', 'Responde ' + (qs.length === 1 ? 'la pregunta' : 'las ' + qs.length + ' preguntas') + ' y pulsa <b>Comprobar</b>. Para pasar de capítulo hay que acertarlas todas — puedes reintentar las veces que quieras.'));
+
+    var qEls = [];
+    qs.forEach(function(q, qi){
+      var order = q.o.map(function(_, k){ return k; });
+      if(!q.vf) shuffle(order);
+      var correctDisplay = order.indexOf(q.a);
+
+      var qEl = el('div', 'question');
+      qEl.appendChild(el('p', 'q-prompt', '<span class="qn">' + (qi + 1) + '.</span>' + q.p));
+      var opts = el('div', 'q-opts');
+      var name = 'c' + ch + 'q' + qi;
+      order.forEach(function(origIdx, di){
+        var lab = el('label', 'opt');
+        lab.innerHTML = '<input type="radio" name="' + name + '" value="' + di + '"><span class="mark" aria-hidden="true">✓</span><span>' + q.o[origIdx] + '</span>';
+        opts.appendChild(lab);
+      });
+      qEl.appendChild(opts);
+      qEl.appendChild(el('div', 'q-why'));
+      qEl._correct = correctDisplay;
+      qEl._why = q.why;
+      qEls.push(qEl);
+      exam.appendChild(qEl);
+
+      opts.addEventListener('change', function(e){
+        if(exam.classList.contains('graded')) return; // bloqueado tras aprobar
+        [].forEach.call(opts.querySelectorAll('.opt'), function(o){ o.classList.remove('sel'); });
+        var lab = e.target.closest('.opt');
+        if(lab) lab.classList.add('sel');
+      });
+    });
+
+    var actions = el('div', 'exam-actions');
+    var checkBtn = el('button', 'cta', 'Comprobar');
+    checkBtn.type = 'button';
+    var retryBtn = el('button', 'cta ghost', 'Reintentar');
+    retryBtn.type = 'button'; retryBtn.hidden = true;
+    var result = el('div', 'exam-result'); result.hidden = true;
+    actions.appendChild(checkBtn); actions.appendChild(retryBtn); actions.appendChild(result);
+    exam.appendChild(actions);
+
+    function grade(){
+      var answered = 0, correct = 0;
+      qEls.forEach(function(qEl){
+        var checked = qEl.querySelector('input:checked');
+        if(checked) answered++;
+      });
+      if(answered < qEls.length){
+        result.hidden = false; result.className = 'exam-result no';
+        result.textContent = 'Responde todas las preguntas antes de comprobar.';
+        return;
+      }
+      exam.classList.add('graded');
+      qEls.forEach(function(qEl){
+        var labs = qEl.querySelectorAll('.opt');
+        var checked = qEl.querySelector('input:checked');
+        var chosen = checked ? parseInt(checked.value, 10) : -1;
+        labs[qEl._correct].classList.add('correct');
+        var ok = (chosen === qEl._correct);
+        if(!ok && chosen >= 0) labs[chosen].classList.add('wrong');
+        if(ok) correct++;
+        var why = qEl.querySelector('.q-why');
+        why.className = 'q-why ' + (ok ? 'ok' : 'no');
+        why.innerHTML = (ok ? '✓ ' : '✗ ') + qEl._why;
+      });
+      var allOk = (correct === qEls.length);
+      result.hidden = false;
+      checkBtn.hidden = true;
+      if(allOk){
+        exam.classList.add('passed');
+        result.className = 'exam-result ok';
+        result.textContent = '¡Aprobado! ' + correct + '/' + qEls.length + ' correctas.';
+        retryBtn.hidden = true;
+        markPassed(ch);
+      } else {
+        result.className = 'exam-result no';
+        result.textContent = 'Casi: ' + correct + '/' + qEls.length + '. Revisa las marcadas y reintenta.';
+        retryBtn.hidden = false;
+      }
+    }
+
+    function reset(){
+      exam.classList.remove('graded');
+      qEls.forEach(function(qEl){
+        [].forEach.call(qEl.querySelectorAll('.opt'), function(o){ o.classList.remove('sel','correct','wrong'); });
+        [].forEach.call(qEl.querySelectorAll('input'), function(inp){ inp.checked = false; });
+        var why = qEl.querySelector('.q-why'); why.className = 'q-why'; why.innerHTML = '';
+      });
+      result.hidden = true; checkBtn.hidden = false; retryBtn.hidden = true;
+    }
+
+    checkBtn.addEventListener('click', grade);
+    retryBtn.addEventListener('click', reset);
+
+    exam._markGraded = function(){ // si ya estaba aprobado, mostrarlo resuelto
+      grade();
+    };
+    return exam;
+  }
+
+  /* ---- Navegación inferior del capítulo ---- */
+  function buildChapNav(ch){
+    var nav = el('div', 'chapnav');
+    var prev = el('button', 'navbtn prev', '← Anterior'); prev.type = 'button';
+    var status = el('div', 'nav-status');
+    var next = el('button', 'navbtn next', 'Siguiente →'); next.type = 'button';
+    prev.addEventListener('click', function(){ go(ch - 1 + 0); }); // capítulo ch está en índice ch (intro=0)
+    next.addEventListener('click', function(){ if(state.passed.has(ch)) go(ch + 1); });
+    nav.appendChild(prev); nav.appendChild(status); nav.appendChild(next);
+    nav.dataset.ch = ch;
+    return nav;
+  }
+
+  /* ---- Estado de progreso: aprobar capítulo ---- */
+  function markPassed(ch){
+    if(!state.passed.has(ch)){
+      state.passed.add(ch);
+      saveState();
+      updateAll();
+    }
+  }
+
+  /* ---- Actualizar UI global ---- */
+  function updateAll(){
+    // topbar
+    var stepEl = document.getElementById('tb-step');
+    var fillEl = document.getElementById('tb-fill');
+    var cur = state.current;
+    if(cur === INTRO_IDX) stepEl.innerHTML = '<span class="full">Introducción</span><span style="display:none"></span>';
+    else if(cur === FINAL_IDX) stepEl.textContent = '¡Completado!';
+    else stepEl.innerHTML = 'Cap. ' + cur + '<span class="full"> de ' + TOTAL + '</span>';
+    fillEl.style.width = Math.round(state.passed.size / TOTAL * 100) + '%';
+
+    // navegación de cada capítulo
+    [].forEach.call(document.querySelectorAll('.chapnav'), function(nav){
+      var ch = parseInt(nav.dataset.ch, 10);
+      var next = nav.querySelector('.navbtn.next');
+      var status = nav.querySelector('.nav-status');
+      var passed = state.passed.has(ch);
+      next.disabled = !passed;
+      if(ch === TOTAL) next.innerHTML = 'Terminar 🎉';
+      if(passed){ status.className = 'nav-status done'; status.textContent = ch === TOTAL ? '¡Último capítulo superado!' : '¡Capítulo superado!'; }
+      else { status.className = 'nav-status locked'; status.textContent = 'Aprueba el examen para continuar'; }
     });
   }
 
-  refresh();
+  /* ---- Ir a una pantalla ---- */
+  function go(idx){
+    if(idx < 0) idx = 0;
+    if(idx > FINAL_IDX) idx = FINAL_IDX;
+    // gating: no permitir saltar a un capítulo bloqueado
+    if(idx > INTRO_IDX && idx <= TOTAL){
+      var ch = idx; // capítulo == índice (intro es 0)
+      if(ch > 1 && !state.passed.has(ch - 1) && !state.passed.has(ch)){
+        // bloqueado: ir al primer capítulo no aprobado accesible
+        idx = firstAccessible();
+      }
+    }
+    screensEls.forEach(function(s){ s.classList.remove('active'); });
+    screensEls[idx].classList.add('active');
+    state.current = idx;
+    saveState();
+    updateAll();
+    window.scrollTo({ top:0, behavior:'auto' });
+    // si el capítulo ya estaba aprobado, mostrar su examen ya resuelto
+    var scr = screensEls[idx];
+    if(scr.dataset.type === 'ch'){
+      var ch2 = parseInt(scr.dataset.ch, 10);
+      var exam = scr.querySelector('.exam');
+      if(state.passed.has(ch2) && exam && !exam.classList.contains('graded')){
+        preselectAndGrade(exam);
+      }
+    }
+  }
+
+  function firstAccessible(){
+    for(var ch = 1; ch <= TOTAL; ch++){
+      if(ch === 1 || state.passed.has(ch - 1)){
+        if(!state.passed.has(ch)) return ch;
+      }
+    }
+    return TOTAL; // todos aprobados
+  }
+
+  // Marcar un examen ya aprobado como resuelto (respuestas correctas visibles)
+  function preselectAndGrade(exam){
+    [].forEach.call(exam.querySelectorAll('.question'), function(qEl){
+      var labs = qEl.querySelectorAll('.opt');
+      var ci = qEl._correct;
+      if(labs[ci]){
+        var inp = labs[ci].querySelector('input'); if(inp) inp.checked = true;
+        labs[ci].classList.add('sel');
+      }
+    });
+    if(exam._markGraded) exam._markGraded();
+  }
+
+  /* ---- Menú de capítulos ---- */
+  var overlay = el('div', 'menu-overlay');
+  var panel = el('div', 'menu-panel');
+  panel.innerHTML = '<button class="menu-close" id="menu-close" aria-label="Cerrar">×</button><h4>Capítulos</h4><p class="m-sub">Aprueba cada examen para desbloquear el siguiente.</p><div id="menu-list"></div>';
+  document.body.appendChild(overlay);
+  document.body.appendChild(panel);
+
+  function openMenu(){
+    var list = document.getElementById('menu-list');
+    list.innerHTML = '';
+    expEntries.forEach(function(entry, i){
+      var ch = i + 1;
+      var passed = state.passed.has(ch);
+      var accessible = (ch === 1) || state.passed.has(ch - 1) || passed;
+      var current = (state.current === ch);
+      var h3 = entry.node.querySelector('.exp-head h3');
+      var concept = entry.node.querySelector('.concept');
+      var item = el('button', 'm-item' + (passed ? ' passed' : '') + (current ? ' current' : ''));
+      item.disabled = !accessible;
+      var ic = passed ? '✓' : (accessible ? ch : '🔒');
+      item.innerHTML = '<span class="m-ic">' + ic + '</span><span class="m-tt">' + (h3 ? h3.textContent : ('Capítulo ' + ch)) + (concept ? '<small>' + concept.textContent + '</small>' : '') + '</span>';
+      if(accessible) item.addEventListener('click', function(){ closeMenu(); go(ch); });
+      list.appendChild(item);
+    });
+    var reset = el('button', 'm-reset', '↺ Reiniciar el curso');
+    reset.addEventListener('click', function(){
+      if(confirm('¿Seguro que quieres borrar todo el progreso del curso?')){
+        state.passed = new Set(); state.current = 0; saveState();
+        // limpiar exámenes resueltos
+        [].forEach.call(document.querySelectorAll('.exam'), function(ex){ ex.classList.remove('graded','passed'); });
+        location.reload();
+      }
+    });
+    list.appendChild(reset);
+    overlay.classList.add('open'); panel.classList.add('open');
+  }
+  function closeMenu(){ overlay.classList.remove('open'); panel.classList.remove('open'); }
+
+  /* ---- Enganchar eventos ---- */
+  startBtn.addEventListener('click', function(){ go(firstAccessible()); });
+  document.getElementById('tb-brand').addEventListener('click', function(){ go(INTRO_IDX); });
+  document.getElementById('tb-menu-btn').addEventListener('click', openMenu);
+  document.getElementById('menu-close').addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+
+  /* ---- Arranque: reanudar donde estaba ---- */
+  (function start(){
+    var idx = state.current;
+    if(typeof idx !== 'number' || idx < 0 || idx > FINAL_IDX) idx = 0;
+    // no reanudar en un capítulo bloqueado
+    if(idx > INTRO_IDX && idx <= TOTAL){
+      var ch = idx;
+      if(ch > 1 && !state.passed.has(ch - 1) && !state.passed.has(ch)) idx = INTRO_IDX;
+    }
+    go(idx);
+  })();
 })();
 </script>
