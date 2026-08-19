@@ -91,4 +91,12 @@
   <!-- gentle contact dots where wires meet legs -->
   <circle cx="560" cy="246" r="4.5" fill="#9aa0a6"/>
   <circle cx="600" cy="300" r="5" fill="#1c1f24"/>
+
+  <!-- LED leg polarity labels -->
+  <g>
+    <text x="486" y="342" text-anchor="middle" font-size="14" font-weight="700" fill="#c0322a">pata LARGA (+)</text>
+    <path d="M516 334 C 542 322, 556 308, 562 296" fill="none" stroke="#c0322a" stroke-width="1.6" stroke-dasharray="3 4"/>
+    <text x="682" y="338" text-anchor="middle" font-size="14" font-weight="700" fill="#3f74b0">pata CORTA (−)</text>
+    <path d="M656 330 C 634 318, 614 306, 601 297" fill="none" stroke="#3f74b0" stroke-width="1.6" stroke-dasharray="3 4"/>
+  </g>
 </svg>
