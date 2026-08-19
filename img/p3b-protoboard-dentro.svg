@@ -2,11 +2,11 @@
   <defs>
     <linearGradient id="panelB2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
     <linearGradient id="boardB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbfaf6"/><stop offset="1" stop-color="#efece2"/></linearGradient>
-    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4e7ea"/><stop offset="0.5" stop-color="#c4c9cf"/><stop offset="1" stop-color="#aeb4bb"/></linearGradient>
-    <linearGradient id="copperS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7b98d"/><stop offset="0.5" stop-color="#cf8a4e"/><stop offset="1" stop-color="#b0562a"/></linearGradient>
-    <linearGradient id="railR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8695e"/><stop offset="1" stop-color="#c0322a"/></linearGradient>
-    <linearGradient id="railB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b8fc9"/><stop offset="1" stop-color="#3a6ea5"/></linearGradient>
-    <radialGradient id="glowC" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e0902f" stop-opacity="0.55"/><stop offset="1" stop-color="#e0902f" stop-opacity="0"/></radialGradient>
+    <linearGradient id="silverV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e4e7ea"/><stop offset="0.5" stop-color="#c4c9cf"/><stop offset="1" stop-color="#aeb4bb"/></linearGradient>
+    <linearGradient id="copperV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e7b98d"/><stop offset="0.5" stop-color="#cf8a4e"/><stop offset="1" stop-color="#b0562a"/></linearGradient>
+    <linearGradient id="railR2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8695e"/><stop offset="1" stop-color="#c0322a"/></linearGradient>
+    <linearGradient id="railB2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b8fc9"/><stop offset="1" stop-color="#3a6ea5"/></linearGradient>
+    <radialGradient id="glowCol" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e0902f" stop-opacity="0.5"/><stop offset="1" stop-color="#e0902f" stop-opacity="0"/></radialGradient>
     <filter id="softB2" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.16"/></filter>
   </defs>
 
@@ -14,76 +14,62 @@
   <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
 
   <!-- BOARD -->
-  <g filter="url(#softB2)">
-    <rect x="70" y="66" width="520" height="380" rx="16" fill="url(#boardB)" stroke="#d8d4c6" stroke-width="2"/>
-  </g>
+  <g filter="url(#softB2)"><rect x="56" y="64" width="474" height="384" rx="16" fill="url(#boardB)" stroke="#d8d4c6" stroke-width="2"/></g>
 
-  <!-- ===== TOP POWER RAILS (una tira continua a lo largo de toda la placa) ===== -->
-  <text x="92" y="103" font-size="15" font-weight="700" fill="#c0322a">＋</text>
-  <rect x="108" y="90" width="440" height="15" rx="7" fill="url(#railR)"/>
-  <g fill="#7d2019"><circle cx="132" cy="97.5" r="2.6"/><circle cx="168" cy="97.5" r="2.6"/><circle cx="204" cy="97.5" r="2.6"/><circle cx="240" cy="97.5" r="2.6"/><circle cx="276" cy="97.5" r="2.6"/><circle cx="312" cy="97.5" r="2.6"/><circle cx="348" cy="97.5" r="2.6"/><circle cx="384" cy="97.5" r="2.6"/><circle cx="420" cy="97.5" r="2.6"/><circle cx="456" cy="97.5" r="2.6"/><circle cx="492" cy="97.5" r="2.6"/><circle cx="528" cy="97.5" r="2.6"/></g>
-  <text x="92" y="130" font-size="17" font-weight="700" fill="#3a6ea5">−</text>
-  <rect x="108" y="116" width="440" height="15" rx="7" fill="url(#railB)"/>
-  <g fill="#22415f"><circle cx="132" cy="123.5" r="2.6"/><circle cx="168" cy="123.5" r="2.6"/><circle cx="204" cy="123.5" r="2.6"/><circle cx="240" cy="123.5" r="2.6"/><circle cx="276" cy="123.5" r="2.6"/><circle cx="312" cy="123.5" r="2.6"/><circle cx="348" cy="123.5" r="2.6"/><circle cx="384" cy="123.5" r="2.6"/><circle cx="420" cy="123.5" r="2.6"/><circle cx="456" cy="123.5" r="2.6"/><circle cx="492" cy="123.5" r="2.6"/><circle cx="528" cy="123.5" r="2.6"/></g>
+  <!-- TOP RAILS (una tira continua a lo largo) -->
+  <text x="78" y="100" font-size="14" font-weight="700" fill="#c0322a">＋</text>
+  <rect x="96" y="88" width="410" height="14" rx="7" fill="url(#railR2)"/>
+  <g fill="#7d2019"><circle cx="120" cy="95" r="2.4"/><circle cx="152" cy="95" r="2.4"/><circle cx="184" cy="95" r="2.4"/><circle cx="216" cy="95" r="2.4"/><circle cx="248" cy="95" r="2.4"/><circle cx="280" cy="95" r="2.4"/><circle cx="312" cy="95" r="2.4"/><circle cx="344" cy="95" r="2.4"/><circle cx="376" cy="95" r="2.4"/><circle cx="408" cy="95" r="2.4"/><circle cx="440" cy="95" r="2.4"/><circle cx="472" cy="95" r="2.4"/></g>
+  <text x="78" y="126" font-size="16" font-weight="700" fill="#3a6ea5">−</text>
+  <rect x="96" y="112" width="410" height="14" rx="7" fill="url(#railB2)"/>
+  <g fill="#22415f"><circle cx="120" cy="119" r="2.4"/><circle cx="152" cy="119" r="2.4"/><circle cx="184" cy="119" r="2.4"/><circle cx="216" cy="119" r="2.4"/><circle cx="248" cy="119" r="2.4"/><circle cx="280" cy="119" r="2.4"/><circle cx="312" cy="119" r="2.4"/><circle cx="344" cy="119" r="2.4"/><circle cx="376" cy="119" r="2.4"/><circle cx="408" cy="119" r="2.4"/><circle cx="440" cy="119" r="2.4"/><circle cx="472" cy="119" r="2.4"/></g>
 
-  <!-- ===== UPPER BLOCK: filas de 5 (cada tira = un punto, separadas entre sí) ===== -->
-  <!-- fila normal -->
+  <!-- ===== COLUMNAS (media columna de 5 agujeros = una tira vertical) ===== -->
+  <!-- columnas normales (plata): upper + lower -->
   <g>
-    <rect x="150" y="160" width="200" height="17" rx="8.5" fill="url(#silver)" stroke="#9aa0a6" stroke-width="0.8"/>
-    <g fill="#6d7278"><circle cx="172" cy="168.5" r="3"/><circle cx="211" cy="168.5" r="3"/><circle cx="250" cy="168.5" r="3"/><circle cx="289" cy="168.5" r="3"/><circle cx="328" cy="168.5" r="3"/></g>
-  </g>
-  <!-- fila resaltada -->
-  <circle cx="250" cy="196" r="120" fill="url(#glowC)"/>
-  <g filter="url(#softB2)">
-    <rect x="150" y="187" width="200" height="18" rx="9" fill="url(#copperS)" stroke="#8c4320" stroke-width="1"/>
-    <g fill="#5f2c14"><circle cx="172" cy="196" r="3.2"/><circle cx="211" cy="196" r="3.2"/><circle cx="250" cy="196" r="3.2"/><circle cx="289" cy="196" r="3.2"/><circle cx="328" cy="196" r="3.2"/></g>
-  </g>
-  <!-- fila normal -->
-  <g>
-    <rect x="150" y="216" width="200" height="17" rx="8.5" fill="url(#silver)" stroke="#9aa0a6" stroke-width="0.8"/>
-    <g fill="#6d7278"><circle cx="172" cy="224.5" r="3"/><circle cx="211" cy="224.5" r="3"/><circle cx="250" cy="224.5" r="3"/><circle cx="289" cy="224.5" r="3"/><circle cx="328" cy="224.5" r="3"/></g>
+    <!-- col 110 --><rect x="100" y="150" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="110" cy="160" r="3.6"/><circle cx="110" cy="181" r="3.6"/><circle cx="110" cy="202" r="3.6"/><circle cx="110" cy="223" r="3.6"/><circle cx="110" cy="244" r="3.6"/></g>
+    <rect x="100" y="266" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="110" cy="276" r="3.6"/><circle cx="110" cy="297" r="3.6"/><circle cx="110" cy="318" r="3.6"/><circle cx="110" cy="339" r="3.6"/><circle cx="110" cy="360" r="3.6"/></g>
+    <!-- col 180 --><rect x="170" y="150" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="180" cy="160" r="3.6"/><circle cx="180" cy="181" r="3.6"/><circle cx="180" cy="202" r="3.6"/><circle cx="180" cy="223" r="3.6"/><circle cx="180" cy="244" r="3.6"/></g>
+    <rect x="170" y="266" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="180" cy="276" r="3.6"/><circle cx="180" cy="297" r="3.6"/><circle cx="180" cy="318" r="3.6"/><circle cx="180" cy="339" r="3.6"/><circle cx="180" cy="360" r="3.6"/></g>
+    <!-- col 250 --><rect x="240" y="150" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="250" cy="160" r="3.6"/><circle cx="250" cy="181" r="3.6"/><circle cx="250" cy="202" r="3.6"/><circle cx="250" cy="223" r="3.6"/><circle cx="250" cy="244" r="3.6"/></g>
+    <rect x="240" y="266" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="250" cy="276" r="3.6"/><circle cx="250" cy="297" r="3.6"/><circle cx="250" cy="318" r="3.6"/><circle cx="250" cy="339" r="3.6"/><circle cx="250" cy="360" r="3.6"/></g>
+    <!-- col 320 --><rect x="310" y="150" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="320" cy="160" r="3.6"/><circle cx="320" cy="181" r="3.6"/><circle cx="320" cy="202" r="3.6"/><circle cx="320" cy="223" r="3.6"/><circle cx="320" cy="244" r="3.6"/></g>
+    <rect x="310" y="266" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="320" cy="276" r="3.6"/><circle cx="320" cy="297" r="3.6"/><circle cx="320" cy="318" r="3.6"/><circle cx="320" cy="339" r="3.6"/><circle cx="320" cy="360" r="3.6"/></g>
+    <!-- col 390 --><rect x="380" y="150" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="390" cy="160" r="3.6"/><circle cx="390" cy="181" r="3.6"/><circle cx="390" cy="202" r="3.6"/><circle cx="390" cy="223" r="3.6"/><circle cx="390" cy="244" r="3.6"/></g>
+    <rect x="380" y="266" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="390" cy="276" r="3.6"/><circle cx="390" cy="297" r="3.6"/><circle cx="390" cy="318" r="3.6"/><circle cx="390" cy="339" r="3.6"/><circle cx="390" cy="360" r="3.6"/></g>
   </g>
 
-  <!-- ===== CENTRAL TRENCH ===== -->
-  <rect x="88" y="250" width="484" height="14" rx="4" fill="#e2ddcf"/>
-  <line x1="88" y1="257" x2="572" y2="257" stroke="#c9c4b5" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <!-- columna resaltada (col 460): el mismo punto -->
+  <circle cx="460" cy="198" r="70" fill="url(#glowCol)"/>
+  <g filter="url(#softB2)"><rect x="449" y="150" width="22" height="96" rx="11" fill="url(#copperV)" stroke="#8c4320" stroke-width="1"/><g fill="#5f2c14"><circle cx="460" cy="160" r="3.8"/><circle cx="460" cy="181" r="3.8"/><circle cx="460" cy="202" r="3.8"/><circle cx="460" cy="223" r="3.8"/><circle cx="460" cy="244" r="3.8"/></g></g>
+  <rect x="450" y="266" width="20" height="96" rx="10" fill="url(#silverV)" stroke="#9aa0a6" stroke-width="0.8"/><g fill="#6d7278"><circle cx="460" cy="276" r="3.6"/><circle cx="460" cy="297" r="3.6"/><circle cx="460" cy="318" r="3.6"/><circle cx="460" cy="339" r="3.6"/><circle cx="460" cy="360" r="3.6"/></g>
 
-  <!-- ===== LOWER BLOCK ===== -->
-  <g>
-    <rect x="150" y="280" width="200" height="17" rx="8.5" fill="url(#silver)" stroke="#9aa0a6" stroke-width="0.8"/>
-    <g fill="#6d7278"><circle cx="172" cy="288.5" r="3"/><circle cx="211" cy="288.5" r="3"/><circle cx="250" cy="288.5" r="3"/><circle cx="289" cy="288.5" r="3"/><circle cx="328" cy="288.5" r="3"/></g>
-  </g>
-  <g>
-    <rect x="150" y="308" width="200" height="17" rx="8.5" fill="url(#silver)" stroke="#9aa0a6" stroke-width="0.8"/>
-    <g fill="#6d7278"><circle cx="172" cy="316.5" r="3"/><circle cx="211" cy="316.5" r="3"/><circle cx="250" cy="316.5" r="3"/><circle cx="289" cy="316.5" r="3"/><circle cx="328" cy="316.5" r="3"/></g>
-  </g>
+  <!-- ===== CANAL CENTRAL (horizontal) ===== -->
+  <rect x="86" y="250" width="414" height="12" rx="4" fill="#e2ddcf"/>
+  <line x1="86" y1="256" x2="500" y2="256" stroke="#c9c4b5" stroke-width="1.5" stroke-dasharray="5 5"/>
 
-  <!-- ===== BOTTOM POWER RAILS ===== -->
-  <rect x="108" y="360" width="440" height="15" rx="7" fill="url(#railR)"/>
-  <rect x="108" y="386" width="440" height="15" rx="7" fill="url(#railB)"/>
-  <text x="92" y="373" font-size="15" font-weight="700" fill="#c0322a">＋</text>
-  <text x="92" y="400" font-size="17" font-weight="700" fill="#3a6ea5">−</text>
+  <!-- ===== BOTTOM RAILS ===== -->
+  <rect x="96" y="380" width="410" height="14" rx="7" fill="url(#railR2)"/>
+  <rect x="96" y="404" width="410" height="14" rx="7" fill="url(#railB2)"/>
+  <text x="78" y="392" font-size="14" font-weight="700" fill="#c0322a">＋</text>
+  <text x="78" y="418" font-size="16" font-weight="700" fill="#3a6ea5">−</text>
 
-  <!-- ===== LABELS / CALLOUTS ===== -->
+  <!-- ===== LABELS ===== -->
   <!-- rieles -->
-  <path d="M556 97 C 610 97, 610 112, 640 112" fill="none" stroke="#7B857D" stroke-width="1.5"/>
-  <text x="648" y="103" font-size="13.5" font-weight="700" fill="#c0322a">Los rieles + y −</text>
-  <text x="648" y="122" font-size="12.5" fill="#4E5852">son una sola tira que</text>
-  <text x="648" y="139" font-size="12.5" fill="#4E5852">recorre TODA la placa</text>
+  <path d="M506 95 C 528 95, 528 108, 548 108" fill="none" stroke="#7B857D" stroke-width="1.5"/>
+  <text x="556" y="100" font-size="13.5" font-weight="700" fill="#c0322a">Los rieles + y −</text>
+  <text x="556" y="119" font-size="12.5" fill="#4E5852">son una sola tira que</text>
+  <text x="556" y="136" font-size="12.5" fill="#4E5852">recorre TODA la placa</text>
 
-  <!-- fila resaltada -->
-  <path d="M350 196 C 400 196, 400 196, 618 196" fill="none" stroke="#b0562a" stroke-width="1.5"/>
-  <text x="624" y="184" font-size="13.5" font-weight="700" fill="#b0562a">Una tira escondida</text>
-  <text x="624" y="203" font-size="12.5" fill="#4E5852">une esos 5 agujeros:</text>
-  <text x="624" y="220" font-size="12.5" fill="#4E5852">son el mismo punto</text>
-
-  <!-- filas separadas -->
-  <path d="M350 224 C 380 224, 380 260, 618 260" fill="none" stroke="#7B857D" stroke-width="1.5"/>
-  <text x="624" y="256" font-size="12.5" fill="#4E5852">cada fila va por su cuenta,</text>
-  <text x="624" y="273" font-size="12.5" fill="#4E5852">separada de las demás</text>
+  <!-- columna resaltada -->
+  <path d="M471 198 C 505 198, 520 198, 548 198" fill="none" stroke="#b0562a" stroke-width="1.5"/>
+  <text x="556" y="186" font-size="13.5" font-weight="700" fill="#b0562a">Estos 5, en vertical,</text>
+  <text x="556" y="205" font-size="12.5" fill="#4E5852">son el mismo punto (una</text>
+  <text x="556" y="222" font-size="12.5" fill="#4E5852">columna). Cada columna</text>
+  <text x="556" y="239" font-size="12.5" fill="#4E5852">va aparte de las de al lado.</text>
 
   <!-- canal -->
-  <path d="M572 257 C 600 257, 600 320, 624 320" fill="none" stroke="#7B857D" stroke-width="1.5"/>
-  <text x="630" y="316" font-size="12.5" fill="#4E5852">el canal del medio separa</text>
-  <text x="630" y="333" font-size="12.5" fill="#4E5852">la mitad de arriba y la de abajo</text>
+  <path d="M500 256 C 522 256, 526 300, 548 300" fill="none" stroke="#7B857D" stroke-width="1.5"/>
+  <text x="556" y="296" font-size="12.5" fill="#4E5852">El canal parte cada columna</text>
+  <text x="556" y="313" font-size="12.5" fill="#4E5852">en dos mitades que no se tocan.</text>
 </svg>

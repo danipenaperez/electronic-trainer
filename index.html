@@ -648,17 +648,17 @@
     <div class="exp-body">
       <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
         <ol class="steps">
-          <li>Mete la pata larga del LED en un agujero cualquiera del centro. Mete una punta de la resistencia en <b>otro agujero de la MISMA fila</b> (misma línea horizontal de 5 agujeros).</li>
+          <li>Mete la pata larga del LED en un agujero cualquiera del centro. Mete una punta de la resistencia en <b>otro agujero de la MISMA columna</b> (la línea vertical de 5 agujeros que va hacia el canal del medio).</li>
           <li>Lleva el + de la pila (con un cable) al riel rojo de arriba, y el − al riel azul.</li>
           <li>Con cables, une el riel rojo a la resistencia y el riel azul a la pata corta del LED. Enciende.</li>
-          <li>Ahora <b>mueve la resistencia</b> a la fila de al lado, sin tocar el LED. Mira qué pasa.</li>
+          <li>Ahora <b>mueve la resistencia</b> a la columna de al lado, sin tocar el LED. Mira qué pasa.</li>
         </ol>
       </div>
       <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
-        <p>Mientras la resistencia y el LED comparten fila, el LED enciende. En cuanto mueves la resistencia a otra fila, se apaga: aunque estén a un milímetro, ya no están conectados.</p>
+        <p>Mientras la resistencia y el LED comparten columna, el LED enciende. En cuanto mueves la resistencia a otra columna, se apaga: aunque estén a un milímetro, ya no están conectados.</p>
       </div>
       <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
-        <p>Por dentro, la protoboard tiene <strong>tiras de metal escondidas</strong>. Los 5 agujeros de cada media fila están unidos entre sí (son "el mismo punto"), pero cada fila está separada de las demás. Además, los dos <strong>rieles largos de los bordes</strong> (rojo y azul) recorren toda la placa: son autopistas para el + y el −. La protoboard sirve para <strong>conectar piezas sin soldar</strong>, solo pinchándolas.</p>
+        <p>Por dentro, la protoboard tiene <strong>tiras de metal escondidas</strong>. Los 5 agujeros de cada <strong>media columna</strong> (los que van en vertical hasta el canal del medio) están unidos entre sí (son "el mismo punto"), pero cada columna está separada de las de al lado. El <strong>canal del medio</strong> parte cada columna en dos mitades que no se tocan. Además, los dos <strong>rieles largos de los bordes</strong> (rojo y azul) recorren toda la placa a lo largo: son autopistas para el + y el −. La protoboard sirve para <strong>conectar piezas sin soldar</strong>, solo pinchándolas.</p>
       </div>
       <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
         <p>Sin mirar la explicación, dibuja en un papel qué agujeros de tu protoboard crees que están unidos por dentro. Luego compruébalo con el LED. ¿Acertaste?</p>
@@ -1074,9 +1074,9 @@
       { p:"La mina de lápiz (grafito) enciende el LED pero más flojito porque…", o:["conduce, pero es un mal conductor (tiene resistencia)","no conduce nada","la pila está gastada"], a:0, why:"El grafito conduce 'a regañadientes': es el primer ejemplo de resistencia." }
     ],
     3: [
-      { p:"En la protoboard, los agujeros de una misma fila (dentro de un bloque) están…", o:["conectados entre sí por una tira metálica interna","aislados uno de otro","conectados directos a la pila"], a:0, why:"Cada fila corta comparte una tira metálica escondida: lo que pinchas ahí queda unido." },
+      { p:"En la protoboard, los 5 agujeros de una misma columna (en vertical, hasta el canal) están…", o:["conectados entre sí por una tira metálica interna","aislados uno de otro","conectados directos a la pila"], a:0, why:"Cada media columna de 5 agujeros comparte una tira metálica escondida: lo que pinchas ahí queda unido." },
       { p:"Los dos carriles largos de los bordes (+ y −) sirven para llevar la alimentación a toda la placa.", o:["Verdadero","Falso"], a:0, vf:true, why:"Son los 'raíles' de alimentación: repartes el + y el − a lo largo de toda la protoboard." },
-      { p:"El canal central (la ranura del medio) sirve para…", o:["separar la mitad de arriba de la de abajo (no se tocan)","decorar la placa","juntar todas las filas"], a:0, why:"La ranura separa las dos mitades; por eso un componente puede ir 'a caballo' sin cruzar señales." }
+      { p:"El canal central (la ranura del medio) sirve para…", o:["partir cada columna en dos mitades que no se tocan","decorar la placa","juntar todas las columnas"], a:0, why:"La ranura separa la mitad de arriba de la de abajo; por eso un chip puede ir 'a caballo' sin cruzar sus patas." }
     ],
     4: [
       { p:"Si pones una resistencia más grande (más ohmios), el LED…", o:["brilla menos","brilla más","no cambia nada"], a:0, why:"Más resistencia = menos corriente pasa = menos brillo." },
@@ -1195,7 +1195,7 @@
   // Imágenes de refuerzo específicas por capítulo y paso (has, obs, why, more).
   // Se muestran en lugar de la ilustración del capítulo en ese paso concreto.
   var STEP_IMG = {
-    3: { why: { src:'img/p3b-protoboard-dentro.svg', alt:'Corte de la protoboard por dentro: los rieles + y − son una sola tira a lo largo de toda la placa, cada fila de 5 agujeros está unida por una tira metálica escondida (el mismo punto) y separada de las demás, y el canal central separa la mitad de arriba de la de abajo' } },
+    3: { why: { src:'img/p3b-protoboard-dentro.svg', alt:'Corte de la protoboard por dentro: los rieles + y − son una sola tira a lo largo de toda la placa, cada media columna de 5 agujeros (en vertical, hasta el canal) está unida por una tira metálica escondida (el mismo punto) y separada de las columnas de al lado, y el canal central parte cada columna en dos mitades que no se tocan' } },
     6: { why: { src:'img/p6b-pilas-serie.svg', alt:'Una pila da 1,5 V y poco empuje; tres pilas en serie dan 1,5 + 1,5 + 1,5 = 4,5 V y mucho más empuje, y el LED brilla más. En serie los voltajes se suman' } },
     7: { why: { src:'img/p7b-serie-paralelo.svg', alt:'En serie, dos LEDs en un solo camino: la corriente pasa por los dos, si cae uno caen los dos y brillan menos. En paralelo, dos caminos independientes: cada LED recibe todo el voltaje, brillan igual y uno no depende del otro' } },
     9: { why: { src:'img/p9b-potenciometro.svg', alt:'Por dentro el potenciómetro tiene un caminito resistivo y un cursor: girado poco, la corriente recorre poco camino (poca resistencia) y el LED brilla más; girado mucho, recorre mucho camino (mucha resistencia) y el LED brilla menos' } },
