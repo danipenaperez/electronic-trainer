@@ -90,11 +90,16 @@ python3 -m http.server 8000
         alineado con la fila de la leyenda, ya no toca el cable negro.
       - `p12-diodo.svg`: "el diodo bloquea el paso" reubicado entre la pila y la ✗,
         ya no roza los cables rojo/negro.
-- [ ] Versión **imprimible A4** (y opción en **blanco y negro** para ahorrar tinta).
-- [ ] Inicializar **repo git** + `README.md` (estamos en la carpeta de GitHub).
+- [x] **Repo git + despliegue** (2026-08-19): repo `danipenaperez/electronic-trainer`,
+      commit inicial y push a `main`; `README.md` + `.nojekyll`. Publicado en GitHub
+      Pages (rama `main`, raíz) y verificado en vivo:
+      **https://danipenaperez.github.io/electronic-trainer/** (14/14 imágenes OK,
+      progreso/localStorage OK). Un `git push` a `main` redespliega solo.
 - [ ] Opcional: adaptar la lista de materiales a las **piezas exactas** del kit real.
 - [ ] Opcional: más ilustraciones de refuerzo (p. ej. cómo va la protoboard por dentro
       con las tiras metálicas visibles).
+
+> ~~Versión imprimible A4~~ — **descartada** por el usuario (2026-08-19). No retomar.
 
 ## Contexto extra
 - Nació al buscar un "manual de electrónica para niños" que el usuario recordaba: no
