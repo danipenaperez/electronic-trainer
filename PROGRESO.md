@@ -196,6 +196,21 @@ existe aún, así que la navegación por capítulos no se activa. Por eso no se 
 
 </details>
 
+## Mejora de los Fritzing / correcciones (2026-08-19)
+- **Cap. 1**: aclarado qué resistencia usar (220 Ω y que valen valores mayores; no tiene lados).
+- **Patas del LED**: etiquetadas "pata LARGA (+)" / "pata CORTA (−)" en `p1-circuito-basico.svg`
+  y en `p3-protoboard.svg`, con puntos de inserción.
+- **Lightbox**: las imágenes de los slides se amplían al pulsarlas (clic/✕/Escape).
+- **CORRECCIÓN de contenido (protoboard, cap. 3)**: el texto describía la protoboard al
+  revés (decía que se conectan las *filas horizontales*; en una protoboard real son las
+  *columnas verticales*, perpendiculares al canal). Siguiendo la instrucción antigua el
+  LED no encendería. Corregido: Hazlo/Observa/¿Por qué?/examen ahora dicen "columna", y
+  `p3b-protoboard-dentro.svg` rehecho con tiras **verticales** (columnas), rieles a lo
+  largo y el canal partiendo cada columna en dos. Decidido con el usuario: "corregir a lo real".
+  Verificado en producción.
+- Pendiente (opcional): el top-view `p3-protoboard.svg` es correcto y ya lleva etiquetas de
+  patas, pero se podría pulir más para que se vea aún más claro dónde se pincha en la columna.
+
 ## Contexto extra
 - Nació al buscar un "manual de electrónica para niños" que el usuario recordaba: no
   estaba en el ordenador ni en su Google Drive (allí solo hay libros de Arduino para
