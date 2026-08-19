@@ -1181,6 +1181,14 @@
     if(introSecs[id]){ var s=makeSlide('introsec'); s.appendChild(introSecs[id]); slides.push({ el:s, type:'intro' }); }
   });
 
+  // Imágenes de refuerzo específicas por capítulo y paso (has, obs, why, more).
+  // Se muestran en lugar de la ilustración del capítulo en ese paso concreto.
+  var STEP_IMG = {
+    3: { why: { src:'img/p3b-protoboard-dentro.svg', alt:'Corte de la protoboard por dentro: los rieles + y − son una sola tira a lo largo de toda la placa, cada fila de 5 agujeros está unida por una tira metálica escondida (el mismo punto) y separada de las demás, y el canal central separa la mitad de arriba de la de abajo' } }
+  };
+  function partKey(p){ if(p.classList.contains('observe'))return 'obs'; if(p.classList.contains('why'))return 'why'; if(p.classList.contains('more'))return 'more'; return 'has'; }
+  function mediaFigure(src, alt){ var f=el('figure','exp-fig'); var im=document.createElement('img'); im.src=src; im.alt=alt||''; f.appendChild(im); return f; }
+
   // Capítulos
   exps.forEach(function(entry, i){
     var ch=i+1, node=entry.node;
@@ -1201,9 +1209,15 @@
 
     // Slides de los 4 pasos (imagen del circuito + texto en dos columnas)
     [].slice.call(node.querySelectorAll('.exp-body > .part')).forEach(function(p){
-      var s=makeSlide('partslide'+(figTemplate?' has-media':''));
+      var override = (STEP_IMG[ch] || {})[partKey(p)];
+      var hasMedia = !!(override || figTemplate);
+      var s=makeSlide('partslide'+(hasMedia?' has-media':''));
       var row=el('div','slide-2col');
-      if(figTemplate){ var media=el('div','s2-media'); media.appendChild(figTemplate.cloneNode(true)); row.appendChild(media); }
+      if(hasMedia){
+        var media=el('div','s2-media');
+        media.appendChild(override ? mediaFigure(override.src, override.alt) : figTemplate.cloneNode(true));
+        row.appendChild(media);
+      }
       var body=el('div','s2-body');
       var e2=el('div','ch-eyebrow'); e2.innerHTML='Cap. '+ch+' de '+TOTAL+'<span class="dot"></span>'+concept; body.appendChild(e2);
       body.appendChild(p);
