@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" width="820" height="500" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="panelL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
+    <radialGradient id="sun" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e6a72a"/></radialGradient>
+    <radialGradient id="ledOnL" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#ff9a8f"/><stop offset="0.5" stop-color="#f2493a"/><stop offset="1" stop-color="#c0261b"/></radialGradient>
+    <radialGradient id="ledOffL" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#c9b7b4"/><stop offset="0.5" stop-color="#9c7f7a"/><stop offset="1" stop-color="#6f5651"/></radialGradient>
+    <radialGradient id="glowL" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5a4d" stop-opacity="0.7"/><stop offset="1" stop-color="#ff6a52" stop-opacity="0"/></radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panelL)"/>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
+  <line x1="410" y1="70" x2="410" y2="430" stroke="#d8cfba" stroke-width="2" stroke-dasharray="6 8"/>
+
+  <!-- ============ CON LUZ ============ -->
+  <text x="205" y="102" text-anchor="middle" font-size="18" font-weight="800" fill="#1B2320">CON LUZ</text>
+  <!-- sun + rays to LDR -->
+  <g><circle cx="120" cy="150" r="24" fill="url(#sun)"/>
+    <g stroke="#e6a72a" stroke-width="3" stroke-linecap="round"><line x1="120" y1="112" x2="120" y2="122"/><line x1="86" y1="150" x2="96" y2="150"/><line x1="95" y1="125" x2="102" y2="132"/><line x1="95" y1="175" x2="102" y2="168"/></g>
+  </g>
+  <g stroke="#f0c04a" stroke-width="3" stroke-linecap="round" opacity="0.9"><line x1="140" y1="168" x2="200" y2="200"/><line x1="150" y1="158" x2="205" y2="188"/><line x1="132" y1="180" x2="192" y2="212"/></g>
+  <!-- LDR -->
+  <g><rect x="205" y="182" width="66" height="46" rx="12" fill="#e9e6dd" stroke="#9aa0a6" stroke-width="2"/>
+    <path d="M215 205 q7 -12 14 0 q7 12 14 0 q7 -12 14 0" fill="none" stroke="#9E7115" stroke-width="3"/>
+    <text x="238" y="248" text-anchor="middle" font-size="12" font-weight="700" fill="#4E5852">LDR</text></g>
+  <!-- resistance gauge (low) -->
+  <text x="205" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#2e8b57">RESISTENCIA BAJA</text>
+  <rect x="120" y="294" width="170" height="12" rx="6" fill="#e2ddcf"/>
+  <rect x="120" y="294" width="46" height="12" rx="6" fill="#2e8b57"/>
+  <!-- LED on -->
+  <g><circle cx="205" cy="352" r="30" fill="url(#glowL)"/><circle cx="205" cy="352" r="15" fill="url(#ledOnL)" stroke="#8c3a32" stroke-width="1.5"/></g>
+  <text x="205" y="404" text-anchor="middle" font-size="13.5" font-weight="700" fill="#4E5852">pasa la corriente → ENCIENDE</text>
+
+  <!-- ============ A OSCURAS ============ -->
+  <text x="605" y="102" text-anchor="middle" font-size="18" font-weight="800" fill="#1B2320">A OSCURAS</text>
+  <!-- moon (poca luz) -->
+  <g><path d="M528 138 a24 24 0 1 0 20 34 a19 19 0 1 1 -20 -34 Z" fill="#b9c0c6"/></g>
+  <g stroke="#b9c0c6" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 7" opacity="0.7"><line x1="545" y1="168" x2="592" y2="198"/></g>
+  <!-- LDR -->
+  <g><rect x="572" y="182" width="66" height="46" rx="12" fill="#dcd8ce" stroke="#9aa0a6" stroke-width="2"/>
+    <path d="M582 205 q7 -12 14 0 q7 12 14 0 q7 -12 14 0" fill="none" stroke="#7a5a12" stroke-width="3"/>
+    <text x="605" y="248" text-anchor="middle" font-size="12" font-weight="700" fill="#4E5852">LDR</text></g>
+  <!-- resistance gauge (high) -->
+  <text x="605" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#A32A24">RESISTENCIA ALTA</text>
+  <rect x="520" y="294" width="170" height="12" rx="6" fill="#e2ddcf"/>
+  <rect x="520" y="294" width="150" height="12" rx="6" fill="#A32A24"/>
+  <!-- LED off -->
+  <g><circle cx="605" cy="352" r="15" fill="url(#ledOffL)" stroke="#5b4642" stroke-width="1.5"/></g>
+  <text x="605" y="404" text-anchor="middle" font-size="13.5" font-weight="700" fill="#4E5852">casi no pasa → APAGADO</text>
+</svg>

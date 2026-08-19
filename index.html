@@ -1184,7 +1184,10 @@
   // Imágenes de refuerzo específicas por capítulo y paso (has, obs, why, more).
   // Se muestran en lugar de la ilustración del capítulo en ese paso concreto.
   var STEP_IMG = {
-    3: { why: { src:'img/p3b-protoboard-dentro.svg', alt:'Corte de la protoboard por dentro: los rieles + y − son una sola tira a lo largo de toda la placa, cada fila de 5 agujeros está unida por una tira metálica escondida (el mismo punto) y separada de las demás, y el canal central separa la mitad de arriba de la de abajo' } }
+    3: { why: { src:'img/p3b-protoboard-dentro.svg', alt:'Corte de la protoboard por dentro: los rieles + y − son una sola tira a lo largo de toda la placa, cada fila de 5 agujeros está unida por una tira metálica escondida (el mismo punto) y separada de las demás, y el canal central separa la mitad de arriba de la de abajo' } },
+    7: { why: { src:'img/p7b-serie-paralelo.svg', alt:'En serie, dos LEDs en un solo camino: la corriente pasa por los dos, si cae uno caen los dos y brillan menos. En paralelo, dos caminos independientes: cada LED recibe todo el voltaje, brillan igual y uno no depende del otro' } },
+    10: { why: { src:'img/p10b-ldr.svg', alt:'La LDR con luz tiene poca resistencia y deja pasar la corriente (el LED enciende); a oscuras tiene mucha resistencia y casi no pasa corriente (el LED se apaga)' } },
+    11: { why: { src:'img/p11b-condensador.svg', alt:'El condensador es como un cubo: con la pila se llena y guarda electricidad; luego se vacía por el LED y la luz baja poco a poco' } }
   };
   function partKey(p){ if(p.classList.contains('observe'))return 'obs'; if(p.classList.contains('why'))return 'why'; if(p.classList.contains('more'))return 'more'; return 'has'; }
   function mediaFigure(src, alt){ var f=el('figure','exp-fig'); var im=document.createElement('img'); im.src=src; im.alt=alt||''; f.appendChild(im); return f; }
