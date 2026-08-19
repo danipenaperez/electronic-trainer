@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" width="820" height="500" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
+    <linearGradient id="battBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ea5"/><stop offset="1" stop-color="#254a75"/></linearGradient>
+    <linearGradient id="cell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f2ee"/><stop offset="0.5" stop-color="#c9cbc4"/><stop offset="1" stop-color="#9a9c94"/></linearGradient>
+    <radialGradient id="ledGlow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5a4d" stop-opacity="0.85"/><stop offset="0.4" stop-color="#ff6a52" stop-opacity="0.35"/><stop offset="1" stop-color="#ff6a52" stop-opacity="0"/></radialGradient>
+    <radialGradient id="ledDome" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#ff9a8f"/><stop offset="0.5" stop-color="#f2493a"/><stop offset="1" stop-color="#c0261b"/></radialGradient>
+    <linearGradient id="wireR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6564a"/><stop offset="1" stop-color="#c0322a"/></linearGradient>
+    <linearGradient id="wireK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b3f45"/><stop offset="1" stop-color="#1c1f24"/></linearGradient>
+    <linearGradient id="leg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfd3d6"/><stop offset="0.5" stop-color="#9aa0a6"/><stop offset="1" stop-color="#c4c9cd"/></linearGradient>
+    <radialGradient id="coin" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#f4d982"/><stop offset="0.6" stop-color="#d6ac45"/><stop offset="1" stop-color="#a9822c"/></radialGradient>
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.18"/></filter>
+  </defs>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panel)"/>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
+
+  <!-- battery bottom-left -->
+  <g filter="url(#soft)">
+    <rect x="60" y="300" width="160" height="80" rx="12" fill="url(#battBody)"/>
+    <rect x="74" y="312" width="132" height="24" rx="7" fill="url(#cell)" stroke="#7d7f78"/>
+    <rect x="74" y="344" width="132" height="24" rx="7" fill="url(#cell)" stroke="#7d7f78"/>
+    <text x="96" y="330" font-size="14" font-weight="700" fill="#5f6158">＋</text>
+    <text x="176" y="362" font-size="15" font-weight="700" fill="#5f6158">−</text>
+  </g>
+
+  <!-- red wire to LED, LED lit top -->
+  <path d="M215 316 C 300 250, 340 210, 372 196" fill="none" stroke="url(#wireR)" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="452" cy="180" r="74" fill="url(#ledGlow)"/>
+  <path d="M436 196 L432 168" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M468 196 L472 172" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
+  <g filter="url(#soft)">
+    <ellipse cx="452" cy="172" rx="26" ry="9" fill="#d94636"/>
+    <path d="M427 172 Q427 132 452 128 Q477 132 477 172 Z" fill="url(#ledDome)"/>
+    <ellipse cx="443" cy="150" rx="7" ry="11" fill="#ffd9d2" opacity="0.7"/>
+  </g>
+
+  <!-- from LED down to right probe -->
+  <path d="M472 196 C 520 250, 560 270, 600 300" fill="none" stroke="url(#wireR)" stroke-width="10" stroke-linecap="round"/>
+  <!-- black wire from battery to left probe -->
+  <path d="M206 368 C 340 440, 430 440, 500 372" fill="none" stroke="url(#wireK)" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- two probes and a coin bridging them (test point) -->
+  <g filter="url(#soft)">
+    <!-- probe tips -->
+    <rect x="486" y="360" width="26" height="14" rx="4" fill="#9aa0a6"/>
+    <rect x="596" y="288" width="14" height="26" rx="4" fill="#9aa0a6"/>
+    <!-- coin bridging -->
+    <ellipse cx="556" cy="336" rx="42" ry="42" fill="url(#coin)" stroke="#8a6a24" stroke-width="2"/>
+    <ellipse cx="556" cy="336" rx="33" ry="33" fill="none" stroke="#b58f30" stroke-width="2" opacity="0.6"/>
+    <text x="556" y="343" text-anchor="middle" font-size="17" font-weight="700" fill="#8a6a24">1€</text>
+  </g>
+  <text x="575" y="460" text-anchor="middle" font-size="15" font-weight="600" fill="#5f6b5f">el metal cierra el circuito → enciende</text>
+
+  <!-- legend tiles bottom -->
+  <g font-size="13" font-weight="600">
+    <g transform="translate(70,430)">
+      <rect width="150" height="50" rx="10" fill="#eaf3ea" stroke="#bcd8bc"/>
+      <text x="16" y="30" fill="#2f6b3f">Moneda / llave</text>
+      <text x="126" y="32" font-size="20" fill="#2e8b57">✓</text>
+    </g>
+    <g transform="translate(240,430)">
+      <rect width="150" height="50" rx="10" fill="#f7ecec" stroke="#e0c4c4"/>
+      <text x="14" y="30" fill="#9a3b34">Goma / plástico</text>
+      <text x="128" y="32" font-size="20" fill="#b23a2e">✗</text>
+    </g>
+  </g>
+</svg>

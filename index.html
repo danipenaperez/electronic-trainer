@@ -1,0 +1,922 @@
+<meta charset="utf-8">
+<title>Taller de Electrónica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --paper:#F1F3EE;
+    --card:#FBFBF7;
+    --card-2:#F4F6F0;
+    --ink:#1B2320;
+    --ink-soft:#4E5852;
+    --ink-faint:#7B857D;
+    --line:#D9DCD1;
+    --line-strong:#C4C8BA;
+    --copper:#B0562A;
+    --copper-deep:#8C4320;
+    --blue:#0E6274;
+    --gold:#9E7115;
+    --plum:#853B6E;
+    --danger:#A32A24;
+    --danger-bg:#F7E9E6;
+    --green:#227A44;
+    --green-bg:#E7F1E8;
+    --grid:rgba(27,35,32,0.045);
+    --shadow:0 1px 2px rgba(27,35,32,.05), 0 8px 24px -14px rgba(27,35,32,.22);
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --paper:#121716;
+      --card:#191F1D;
+      --card-2:#151B19;
+      --ink:#E9EDE6;
+      --ink-soft:#A4AEA6;
+      --ink-faint:#7C867E;
+      --line:#2A322E;
+      --line-strong:#374039;
+      --copper:#E28A56;
+      --copper-deep:#F0A375;
+      --blue:#49B2C4;
+      --gold:#DDB253;
+      --plum:#D389C1;
+      --danger:#EA6C5F;
+      --danger-bg:#2A1B19;
+      --green:#5FBE82;
+      --green-bg:#1B2A20;
+      --grid:rgba(233,237,230,0.035);
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#121716;
+    --card:#191F1D;
+    --card-2:#151B19;
+    --ink:#E9EDE6;
+    --ink-soft:#A4AEA6;
+    --ink-faint:#7C867E;
+    --line:#2A322E;
+    --line-strong:#374039;
+    --copper:#E28A56;
+    --copper-deep:#F0A375;
+    --blue:#49B2C4;
+    --gold:#DDB253;
+    --plum:#D389C1;
+    --danger:#EA6C5F;
+    --danger-bg:#2A1B19;
+    --green:#5FBE82;
+    --green-bg:#1B2A20;
+    --grid:rgba(233,237,230,0.035);
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px -16px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background-color:var(--paper);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:26px 26px;
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:18px;
+    line-height:1.62;
+    font-optical-sizing:auto;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px}
+  section{scroll-margin-top:20px}
+
+  h1,h2,h3,h4,.eyebrow,.chip,.step-label,.meta{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif}
+  h2{font-size:clamp(1.5rem,3.6vw,2.15rem);line-height:1.08;font-weight:800;letter-spacing:-.015em;text-wrap:balance;margin:0}
+  h3{font-size:1.32rem;line-height:1.14;font-weight:700;letter-spacing:-.01em;text-wrap:balance;margin:0}
+  p{margin:0 0 .85em}
+  b,strong{font-weight:600}
+  a{color:var(--blue)}
+  code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--card-2);border:1px solid var(--line);border-radius:5px;padding:.05em .38em;color:var(--copper-deep);white-space:nowrap}
+  :root[data-theme="dark"] code,:root[data-theme="dark"] .mono{color:var(--copper)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) code,:root:not([data-theme="light"]) .mono{color:var(--copper)}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 30px;border-bottom:2px solid var(--ink)}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:18px}
+  h1{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(2.7rem,8vw,4.6rem);line-height:.94;font-weight:800;letter-spacing:-.03em;margin:0 0 .28em;text-wrap:balance}
+  h1 .spark{color:var(--copper)}
+  .lead{font-size:clamp(1.1rem,2.4vw,1.32rem);color:var(--ink-soft);max-width:38ch;margin:0 0 26px}
+  .facts{display:flex;flex-wrap:wrap;gap:10px}
+  .fact{font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.02em;border:1px solid var(--line-strong);border-radius:100px;padding:7px 14px;color:var(--ink-soft);background:var(--card)}
+  .fact b{color:var(--ink);font-weight:600}
+
+  /* ---------- BLOCKS ---------- */
+  .block{padding:52px 0}
+  .eyebrow{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.73rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--blue);margin-bottom:14px}
+  .intro-copy{max-width:62ch;color:var(--ink-soft);font-size:1.05rem}
+  .intro-copy strong{color:var(--ink)}
+
+  /* method cards */
+  .method{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:26px}
+  .m-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 20px 22px;box-shadow:var(--shadow);border-top:4px solid var(--mc)}
+  .m-card .n{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mc);font-weight:600}
+  .m-card h4{font-family:"Bricolage Grotesque",sans-serif;font-size:1.18rem;font-weight:700;margin:6px 0 6px;color:var(--ink)}
+  .m-card p{font-size:.96rem;color:var(--ink-soft);margin:0}
+
+  /* callouts */
+  .callout{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+  .callout.warn{border-color:color-mix(in srgb,var(--danger) 45%,var(--line));background:var(--danger-bg)}
+  .callout.warn .c-title{color:var(--danger)}
+  .c-title{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.1rem;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .c-title .badge{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.12em;border:1.5px solid currentColor;border-radius:5px;padding:3px 7px;font-weight:600}
+  .rules{margin:0;padding:0;list-style:none;display:grid;gap:11px}
+  .rules li{position:relative;padding-left:30px;font-size:1rem;color:var(--ink-soft)}
+  .rules li strong{color:var(--ink)}
+  .rules li::before{content:"";position:absolute;left:0;top:.55em;width:11px;height:11px;border-radius:3px;background:var(--danger);transform:rotate(45deg)}
+  .rules.ok li::before{background:var(--blue)}
+
+  /* water analogy */
+  .water{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-top:24px}
+  .water .wrow{display:grid;grid-template-columns:120px 1fr;gap:0;border-top:1px solid var(--line)}
+  .water .wrow:first-child{border-top:none}
+  .water .wk{background:var(--card-2);padding:16px 18px;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;color:var(--wc);font-size:1.02rem;display:flex;align-items:center}
+  .water .wv{background:var(--card);padding:16px 18px;font-size:.98rem;color:var(--ink-soft)}
+  .water .wv b{color:var(--ink)}
+  .water .wv .u{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--wc);display:block;margin-top:2px}
+
+  /* toolbox */
+  .tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:8px}
+  .tool{border:1px solid var(--line);border-radius:11px;background:var(--card);padding:13px 15px}
+  .tool .t-n{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.98rem;color:var(--ink)}
+  .tool .t-d{font-size:.82rem;color:var(--ink-faint);font-family:"IBM Plex Mono",monospace;margin-top:2px}
+
+  /* ---------- EXPERIMENT CARDS ---------- */
+  .stage{margin:40px 0 22px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .stage .s-tag{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);font-weight:600;border:1px solid var(--line-strong);border-radius:100px;padding:6px 13px}
+  .stage h2{font-size:clamp(1.35rem,3.2vw,1.9rem)}
+
+  .exp{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);margin-bottom:24px;overflow:hidden}
+  .exp-head{padding:24px 26px 20px;border-bottom:1px solid var(--line);position:relative}
+  .exp-num{position:absolute;top:20px;right:24px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:2.6rem;line-height:1;color:var(--line-strong);letter-spacing:-.04em}
+  .exp .concept{font-family:"IBM Plex Mono",monospace;font-size:.71rem;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:9px}
+  .exp h3{max-width:22ch}
+  .exp .metrics{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .metric{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-soft);background:var(--card-2);border:1px solid var(--line);border-radius:6px;padding:5px 10px}
+  .metric b{color:var(--ink);font-weight:600}
+  .parts{padding:16px 26px;background:var(--card-2);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .parts .pl{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-right:4px}
+  .chip{font-family:"Bricolage Grotesque",sans-serif;font-size:.83rem;font-weight:600;border:1px solid var(--line-strong);border-radius:100px;padding:5px 12px;color:var(--ink);background:var(--card)}
+
+  .exp-fig{margin:0;padding:20px 26px 4px}
+  .exp-fig img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#f1ede4}
+  .exp-fig figcaption{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.04em;color:var(--ink-faint);margin-top:9px;text-align:center}
+  .exp-body{padding:8px 26px 26px}
+  .part{padding-top:22px}
+  .step-label{display:inline-flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--pc);margin-bottom:10px}
+  .step-label::before{content:"";width:20px;height:3px;border-radius:2px;background:var(--pc)}
+  .part p{font-size:1.02rem}
+  ol.steps{margin:0;padding:0;list-style:none;counter-reset:st;display:grid;gap:12px}
+  ol.steps li{position:relative;padding-left:38px;font-size:1.02rem;color:var(--ink)}
+  ol.steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:-1px;width:26px;height:26px;border-radius:50%;background:var(--copper);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:.82rem;font-weight:600;display:flex;align-items:center;justify-content:center}
+  :root[data-theme="dark"] ol.steps li::before{color:#12100e}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) ol.steps li::before{color:#12100e}}
+  .part.observe{color:var(--ink)}
+  .part.observe p{color:var(--ink-soft);font-style:italic;border-left:3px solid var(--blue);padding-left:16px}
+  .part.why p strong{color:var(--gold);font-weight:600}
+  .aha{background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-top:6px;font-size:.98rem}
+  .aha .a-l{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:5px}
+  .part.more p{color:var(--ink-soft)}
+
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+
+  /* resistor color table */
+  .tbl-scroll{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem}
+  th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line)}
+  thead th{font-family:"Bricolage Grotesque",sans-serif;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2)}
+  tbody tr:last-child td{border-bottom:none}
+  td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .swatch{display:inline-block;width:15px;height:15px;border-radius:4px;border:1px solid rgba(0,0,0,.25);vertical-align:-2px;margin-right:9px}
+
+  /* project options */
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:24px}
+  .proj{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:22px 22px 24px;box-shadow:var(--shadow);border-top:4px solid var(--plum)}
+  .proj h4{font-family:"Bricolage Grotesque",sans-serif;font-size:1.14rem;font-weight:700;margin:0 0 8px;color:var(--ink)}
+  .proj p{font-size:.95rem;color:var(--ink-soft);margin:0 0 12px}
+  .proj .lvl{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--plum);letter-spacing:.06em}
+
+  /* glossary */
+  .glos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:20px}
+  .gitem{border-left:3px solid var(--copper);padding:2px 0 2px 16px}
+  .gitem dt{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;color:var(--ink);font-size:1.02rem}
+  .gitem dd{margin:3px 0 0;font-size:.95rem;color:var(--ink-soft)}
+  .gitem dd .u{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--copper)}
+
+  footer{border-top:2px solid var(--ink);padding:40px 0 70px;color:var(--ink-faint);font-size:.9rem}
+  footer .note{max-width:60ch;color:var(--ink-soft);font-size:1rem;margin-bottom:18px}
+  footer strong{color:var(--ink)}
+
+  @media (max-width:560px){
+    body{font-size:17px}
+    .exp-num{font-size:2rem;top:22px}
+    .water .wrow{grid-template-columns:96px 1fr}
+    .exp-head,.exp-body{padding-left:20px;padding-right:20px}
+    .parts{padding-left:20px;padding-right:20px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    a,.chip{transition:color .15s ease}
+  }
+
+  /* ---- Progreso interactivo ---- */
+  .progress-panel{position:sticky;top:0;z-index:40;margin:0 -22px 24px;padding:11px 22px;
+    background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(9px);
+    -webkit-backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}
+  .pp-inner{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:14px}
+  .pp-text{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-soft);font-weight:600;white-space:nowrap}
+  #pp-count{color:var(--green);font-weight:700}
+  .pp-track{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden;min-width:60px}
+  .pp-fill{height:100%;width:0;border-radius:99px;background:var(--green);transition:width .4s ease}
+  .pp-reset{border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);
+    font-family:inherit;font-size:.72rem;padding:5px 13px;border-radius:99px;cursor:pointer;white-space:nowrap;
+    transition:color .15s ease,border-color .15s ease}
+  .pp-reset:hover{color:var(--danger);border-color:var(--danger)}
+  .pp-reset[hidden]{display:none}
+  @media (max-width:560px){
+    .progress-panel{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}
+    .pp-text .full{display:none}
+  }
+
+  /* ---- Botón "marcar como hecha" ---- */
+  .done-toggle{margin-top:16px;display:inline-flex;align-items:center;gap:9px;
+    border:1px solid var(--line-strong);background:var(--card-2);color:var(--ink-soft);
+    font-family:inherit;font-size:.85rem;font-weight:600;padding:7px 15px 7px 8px;border-radius:99px;
+    cursor:pointer;transition:color .18s ease,border-color .18s ease,background .18s ease}
+  .done-toggle:hover{border-color:var(--green);color:var(--green)}
+  .dt-box{width:22px;height:22px;flex:none;border-radius:50%;border:2px solid var(--line-strong);
+    display:grid;place-items:center;font-size:.78rem;line-height:1;color:transparent;
+    transition:background .18s ease,border-color .18s ease,color .18s ease}
+  .done-toggle[aria-pressed="true"]{background:var(--green-bg);border-color:var(--green);color:var(--green)}
+  .done-toggle[aria-pressed="true"] .dt-box{background:var(--green);border-color:var(--green);color:#fff}
+  .exp.done{border-color:color-mix(in srgb,var(--green) 42%,var(--line))}
+  .exp.done .exp-num{color:var(--green);opacity:.55}
+</style>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="kicker">Electrónica de verdad · sin ordenador · sin código</div>
+    <h1>Taller de <span class="spark">Electrónica</span></h1>
+    <p class="lead">13 experimentos para tocar la electricidad con las manos. Primero se hace, luego se entiende.</p>
+    <div class="facts">
+      <span class="fact"><b>Edad:</b> desde 12 años</span>
+      <span class="fact"><b>Con:</b> tu kit de Arduino (sin programar)</span>
+      <span class="fact"><b>Método:</b> hacer → observar → entender</span>
+      <span class="fact"><b>Sesiones:</b> 13 prácticas + proyecto</span>
+    </div>
+  </header>
+
+  <!-- PROGRESO -->
+  <div class="progress-panel" id="progress-panel">
+    <div class="pp-inner">
+      <div class="pp-text"><span id="pp-count">0</span>/13 <span class="full">prácticas </span>completadas</div>
+      <div class="pp-track"><div class="pp-fill" id="pp-fill"></div></div>
+      <button class="pp-reset" id="pp-reset" type="button" hidden>Reiniciar</button>
+    </div>
+  </div>
+
+  <!-- METHOD -->
+  <section class="block" id="metodo">
+    <span class="eyebrow">Cómo funciona cada práctica</span>
+    <h2>Cuatro pasos, siempre en el mismo orden</h2>
+    <p class="intro-copy" style="margin-top:14px">La regla de oro de este taller: <strong>nunca se explica antes de tocar</strong>. Primero montas el experimento y ves qué pasa. Solo <em>después</em>, cuando ya lo has visto con tus ojos, viene la explicación. Así el "por qué" se pega, porque responde a algo que acabas de sentir.</p>
+    <div class="method">
+      <div class="m-card" style="--mc:var(--copper)">
+        <div class="n">PASO 01</div>
+        <h4>Hazlo</h4>
+        <p>Monta el circuito siguiendo los pasos. Sin pensar todavía en teoría.</p>
+      </div>
+      <div class="m-card" style="--mc:var(--blue)">
+        <div class="n">PASO 02</div>
+        <h4>Observa</h4>
+        <p>¿Qué ha ocurrido? Míralo bien y descríbelo en voz alta antes de leer nada.</p>
+      </div>
+      <div class="m-card" style="--mc:var(--gold)">
+        <div class="n">PASO 03</div>
+        <h4>¿Por qué?</h4>
+        <p>Ahora sí: la explicación de lo que acabas de ver. El momento "ajá".</p>
+      </div>
+      <div class="m-card" style="--mc:var(--plum)">
+        <div class="n">PASO 04</div>
+        <h4>Ve más allá</h4>
+        <p>Un reto para cambiar algo y predecir qué pasará. Vuelve al paso 1.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="block" id="seguridad">
+    <div class="callout warn">
+      <div class="c-title"><span class="badge">SEGURIDAD</span> Leer esto antes de tocar nada</div>
+      <p style="color:var(--ink-soft);margin-top:-2px">Con pilas normales esto es muy seguro, pero hay cuatro reglas que no se saltan nunca:</p>
+      <ul class="rules">
+        <li><strong>Solo pilas.</strong> Jamás un enchufe de la pared ni un cargador de móvil. En este taller nunca hay más de <span class="mono">9&nbsp;voltios</span>.</li>
+        <li><strong>Nunca unas el + y el − de la pila directamente</strong> con un cable (eso es un "cortocircuito"): la pila se calienta mucho. Siempre debe haber algo en medio (un LED con su resistencia, una bombilla…).</li>
+        <li><strong>El LED siempre lleva su resistencia.</strong> Un LED conectado "a pelo" a la pila se quema en un segundo (y a veces con un pequeño chasquido).</li>
+        <li><strong>Un adulto cerca</strong> la primera vez, y nada de meterse pilas ni cables en la boca. La pila de 9&nbsp;V pica en la lengua: no es un juguete.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TOOLBOX -->
+  <section class="block" id="materiales">
+    <span class="eyebrow">Tu caja de herramientas</span>
+    <h2>Qué vas a necesitar</h2>
+    <p class="intro-copy" style="margin:14px 0 22px">Casi todo sale de un kit de Arduino normal. Lo usamos como una caja de piezas de electrónica, <strong>no</strong> como un ordenador: la placa Arduino se queda descansando en la caja. Lo único que quizá tengas que comprar aparte es un <strong>portapilas</strong> y, muy recomendable, un <strong>multímetro barato</strong>.</p>
+    <figure class="exp-fig" style="padding:0 0 4px"><img src="img/materiales.svg" alt="Vitrina con las piezas del taller: protoboard, cables puente, LED, resistencias, pulsador, potenciómetro, LDR, condensador, zumbador, portapilas y multímetro"><figcaption>Las piezas que usarás, para que las reconozcas a simple vista</figcaption></figure>
+    <div class="tools">
+      <div class="tool"><div class="t-n">Protoboard</div><div class="t-d">placa blanca de agujeros</div></div>
+      <div class="tool"><div class="t-n">Cables puente</div><div class="t-d">jumpers de colores</div></div>
+      <div class="tool"><div class="t-n">LEDs</div><div class="t-d">varios colores</div></div>
+      <div class="tool"><div class="t-n">Resistencias</div><div class="t-d">220Ω, 1k, 10k…</div></div>
+      <div class="tool"><div class="t-n">Pulsador</div><div class="t-d">botón de 4 patas</div></div>
+      <div class="tool"><div class="t-n">Potenciómetro</div><div class="t-d">mando que gira</div></div>
+      <div class="tool"><div class="t-n">LDR</div><div class="t-d">sensor de luz</div></div>
+      <div class="tool"><div class="t-n">Condensadores</div><div class="t-d">electrolíticos µF</div></div>
+      <div class="tool"><div class="t-n">Zumbador</div><div class="t-d">buzzer o motorcito</div></div>
+      <div class="tool"><div class="t-n">Portapilas</div><div class="t-d">2–4 pilas AA · comprar</div></div>
+      <div class="tool"><div class="t-n">Multímetro</div><div class="t-d">recomendado · comprar</div></div>
+      <div class="tool"><div class="t-n">Chatarra</div><div class="t-d">monedas, llaves, papel Alu…</div></div>
+    </div>
+  </section>
+
+  <!-- WATER ANALOGY -->
+  <section class="block" id="agua">
+    <span class="eyebrow">La idea que lo explica todo</span>
+    <h2>La electricidad es como el agua en una tubería</h2>
+    <p class="intro-copy" style="margin:14px 0 4px">Antes de empezar, quédate con esta imagen. La usaremos una y otra vez. Imagina el agua corriendo por tuberías: es la mejor forma de "ver" algo que en realidad es invisible.</p>
+    <div class="water">
+      <div class="wrow" style="--wc:var(--copper)">
+        <div class="wk">Corriente</div>
+        <div class="wv"><b>El agua que fluye</b> por la tubería. En electricidad, es la cantidad de electricidad que pasa. <span class="u">se mide en amperios (A)</span></div>
+      </div>
+      <div class="wrow" style="--wc:var(--blue)">
+        <div class="wk">Voltaje</div>
+        <div class="wv"><b>La presión</b> que empuja el agua. Cuanto más alto el depósito, más empuje. Las pilas dan ese empuje. <span class="u">se mide en voltios (V)</span></div>
+      </div>
+      <div class="wrow" style="--wc:var(--gold)">
+        <div class="wk">Resistencia</div>
+        <div class="wv"><b>Una tubería estrecha</b> o pisada que deja pasar menos agua. Frena la corriente. <span class="u">se mide en ohmios (Ω)</span></div>
+      </div>
+      <div class="wrow" style="--wc:var(--plum)">
+        <div class="wk">Circuito</div>
+        <div class="wv"><b>El recorrido cerrado</b> de tuberías. Si lo cortas por algún sitio, el agua deja de correr. <span class="u">tiene que ser un anillo completo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== BLOQUE A =================== -->
+  <div class="stage"><span class="s-tag">Bloque A</span><h2>La electricidad se mueve</h2></div>
+
+  <!-- EXP 1 -->
+  <article class="exp" id="p1">
+    <div class="exp-head">
+      <div class="exp-num">01</div>
+      <div class="concept">Circuito cerrado</div>
+      <h3>Enciende tu primera luz</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 15 min</span><span class="metric"><b>Nivel:</b> muy fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Portapilas</span><span class="chip">1 LED</span><span class="chip">Resistencia 220Ω</span><span class="chip">2 cables</span></div>
+    <figure class="exp-fig"><img src="img/p1-circuito-basico.svg" alt="Circuito simple: portapilas, cable rojo hacia una resistencia, resistencia hacia el LED encendido, y cable negro de vuelta a la pila"><figcaption>Así se ve el anillo completo: pila → resistencia → LED → pila</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Fíjate en el LED: tiene una pata <b>larga</b> (el +) y una <b>corta</b> (el −).</li>
+          <li>Conecta un cable del <b>+ de la pila</b> a una pata de la resistencia.</li>
+          <li>La otra pata de la resistencia, a la <b>pata larga</b> del LED.</li>
+          <li>De la <b>pata corta</b> del LED, un cable de vuelta al <b>− de la pila</b>.</li>
+          <li>Cuando el anillo se cierre… ✦ luz.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Ahora suelta uno de los cables. El LED se apaga al instante. Vuélvelo a tocar: se enciende. No importa qué cable sueltes, siempre pasa lo mismo.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>La electricidad no salta por el aire: necesita un <strong>camino completo, en anillo</strong>, que salga del + de la pila y vuelva al −. A eso se le llama <strong>circuito cerrado</strong>. Si cortas el anillo por cualquier punto (soltando un cable), el agua deja de correr por toda la tubería, no solo por ese trozo. Por eso da igual qué cable sueltes.</p>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>¿Y si le das la vuelta al LED (pata larga donde iba la corta)? Predice qué pasará antes de probarlo. <em>(Guarda la respuesta: la resolveremos en la práctica 12.)</em></p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 2 -->
+  <article class="exp" id="p2">
+    <div class="exp-head">
+      <div class="exp-num">02</div>
+      <div class="concept">Conductores y aislantes</div>
+      <h3>¿Qué deja pasar la electricidad?</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">El circuito de la P1</span><span class="chip">Objetos varios</span><span class="chip">Mina de lápiz</span></div>
+    <figure class="exp-fig"><img src="img/p2-conductores.svg" alt="Una moneda colocada entre dos puntas de cable cierra el circuito y enciende el LED; una tabla debajo marca metal con un tick y goma o plástico con una cruz"><figcaption>El metal cierra el circuito y enciende; la goma o el plástico, no</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Abre el circuito anterior dejando <b>dos puntas de cable sueltas</b> (el LED apagado).</li>
+          <li>Ve tocando esas dos puntas contra distintos objetos, como si el objeto fuera un puente: una moneda, una llave, papel de aluminio, una goma de borrar, un trozo de plástico, papel, madera, tu dedo…</li>
+          <li>Prueba también con la <b>mina (grafito) de un lápiz</b> y con un dedo mojado en agua con sal.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Los metales encienden el LED. El plástico, la goma, la madera y el papel no hacen nada. La mina de lápiz lo enciende… pero más flojito. El agua salada, un poquito.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Hay materiales <strong>conductores</strong> (dejan pasar la electricidad: casi todos los metales) y <strong>aislantes</strong> (no la dejan: plástico, goma, madera seca). Por eso los cables son de <strong>cobre por dentro y plástico por fuera</strong>: el cobre lleva la corriente y el plástico impide que se escape y te dé calambre.</p>
+        <div class="aha"><span class="a-l">Detalle curioso</span>La mina brilla poco porque el grafito conduce, pero "a regañadientes": es un conductor malo. Acabas de descubrir tú solo lo que es una <b>resistencia</b> (práctica 4).</div>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Dibuja una línea gruesa y bien negra con el lápiz en un papel y toca sus dos extremos. ¿Conduce el dibujo? ¿Y si la línea es más larga?</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 3 -->
+  <article class="exp" id="p3">
+    <div class="exp-head">
+      <div class="exp-num">03</div>
+      <div class="concept">La protoboard por dentro</div>
+      <h3>Descubre cómo está conectada la placa blanca</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Protoboard</span><span class="chip">Portapilas</span><span class="chip">LED + 220Ω</span><span class="chip">Cables</span></div>
+    <figure class="exp-fig"><img src="img/p3-protoboard.svg" alt="Protoboard con sus rieles rojo (+) y azul (−), un LED y una resistencia pinchados en los agujeros y cables puente hacia un portapilas"><figcaption>El LED y la resistencia pinchados en la protoboard, con los rieles + y −</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Mete la pata larga del LED en un agujero cualquiera del centro. Mete una punta de la resistencia en <b>otro agujero de la MISMA fila</b> (misma línea horizontal de 5 agujeros).</li>
+          <li>Lleva el + de la pila (con un cable) al riel rojo de arriba, y el − al riel azul.</li>
+          <li>Con cables, une el riel rojo a la resistencia y el riel azul a la pata corta del LED. Enciende.</li>
+          <li>Ahora <b>mueve la resistencia</b> a la fila de al lado, sin tocar el LED. Mira qué pasa.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Mientras la resistencia y el LED comparten fila, el LED enciende. En cuanto mueves la resistencia a otra fila, se apaga: aunque estén a un milímetro, ya no están conectados.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Por dentro, la protoboard tiene <strong>tiras de metal escondidas</strong>. Los 5 agujeros de cada media fila están unidos entre sí (son "el mismo punto"), pero cada fila está separada de las demás. Además, los dos <strong>rieles largos de los bordes</strong> (rojo y azul) recorren toda la placa: son autopistas para el + y el −. La protoboard sirve para <strong>conectar piezas sin soldar</strong>, solo pinchándolas.</p>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Sin mirar la explicación, dibuja en un papel qué agujeros de tu protoboard crees que están unidos por dentro. Luego compruébalo con el LED. ¿Acertaste?</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- =================== BLOQUE B =================== -->
+  <div class="stage"><span class="s-tag">Bloque B</span><h2>Controlar la corriente</h2></div>
+
+  <!-- EXP 4 -->
+  <article class="exp" id="p4">
+    <div class="exp-head">
+      <div class="exp-num">04</div>
+      <div class="concept">La resistencia</div>
+      <h3>El "grifo" que frena la electricidad</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Protoboard + LED</span><span class="chip">Resistencia 220Ω</span><span class="chip">1kΩ</span><span class="chip">10kΩ</span></div>
+    <figure class="exp-fig"><img src="img/p4-resistencia-brillo.svg" alt="Tres resistencias con distintas bandas de color (220 ohmios, 1 kiloohmio y 10 kiloohmios) y bajo cada una un LED que brilla cada vez menos"><figcaption>El mismo circuito con tres resistencias: a más ohmios, menos brillo</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Monta el LED con la resistencia de <b>220Ω</b>. Fíjate en el brillo.</li>
+          <li>Cambia solo la resistencia por la de <b>1kΩ</b> (1000Ω). Mira el brillo otra vez.</li>
+          <li>Ahora la de <b>10kΩ</b> (10.000Ω). Y observa.</li>
+          <li>Ordena las tres de más brillante a más apagado.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Cuanto más grande es el número de la resistencia, más flojo brilla el LED. Con 10kΩ apenas se ve un puntito. Y sin embargo la pila es la misma todo el rato.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Una <strong>resistencia frena la corriente</strong>, como una tubería estrecha frena el agua. Más ohmios = tubería más estrecha = pasa menos corriente = el LED brilla menos. Y ahora se entiende la regla de seguridad: <strong>el LED necesita SIEMPRE una resistencia</strong> porque, a pelo, dejaría pasar tanta corriente que se quemaría. La resistencia es su chaleco salvavidas.</p>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Pon dos resistencias de 220Ω <b>una detrás de otra</b> (en fila). ¿Brillará más o menos que con una sola? Pruébalo. (Pista: es como poner dos tramos estrechos seguidos.)</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 5 -->
+  <article class="exp" id="p5">
+    <div class="exp-head">
+      <div class="exp-num">05</div>
+      <div class="concept">Código de colores</div>
+      <h3>Lee una resistencia sin aparatos</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 15 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Varias resistencias</span><span class="chip">Multímetro (opcional)</span></div>
+    <figure class="exp-fig"><img src="img/p5-codigo-colores.svg" alt="Resistencia grande con sus cuatro bandas de color y, debajo, cada banda traducida a su cifra: rojo=2, rojo=2, marrón=un cero, dorado=tolerancia, dando 220 ohmios"><figcaption>Cada banda es una cifra: rojo · rojo · marrón = 220 Ω</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Coge una resistencia y fíjate en sus <b>anillos de colores</b>. Ponla con la banda dorada (o plateada) a la <b>derecha</b>.</li>
+          <li>Lee los tres primeros anillos de izquierda a derecha usando la tabla de abajo.</li>
+          <li>Primer anillo = primera cifra. Segundo = segunda cifra. Tercero = cuántos ceros añadir.</li>
+          <li>Si tienes multímetro, mídela y comprueba si acertaste.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Ejemplo: rojo–rojo–marrón = <span class="mono">2, 2 y un cero</span> = 220Ω. Marrón–negro–rojo = <span class="mono">1, 0 y dos ceros</span> = 1000Ω = 1kΩ.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Las resistencias son diminutas: no cabe escribir el número, así que se pinta con un <strong>código de colores</strong> internacional. Cada color es una cifra. El último anillo (dorado o plateado, un poco separado) indica la <strong>tolerancia</strong>: cuánto se puede desviar del valor exacto.</p>
+      </div>
+    </div>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Color</th><th>Cifra</th><th>Ceros (×)</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch" style="background:#1a1a1a"></span>Negro</td><td class="num">0</td><td class="num">—</td></tr>
+          <tr><td><span class="swatch" style="background:#6b3b1a"></span>Marrón</td><td class="num">1</td><td class="num">0</td></tr>
+          <tr><td><span class="swatch" style="background:#c62828"></span>Rojo</td><td class="num">2</td><td class="num">00</td></tr>
+          <tr><td><span class="swatch" style="background:#e8730c"></span>Naranja</td><td class="num">3</td><td class="num">000</td></tr>
+          <tr><td><span class="swatch" style="background:#f2c200"></span>Amarillo</td><td class="num">4</td><td class="num">0 000</td></tr>
+          <tr><td><span class="swatch" style="background:#2e7d32"></span>Verde</td><td class="num">5</td><td class="num">00 000</td></tr>
+          <tr><td><span class="swatch" style="background:#1565c0"></span>Azul</td><td class="num">6</td><td class="num">000 000</td></tr>
+          <tr><td><span class="swatch" style="background:#7b1fa2"></span>Violeta</td><td class="num">7</td><td class="num">—</td></tr>
+          <tr><td><span class="swatch" style="background:#9e9e9e"></span>Gris</td><td class="num">8</td><td class="num">—</td></tr>
+          <tr><td><span class="swatch" style="background:#f5f5f5"></span>Blanco</td><td class="num">9</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <!-- EXP 6 -->
+  <article class="exp" id="p6">
+    <div class="exp-head">
+      <div class="exp-num">06</div>
+      <div class="concept">Voltaje</div>
+      <h3>Apila pilas y sube el "empuje"</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">2–3 pilas AA</span><span class="chip">Portapilas</span><span class="chip">Zumbador o motorcito</span><span class="chip">LED + 220Ω</span></div>
+    <figure class="exp-fig"><img src="img/p6-pilas-serie.svg" alt="Tres motorcitos con 1, 2 y 3 pilas en serie (1,5 V, 3 V y 4,5 V); cuantas más pilas, más líneas de giro rápido dibujadas alrededor del motor"><figcaption>Más pilas en serie = más voltaje = el motor gira más rápido</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Haz sonar el zumbador (o girar el motorcito) con <b>1 pila</b> (1,5&nbsp;V). Escucha/mira con qué fuerza.</li>
+          <li>Añade una <b>segunda pila en fila</b>, + de una tocando el − de la otra (3&nbsp;V). Prueba.</li>
+          <li>Prueba con <b>3 pilas</b> (4,5&nbsp;V). ¿Suena más fuerte? ¿El motor gira más rápido?</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Cuantas más pilas pones en fila, más fuerte suena el zumbador y más rápido gira el motor. Las pilas "se suman".</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>El <strong>voltaje es el empuje</strong>. Poner pilas en fila (en <strong>serie</strong>) es como apilar depósitos de agua uno encima de otro: la presión se suma. Una pila AA da 1,5&nbsp;V; dos en serie, 3&nbsp;V; tres, 4,5&nbsp;V. Más empuje mueve más corriente, y por eso el motor corre más.</p>
+        <div class="aha"><span class="a-l">Ojo</span>Más voltaje también quema antes un LED. Por eso, al subir a 4,5&nbsp;V o al usar la pila de 9&nbsp;V, la resistencia del LED es aún más importante.</div>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>¿Y si pones la segunda pila <b>al revés</b> (los dos + juntos)? Predice y prueba con el motor. ¿Qué crees que pasará con el "empuje"?</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- =================== BLOQUE C =================== -->
+  <div class="stage"><span class="s-tag">Bloque C</span><h2>Caminos y control</h2></div>
+
+  <!-- EXP 7 -->
+  <article class="exp" id="p7">
+    <div class="exp-head">
+      <div class="exp-num">07</div>
+      <div class="concept">Serie y paralelo</div>
+      <h3>Dos caminos para la corriente</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 25 min</span><span class="metric"><b>Nivel:</b> medio</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">2 LEDs iguales</span><span class="chip">Resistencia 220Ω</span><span class="chip">Portapilas 4,5V</span><span class="chip">Protoboard</span></div>
+    <figure class="exp-fig"><img src="img/p7-serie-paralelo.svg" alt="Comparación: a la izquierda dos LEDs en serie en un único anillo de cable; a la derecha dos LEDs en paralelo, cada uno en su propia rama"><figcaption>En serie comparten un solo camino; en paralelo cada LED tiene el suyo</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li><b>En serie:</b> conecta los 2 LEDs en fila, uno detrás de otro (pata corta de uno con pata larga del siguiente), con una resistencia. Enciende y mira el brillo.</li>
+          <li>Con el circuito en serie encendido, <b>saca un LED</b> de su sitio. Observa el otro.</li>
+          <li><b>En paralelo:</b> ahora monta los 2 LEDs "en paralelo" (las dos patas largas juntas al +, las dos cortas juntas al −), cada uno con su resistencia. Enciende.</li>
+          <li>Saca uno de los dos. Observa el que queda.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>En serie, los dos LEDs brillan un poco menos, y si sacas uno… <b>se apagan los dos</b>. En paralelo, brillan más y, si sacas uno, <b>el otro sigue encendido</b> tan tranquilo.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>En <strong>serie</strong> hay un solo camino: la corriente pasa por los dos LEDs obligatoriamente, así que si cortas uno, cortas el anillo entero (se apagan ambos), y el empuje se reparte entre los dos (brillan menos). En <strong>paralelo</strong> hay dos caminos independientes: cada LED tiene su propia ruta, así que uno no depende del otro.</p>
+        <div class="aha"><span class="a-l">En la vida real</span>Las luces de tu casa van en <b>paralelo</b>: por eso puedes apagar la lámpara del salón sin que se apague la de la cocina. Las antiguas luces de árbol de Navidad iban en serie… y si se fundía una bombilla, ¡se apagaban todas!</div>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Monta 3 LEDs en paralelo. ¿Crees que la pila durará más o menos tiempo que con uno solo? ¿Por qué?</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 8 -->
+  <article class="exp" id="p8">
+    <div class="exp-head">
+      <div class="exp-num">08</div>
+      <div class="concept">Interruptores</div>
+      <h3>Abrir y cerrar el paso a voluntad</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Pulsador del kit</span><span class="chip">LED + 220Ω</span><span class="chip">2 clips + papel Alu</span><span class="chip">Pinza de ropa</span></div>
+    <figure class="exp-fig"><img src="img/p8-interruptores.svg" alt="A la izquierda un pulsador del kit intercalado en el circuito del LED; a la derecha un interruptor casero hecho con una pinza de ropa y dos trozos de papel de aluminio que se tocan"><figcaption>El pulsador del kit y un interruptor casero hacen exactamente lo mismo</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Intercala el <b>pulsador</b> en el circuito del LED (rompe el anillo y mete el botón en medio). Púlsalo.</li>
+          <li>Ahora fabrica <b>tu propio interruptor</b>: dos clips metálicos, uno en cada punta de cable. Al juntarlos, enciende; al separarlos, apaga.</li>
+          <li>Versión pinza: pega papel de aluminio en las dos mitades de una pinza de la ropa para que se toquen al cerrar.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>El LED solo luce mientras el metal se toca. Tu interruptor casero funciona exactamente igual que el botón "de verdad" del kit.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Un <strong>interruptor no es más que un trocito de camino que puedes abrir o cerrar</strong> con la mano. Cerrado, completa el anillo y pasa la corriente. Abierto, corta el anillo. Todos los interruptores del mundo —el de la luz de tu cuarto incluido— hacen solo eso: juntar o separar dos metales.</p>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Coloca <b>dos</b> interruptores en serie: el LED solo enciende si los dos están cerrados a la vez (eso es una puerta "Y"). Ahora ponlos en paralelo: enciende si <em>cualquiera</em> está cerrado (una puerta "O").</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 9 -->
+  <article class="exp" id="p9">
+    <div class="exp-head">
+      <div class="exp-num">09</div>
+      <div class="concept">Resistencia variable</div>
+      <h3>El potenciómetro: un regulador de luz</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> medio</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Potenciómetro</span><span class="chip">LED + 220Ω</span><span class="chip">Portapilas</span><span class="chip">Multímetro (opcional)</span></div>
+    <figure class="exp-fig"><img src="img/p9-potenciometro.svg" alt="Un potenciómetro con su mando azul y una flecha de giro, conectado a un LED; una barra debajo muestra el brillo variando de fuerte a casi apagado"><figcaption>Al girar el mando, el brillo sube y baja de forma suave</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>El potenciómetro tiene 3 patas. Usa la <b>del centro</b> y <b>una de los lados</b>.</li>
+          <li>Colócalo en serie con el LED y su resistencia de 220Ω (que hace de seguridad).</li>
+          <li>Enciende y <b>gira el mando</b> despacio de un extremo a otro.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Al girar, el LED pasa de brillar fuerte a apagarse casi del todo, de forma suave. Es un regulador (como el de algunas lámparas o el volumen de un altavoz).</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Un <strong>potenciómetro es una resistencia que puedes cambiar girando</strong>. Por dentro hay un caminito de material resistivo y un cursor que se desliza: cuanto más camino recorre la corriente, más resistencia encuentra y menos brilla el LED. Es la práctica 4, pero pudiendo elegir el valor "en directo" con la mano.</p>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Con el multímetro en modo ohmios (Ω), mide entre la pata central y una lateral mientras giras. Verás el número subir y bajar. ¿Coincide el máximo con lo que pone escrito en el potenciómetro?</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- =================== BLOQUE D =================== -->
+  <div class="stage"><span class="s-tag">Bloque D</span><h2>Componentes con truco</h2></div>
+
+  <!-- EXP 10 -->
+  <article class="exp" id="p10">
+    <div class="exp-head">
+      <div class="exp-num">10</div>
+      <div class="concept">Sensores</div>
+      <h3>La LDR: una resistencia que "ve" la luz</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> medio</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">LDR (sensor de luz)</span><span class="chip">LED + 220Ω</span><span class="chip">Portapilas 4,5V</span><span class="chip">Linterna</span></div>
+    <figure class="exp-fig"><img src="img/p10-ldr.svg" alt="A la izquierda la LDR iluminada por el sol deja pasar la corriente y el LED brilla; a la derecha la LDR tapada, a oscuras, frena la corriente y el LED se apaga"><figcaption>Con luz la LDR deja pasar; tapada, frena la corriente y el LED se apaga</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Pon la <b>LDR en serie</b> con el LED y su resistencia de 220Ω. Enciende.</li>
+          <li><b>Tapa la LDR</b> con la mano, dejándola a oscuras. Mira el LED.</li>
+          <li>Ahora <b>ilumínala</b> con una linterna. Mira otra vez.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>A oscuras el LED se apaga o brilla muy poco; con luz encima, brilla más. El circuito "nota" cuánta luz hay, sin que tú toques nada.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Una <strong>LDR es una resistencia que cambia de valor con la luz</strong>: a oscuras tiene mucha resistencia (frena la corriente), y con luz, poca. Eso es un <strong>sensor</strong>: un componente que convierte algo del mundo (aquí, la luz) en un cambio eléctrico. Existen sensores parecidos para el calor, la humedad o la presión.</p>
+        <div class="aha"><span class="a-l">Esto es enorme</span>Acabas de construir el corazón de una farola automática: "si hay poca luz, cambia algo en el circuito". Lo usarás en el proyecto final.</div>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Con el multímetro en ohmios, mide la LDR tapada y destapada. Apunta los dos números: verás la diferencia enorme entre "a oscuras" y "con luz".</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 11 -->
+  <article class="exp" id="p11">
+    <div class="exp-head">
+      <div class="exp-num">11</div>
+      <div class="concept">Almacenar energía</div>
+      <h3>El condensador: un mini-depósito de electricidad</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> medio</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Condensador ≥470µF</span><span class="chip">LED + 220Ω</span><span class="chip">Portapilas 4,5V</span></div>
+    <figure class="exp-fig"><img src="img/p11-condensador.svg" alt="Paso 1: el condensador se carga conectado a la pila. Paso 2: se quita la pila y el condensador alimenta el LED, que brilla y se va apagando poco a poco"><figcaption>Se carga con la pila y luego alimenta el LED mientras se descarga</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>El condensador grande tiene + y − (la pata corta y una raya marcan el −). <b>Respeta la polaridad.</b></li>
+          <li><b>Cárgalo:</b> toca sus patas a la pila unos 3 segundos (+ con +, − con −).</li>
+          <li>Quita la pila y, sin esperar, conecta el condensador a un LED con su resistencia (+ con pata larga).</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>¡El LED se enciende un momento y se va apagando poco a poco, aunque la pila ya no está! El condensador tenía electricidad guardada.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Un <strong>condensador almacena carga eléctrica</strong>, como un cubo que se llena de agua y luego la suelta. Al conectarlo a la pila se "llena"; al conectarlo al LED se "vacía" a través de él, y por eso la luz se apaga suave (el depósito se va quedando sin agua). Cuanto más grande el condensador (más µF) y mayor la resistencia, más tarda en apagarse.</p>
+        <div class="aha"><span class="a-l">Seguridad</span>Usa solo condensadores pequeños (hasta 9&nbsp;V, hasta ~1000&nbsp;µF) y descárgalos siempre a través del LED, nunca juntando sus dos patas directamente.</div>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Repite con un condensador más grande y con la resistencia de 1kΩ en lugar de 220Ω. ¿Dura la luz más o menos tiempo? Cronométralo.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 12 -->
+  <article class="exp" id="p12">
+    <div class="exp-head">
+      <div class="exp-num">12</div>
+      <div class="concept">Sentido único</div>
+      <h3>El diodo solo deja pasar en una dirección</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 15 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">1 LED</span><span class="chip">1 diodo (opcional)</span><span class="chip">Resistencia 220Ω</span><span class="chip">Portapilas</span></div>
+    <figure class="exp-fig"><img src="img/p12-diodo.svg" alt="A la izquierda el LED con la pata larga al positivo enciende; a la derecha, el mismo LED girado del revés no enciende porque el diodo bloquea el paso"><figcaption>En un sentido enciende; girado del revés, bloquea el paso</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Monta el LED con su resistencia y enciéndelo (pata larga hacia el +).</li>
+          <li>Ahora <b>dale la vuelta al LED</b> (pata larga hacia el −). Observa.</li>
+          <li>Vuélvelo a girar. Este es el misterio que dejaste pendiente en la práctica 1.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>En un sentido enciende; girado del revés, <b>no enciende nada</b>, por mucho que insistas. El LED tiene un lado "correcto".</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Un LED es un tipo de <strong>diodo</strong>, y un diodo es una <strong>válvula de un solo sentido</strong>: deja pasar la corriente en una dirección y la bloquea en la contraria. Por eso el LED tiene pata larga (+, ánodo) y corta (−, cátodo): hay que respetar el sentido. En la práctica 1 dijimos "prueba a darle la vuelta": <strong>ya sabes por qué no encendía</strong>.</p>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Los diodos protegen aparatos por si metes la pila al revés. ¿Se te ocurre por qué un diodo "de sentido único" evitaría que algo se estropee con la pila puesta del revés?</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- =================== BLOQUE E =================== -->
+  <div class="stage"><span class="s-tag">Bloque E</span><h2>Mídelo y constrúyelo</h2></div>
+
+  <!-- EXP 13 -->
+  <article class="exp" id="p13">
+    <div class="exp-head">
+      <div class="exp-num">13</div>
+      <div class="concept">Medir de verdad · Ley de Ohm</div>
+      <h3>El multímetro: poner números a lo que ya sientes</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 30 min</span><span class="metric"><b>Nivel:</b> medio</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Multímetro</span><span class="chip">Pila</span><span class="chip">Resistencia conocida</span><span class="chip">LED</span></div>
+    <figure class="exp-fig"><img src="img/p13-multimetro.svg" alt="Un multímetro amarillo con sus puntas de prueba midiendo una pila, la pantalla marcando 4,48 voltios, y la fórmula V = I × R"><figcaption>El multímetro mide voltios, ohmios y amperios para comprobar V = I × R</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li><b>Voltaje:</b> pon el multímetro en modo <span class="mono">V</span> y toca las dos puntas en los dos polos de la pila. Lee el número (algo cercano a 1,5 o 4,5&nbsp;V).</li>
+          <li><b>Resistencia:</b> modo <span class="mono">Ω</span>, mide una resistencia suelta. Compárala con lo que leíste por colores en la P5.</li>
+          <li><b>Corriente:</b> modo <span class="mono">mA</span>, y coloca el multímetro <b>en medio del circuito</b> (en serie, como una pieza más). Lee cuánta corriente pasa.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>La pila da el voltaje que esperabas. La resistencia mide casi lo que decían sus colores. Y si divides el voltaje entre la resistencia, ¡te sale más o menos la corriente que marca el aparato!</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Estos tres números están unidos por la regla más famosa de la electrónica, la <strong>Ley de Ohm</strong>: <span class="mono">Voltaje = Corriente × Resistencia</span> &nbsp;(V = I × R). Es puro sentido común de tubería: más empuje (V) → más corriente (I); más obstáculo (R) → menos corriente. Llevas 12 prácticas <em>sintiendo</em> esta ley con las manos; ahora solo le has puesto números.</p>
+        <div class="aha"><span class="a-l">Compruébalo</span>Con 4,5&nbsp;V y una resistencia de 220Ω: 4,5 ÷ 220 ≈ 0,020&nbsp;A = 20&nbsp;mA. Mira si tu multímetro marca algo parecido.</div>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Mide la corriente con 220Ω, luego con 1kΩ, luego con 10kΩ. Haz una tablita. ¿Se cumple que a más ohmios, menos miliamperios? Acabas de hacer ciencia con datos.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- FINAL PROJECT -->
+  <section class="block" id="proyecto">
+    <span class="eyebrow">Reto final · elige uno</span>
+    <h2>Ahora construye algo tuyo</h2>
+    <p class="intro-copy" style="margin:14px 0 4px">Ya conoces todas las piezas. Estos proyectos no llevan instrucciones paso a paso a propósito: la gracia es que <strong>tú diseñes el circuito</strong> juntando lo que ya sabes. Primero hazlo, y luego explícale a alguien por qué funciona.</p>
+    <div class="projects">
+      <div class="proj">
+        <div class="lvl">usa la P8 y la P1</div>
+        <h4>Linterna de bolsillo</h4>
+        <p>Una pila, un LED potente (o varios en paralelo) y tu propio interruptor casero, montado en una caja de cartón. Encender y apagar con estilo.</p>
+      </div>
+      <div class="proj">
+        <div class="lvl">usa la P10</div>
+        <h4>Luz de noche automática</h4>
+        <p>Con la LDR, consigue que un LED brille más cuanto más oscura está la habitación. La base de las farolas que se encienden solas al anochecer.</p>
+      </div>
+      <div class="proj">
+        <div class="lvl">usa la P8</div>
+        <h4>Juego del pulso</h4>
+        <p>Dobla un alambre en curvas y pásale un aro sin tocarlo. Si el aro roza el alambre, cierra el circuito y suena el zumbador. ¡Has perdido!</p>
+      </div>
+      <div class="proj">
+        <div class="lvl">usa la P2</div>
+        <h4>Detector de metales-conductores</h4>
+        <p>Un probador con dos puntas y un LED: tócalo contra cualquier objeto de casa y descubre, en una tarde, qué cosas conducen y cuáles no.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="block" id="glosario">
+    <span class="eyebrow">Chuleta rápida</span>
+    <h2>Las palabras clave, en una frase</h2>
+    <dl class="glos">
+      <div class="gitem"><dt>Corriente</dt><dd>La electricidad que fluye por el circuito. <span class="u">amperios (A)</span></dd></div>
+      <div class="gitem"><dt>Voltaje</dt><dd>El empuje que hace moverse a la corriente. <span class="u">voltios (V)</span></dd></div>
+      <div class="gitem"><dt>Resistencia</dt><dd>Lo que frena la corriente. <span class="u">ohmios (Ω)</span></dd></div>
+      <div class="gitem"><dt>Circuito</dt><dd>El camino cerrado en anillo por donde va la corriente.</dd></div>
+      <div class="gitem"><dt>Conductor</dt><dd>Material que deja pasar la electricidad (metales).</dd></div>
+      <div class="gitem"><dt>Aislante</dt><dd>Material que NO la deja pasar (plástico, goma).</dd></div>
+      <div class="gitem"><dt>Serie</dt><dd>Piezas puestas una detrás de otra, un solo camino.</dd></div>
+      <div class="gitem"><dt>Paralelo</dt><dd>Piezas en caminos separados e independientes.</dd></div>
+      <div class="gitem"><dt>LED</dt><dd>Diodo que da luz. Tiene + (pata larga) y − (corta).</dd></div>
+      <div class="gitem"><dt>Diodo</dt><dd>Válvula que deja pasar la corriente en un solo sentido.</dd></div>
+      <div class="gitem"><dt>Condensador</dt><dd>Pequeño depósito que guarda y suelta electricidad.</dd></div>
+      <div class="gitem"><dt>Ley de Ohm</dt><dd>La regla que las une todas: <span class="u">V = I × R</span></dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    <p class="note">Para quien acompaña: el orden importa. Cada práctica se apoya en la anterior, y varias “misterios” (el LED al revés, la resistencia doble) se resuelven prácticas más adelante a propósito, para que quede la curiosidad picando. <strong>No adelantes la explicación:</strong> deja que primero lo vea, lo diga con sus palabras, y solo entonces leed juntos el “¿por qué?”.</p>
+    <p><strong>Taller de Electrónica</strong> · 13 prácticas para aprender tocando · pensado para 12+ con un kit de Arduino, sin programación.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY = 'taller-electro-hechas';
+  var exps = [].slice.call(document.querySelectorAll('article.exp'));
+  var total = exps.length;
+  var fill = document.getElementById('pp-fill');
+  var countEl = document.getElementById('pp-count');
+  var resetBtn = document.getElementById('pp-reset');
+
+  function load(){
+    try { return new Set(JSON.parse(localStorage.getItem(KEY)) || []); }
+    catch(e){ return new Set(); }
+  }
+  function save(set){
+    try { localStorage.setItem(KEY, JSON.stringify(Array.from(set))); } catch(e){}
+  }
+  var done = load();
+
+  function refresh(){
+    var n = 0;
+    exps.forEach(function(exp){
+      var on = done.has(exp.id);
+      if(on) n++;
+      exp.classList.toggle('done', on);
+      var btn = exp.querySelector('.done-toggle');
+      if(btn){
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.querySelector('.dt-label').textContent = on ? 'Hecha' : 'Marcar como hecha';
+      }
+    });
+    if(countEl) countEl.textContent = n;
+    if(fill) fill.style.width = total ? Math.round(n / total * 100) + '%' : '0%';
+    if(resetBtn) resetBtn.hidden = (n === 0);
+  }
+
+  exps.forEach(function(exp){
+    var head = exp.querySelector('.exp-head');
+    if(!head) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'done-toggle';
+    btn.setAttribute('aria-pressed', 'false');
+    btn.innerHTML = '<span class="dt-box" aria-hidden="true">✓</span><span class="dt-label">Marcar como hecha</span>';
+    btn.addEventListener('click', function(){
+      if(done.has(exp.id)) done.delete(exp.id); else done.add(exp.id);
+      save(done); refresh();
+    });
+    head.appendChild(btn);
+  });
+
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      done.clear(); save(done); refresh();
+    });
+  }
+
+  refresh();
+})();
+</script>

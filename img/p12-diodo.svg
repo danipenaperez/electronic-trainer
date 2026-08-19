@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" width="820" height="500" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
+    <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5a4d" stop-opacity="0.85"/><stop offset="0.4" stop-color="#ff6a52" stop-opacity="0.35"/><stop offset="1" stop-color="#ff6a52" stop-opacity="0"/></radialGradient>
+    <radialGradient id="dome" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#ff9a8f"/><stop offset="0.5" stop-color="#f2493a"/><stop offset="1" stop-color="#c0261b"/></radialGradient>
+    <radialGradient id="domeOff" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#e7b2ab"/><stop offset="0.5" stop-color="#c98379"/><stop offset="1" stop-color="#9c5a52"/></radialGradient>
+    <linearGradient id="battBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ea5"/><stop offset="1" stop-color="#254a75"/></linearGradient>
+    <linearGradient id="leg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfd3d6"/><stop offset="0.5" stop-color="#9aa0a6"/><stop offset="1" stop-color="#c4c9cd"/></linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.18"/></filter>
+  </defs>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panel)"/>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
+
+  <line x1="410" y1="70" x2="410" y2="430" stroke="#d8cfba" stroke-width="2" stroke-dasharray="6 8"/>
+  <text x="205" y="96" text-anchor="middle" font-size="18" font-weight="800" fill="#2e8b57">Pata larga al + → ENCIENDE</text>
+  <text x="615" y="96" text-anchor="middle" font-size="18" font-weight="800" fill="#b23a2e">Del revés → NO enciende</text>
+
+  <!-- LEFT lit -->
+  <g>
+    <g filter="url(#soft)"><rect x="120" y="330" width="170" height="60" rx="10" fill="url(#battBody)"/>
+      <rect x="132" y="340" width="146" height="18" rx="5" fill="#eef0ec"/><rect x="132" y="362" width="146" height="18" rx="5" fill="#eef0ec"/>
+      <text x="150" y="356" font-size="14" font-weight="700" fill="#fff">＋</text><text x="252" y="378" font-size="15" font-weight="700" fill="#fff">−</text></g>
+    <!-- wires -->
+    <path d="M140 330 C 120 250, 160 190, 200 178" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
+    <path d="M270 330 C 300 260, 260 200, 232 190" fill="none" stroke="#3b3f45" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="205" cy="160" r="66" fill="url(#glowB)"/>
+    <path d="M192 178 L188 152" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M220 178 L224 156" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
+    <g filter="url(#soft)"><ellipse cx="205" cy="156" rx="26" ry="9" fill="#d94636"/><path d="M180 156 Q180 118 205 114 Q230 118 230 156 Z" fill="url(#dome)"/>
+      <ellipse cx="196" cy="134" rx="7" ry="11" fill="#ffd9d2" opacity="0.7"/></g>
+    <text x="205" y="452" text-anchor="middle" font-size="26" font-weight="800" fill="#2e8b57">✓</text>
+  </g>
+
+  <!-- RIGHT off (reversed) -->
+  <g>
+    <g filter="url(#soft)"><rect x="530" y="330" width="170" height="60" rx="10" fill="url(#battBody)"/>
+      <rect x="542" y="340" width="146" height="18" rx="5" fill="#eef0ec"/><rect x="542" y="362" width="146" height="18" rx="5" fill="#eef0ec"/>
+      <text x="560" y="356" font-size="14" font-weight="700" fill="#fff">＋</text><text x="662" y="378" font-size="15" font-weight="700" fill="#fff">−</text></g>
+    <path d="M550 330 C 530 250, 570 190, 610 178" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
+    <path d="M680 330 C 710 260, 670 200, 642 190" fill="none" stroke="#3b3f45" stroke-width="8" stroke-linecap="round"/>
+    <!-- reversed: short leg to + (draw dome darker, no glow) -->
+    <path d="M602 178 L598 152" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M630 178 L634 156" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
+    <g filter="url(#soft)"><ellipse cx="615" cy="156" rx="26" ry="9" fill="#9c5a52"/><path d="M590 156 Q590 118 615 114 Q640 118 640 156 Z" fill="url(#domeOff)"/></g>
+    <text x="615" y="452" text-anchor="middle" font-size="26" font-weight="800" fill="#b23a2e">✗</text>
+    <text x="615" y="416" text-anchor="middle" font-size="14" font-weight="600" fill="#9a3b34">el diodo bloquea el paso</text>
+  </g>
+</svg>

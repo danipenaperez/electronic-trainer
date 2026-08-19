@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" width="820" height="500" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
+    <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5a4d" stop-opacity="0.85"/><stop offset="0.4" stop-color="#ff6a52" stop-opacity="0.35"/><stop offset="1" stop-color="#ff6a52" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowM" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5a4d" stop-opacity="0.45"/><stop offset="0.4" stop-color="#ff6a52" stop-opacity="0.18"/><stop offset="1" stop-color="#ff6a52" stop-opacity="0"/></radialGradient>
+    <radialGradient id="dome" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#ff9a8f"/><stop offset="0.5" stop-color="#f2493a"/><stop offset="1" stop-color="#c0261b"/></radialGradient>
+    <linearGradient id="wireK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b3f45"/><stop offset="1" stop-color="#1c1f24"/></linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.18"/></filter>
+  </defs>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panel)"/>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
+
+  <!-- divider -->
+  <line x1="410" y1="60" x2="410" y2="440" stroke="#d8cfba" stroke-width="2" stroke-dasharray="6 8"/>
+  <text x="205" y="90" text-anchor="middle" font-size="20" font-weight="800" fill="#2b3330">EN SERIE</text>
+  <text x="615" y="90" text-anchor="middle" font-size="20" font-weight="800" fill="#2b3330">EN PARALELO</text>
+
+  <!-- helper defs for a small LED -->
+  <!-- SERIE: one loop, two LEDs in a line, both medium -->
+  <g>
+    <!-- wire loop -->
+    <rect x="80" y="150" width="250" height="200" rx="16" fill="none" stroke="url(#wireK)" stroke-width="9"/>
+    <!-- two LEDs sit on top wire -->
+    <circle cx="150" cy="150" r="46" fill="url(#glowM)"/>
+    <circle cx="260" cy="150" r="46" fill="url(#glowM)"/>
+    <g filter="url(#soft)">
+      <ellipse cx="150" cy="150" rx="22" ry="8" fill="#c53f30"/><path d="M128 150 Q128 118 150 115 Q172 118 172 150 Z" fill="url(#dome)"/>
+      <ellipse cx="260" cy="150" rx="22" ry="8" fill="#c53f30"/><path d="M238 150 Q238 118 260 115 Q282 118 282 150 Z" fill="url(#dome)"/>
+    </g>
+    <!-- battery marker -->
+    <rect x="170" y="336" width="70" height="28" rx="6" fill="#254a75"/><text x="205" y="356" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">pila</text>
+    <text x="205" y="400" text-anchor="middle" font-size="14" font-weight="600" fill="#5f6b5f">un solo camino · brillan menos</text>
+    <text x="205" y="424" text-anchor="middle" font-size="14" font-weight="700" fill="#b23a2e">quitas uno → se apagan los dos</text>
+  </g>
+
+  <!-- PARALELO: two branches, both bright -->
+  <g>
+    <!-- outer wire -->
+    <path d="M500 150 L500 336 L730 336 L730 150" fill="none" stroke="url(#wireK)" stroke-width="9"/>
+    <line x1="500" y1="150" x2="730" y2="150" stroke="url(#wireK)" stroke-width="9"/>
+    <!-- two vertical branches -->
+    <line x1="565" y1="150" x2="565" y2="200" stroke="url(#wireK)" stroke-width="7"/>
+    <line x1="665" y1="150" x2="665" y2="200" stroke="url(#wireK)" stroke-width="7"/>
+    <circle cx="565" cy="200" r="52" fill="url(#glowB)"/>
+    <circle cx="665" cy="200" r="52" fill="url(#glowB)"/>
+    <g filter="url(#soft)">
+      <ellipse cx="565" cy="200" rx="24" ry="8" fill="#d94636"/><path d="M541 200 Q541 166 565 162 Q589 166 589 200 Z" fill="url(#dome)"/>
+      <ellipse cx="665" cy="200" rx="24" ry="8" fill="#d94636"/><path d="M641 200 Q641 166 665 162 Q689 166 689 200 Z" fill="url(#dome)"/>
+    </g>
+    <rect x="580" y="322" width="70" height="28" rx="6" fill="#254a75"/><text x="615" y="342" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">pila</text>
+    <text x="615" y="400" text-anchor="middle" font-size="14" font-weight="600" fill="#5f6b5f">dos caminos · brillan igual</text>
+    <text x="615" y="424" text-anchor="middle" font-size="14" font-weight="700" fill="#2e8b57">quitas uno → el otro sigue</text>
+  </g>
+</svg>

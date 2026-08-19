@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" width="820" height="500" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
+    <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5a4d" stop-opacity="0.8"/><stop offset="0.4" stop-color="#ff6a52" stop-opacity="0.3"/><stop offset="1" stop-color="#ff6a52" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowM" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5a4d" stop-opacity="0.35"/><stop offset="0.5" stop-color="#ff6a52" stop-opacity="0.12"/><stop offset="1" stop-color="#ff6a52" stop-opacity="0"/></radialGradient>
+    <radialGradient id="dome" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#ff9a8f"/><stop offset="0.5" stop-color="#f2493a"/><stop offset="1" stop-color="#c0261b"/></radialGradient>
+    <linearGradient id="capBody" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b3d6e"/><stop offset="0.5" stop-color="#3f5aa0"/><stop offset="1" stop-color="#243257"/></linearGradient>
+    <linearGradient id="capStripe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9dee6"/><stop offset="1" stop-color="#aab2c0"/></linearGradient>
+    <linearGradient id="battBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ea5"/><stop offset="1" stop-color="#254a75"/></linearGradient>
+    <linearGradient id="leg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfd3d6"/><stop offset="0.5" stop-color="#9aa0a6"/><stop offset="1" stop-color="#c4c9cd"/></linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.18"/></filter>
+  </defs>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panel)"/>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
+
+  <line x1="410" y1="70" x2="410" y2="430" stroke="#d8cfba" stroke-width="2" stroke-dasharray="6 8"/>
+  <text x="205" y="96" text-anchor="middle" font-size="18" font-weight="800" fill="#2b3330">1 · Cargar con la pila</text>
+  <text x="615" y="96" text-anchor="middle" font-size="18" font-weight="800" fill="#2b3330">2 · Quitar pila → LED brilla y baja</text>
+
+  <!-- capacitor drawing helper (as inline groups) -->
+  <!-- LEFT: capacitor connected to battery, filling -->
+  <g>
+    <g filter="url(#soft)">
+      <rect x="70" y="180" width="150" height="70" rx="10" fill="url(#battBody)"/>
+      <rect x="82" y="192" width="126" height="20" rx="6" fill="#eef0ec"/>
+      <rect x="82" y="220" width="126" height="20" rx="6" fill="#eef0ec"/>
+    </g>
+    <!-- wires to cap -->
+    <path d="M215 195 C 260 195, 270 260, 300 300" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
+    <path d="M215 235 C 250 300, 250 360, 340 360" fill="none" stroke="#3b3f45" stroke-width="8" stroke-linecap="round"/>
+    <!-- capacitor -->
+    <g filter="url(#soft)" transform="translate(300,300)">
+      <line x1="8" y1="0" x2="8" y2="-40" stroke="url(#leg)" stroke-width="6"/>
+      <line x1="42" y1="0" x2="42" y2="-40" stroke="url(#leg)" stroke-width="6"/>
+      <rect x="-8" y="-8" width="66" height="94" rx="20" fill="url(#capBody)" stroke="#1c274a" stroke-width="2"/>
+      <rect x="-8" y="-8" width="18" height="94" rx="9" fill="url(#capStripe)" opacity="0.85"/>
+      <text x="2" y="46" font-size="18" font-weight="800" fill="#3f5aa0">−</text>
+      <ellipse cx="25" cy="-8" rx="33" ry="8" fill="#4a63a8"/>
+    </g>
+    <text x="205" y="452" text-anchor="middle" font-size="14" font-weight="600" fill="#5f6b5f">el condensador se “llena”</text>
+  </g>
+
+  <!-- RIGHT: capacitor to LED, discharging -->
+  <g>
+    <g filter="url(#soft)" transform="translate(500,300)">
+      <line x1="8" y1="0" x2="8" y2="-40" stroke="url(#leg)" stroke-width="6"/>
+      <line x1="42" y1="0" x2="42" y2="-40" stroke="url(#leg)" stroke-width="6"/>
+      <rect x="-8" y="-8" width="66" height="94" rx="20" fill="url(#capBody)" stroke="#1c274a" stroke-width="2"/>
+      <rect x="-8" y="-8" width="18" height="94" rx="9" fill="url(#capStripe)" opacity="0.85"/>
+      <ellipse cx="25" cy="-8" rx="33" ry="8" fill="#4a63a8"/>
+    </g>
+    <path d="M550 262 C 600 220, 640 210, 660 240" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
+    <path d="M542 300 C 620 340, 660 320, 675 290" fill="none" stroke="#3b3f45" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="665" cy="210" r="56" fill="url(#glowM)"/>
+    <g filter="url(#soft)"><ellipse cx="665" cy="210" rx="24" ry="8" fill="#c53f30"/><path d="M641 210 Q641 176 665 172 Q689 176 689 210 Z" fill="url(#dome)"/></g>
+    <!-- fading arrow -->
+    <path d="M600 380 C 660 380, 700 380, 740 380" fill="none" stroke="#c9a15a" stroke-width="3"/>
+    <text x="615" y="452" text-anchor="middle" font-size="14" font-weight="600" fill="#5f6b5f">se “vacía” por el LED → se apaga suave</text>
+  </g>
+</svg>
