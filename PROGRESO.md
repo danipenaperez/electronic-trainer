@@ -105,8 +105,12 @@ python3 -m http.server 8000
         escondidas), en el slide "¿Por qué?" del cap. 3.
       - Mecanismo `STEP_IMG` en el JS: mapa `{capítulo: {paso: {src,alt}}}` para poner
         imágenes de refuerzo específicas por capítulo y paso (has/obs/why/more).
-      Pendiente/ideas: revisar dónde más el texto va "desnudo" y añadir diagramas
-      (p. ej. serie vs paralelo, dentro del condensador, cómo mira la LDR).
+      - `img/p7b-serie-paralelo.svg` (cap. 7 "¿Por qué?"): un solo camino vs dos caminos.
+      - `img/p10b-ldr.svg` (cap. 10 "¿Por qué?"): con luz→poca R→enciende; a oscuras→mucha R→apagado.
+      - `img/p11b-condensador.svg` (cap. 11 "¿Por qué?"): el cubo que se llena (pila) y se vacía (LED).
+      Total refuerzos "¿Por qué?": caps. 3, 7, 10, 11 + la analogía del agua en intro.
+      Pendiente/ideas: seguir donde el texto vaya "desnudo" (p. ej. dentro del potenciómetro,
+      pilas en serie sumando voltaje, el diodo como válvula) usando el mismo `STEP_IMG`.
 
 > ~~Versión imprimible A4~~ — **descartada** por el usuario (2026-08-19). No retomar.
 
