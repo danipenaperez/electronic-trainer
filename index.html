@@ -435,6 +435,17 @@
     .slide.qslide .q-prompt{font-size:1.65rem}
   }
 
+  /* Lightbox: ampliar imágenes al pulsarlas */
+  .slide .exp-fig img{cursor:zoom-in}
+  .lightbox{position:fixed;inset:0;z-index:120;background:rgba(12,14,13,.88);
+    display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:96vw;max-height:92vh;width:auto;height:auto;border-radius:12px;
+    background:#fbfaf6;box-shadow:0 24px 70px -20px rgba(0,0,0,.7)}
+  .lightbox .lb-close{position:absolute;top:16px;right:22px;font-size:2.2rem;line-height:1;
+    color:#fff;background:none;border:0;cursor:pointer;opacity:.85}
+  .lightbox .lb-close:hover{opacity:1}
+
   /* Barra inferior de navegación del deck */
   .deck-nav{flex:none;border-top:1px solid var(--line);padding:12px 20px;
     display:flex;align-items:center;justify-content:space-between;gap:14px}
@@ -1387,7 +1398,22 @@
   document.getElementById('tb-menu-btn').addEventListener('click', openMenu);
   document.getElementById('menu-close').addEventListener('click', closeMenu);
   overlay.addEventListener('click', closeMenu);
+
+  /* ---- Lightbox: ampliar imágenes al pulsarlas ---- */
+  var lb=el('div','lightbox');
+  lb.innerHTML='<button class="lb-close" aria-label="Cerrar">×</button><img alt="">';
+  document.body.appendChild(lb);
+  var lbImg=lb.querySelector('img');
+  function openLB(src, alt){ lbImg.src=src; lbImg.alt=alt||''; lb.classList.add('open'); }
+  function closeLB(){ lb.classList.remove('open'); lbImg.removeAttribute('src'); }
+  lb.addEventListener('click', closeLB);
+  area.addEventListener('click', function(e){
+    var im=e.target && e.target.closest ? e.target.closest('img') : null;
+    if(im && area.contains(im)){ openLB(im.getAttribute('src'), im.getAttribute('alt')); }
+  });
+
   document.addEventListener('keydown', function(e){
+    if(lb.classList.contains('open')){ if(e.key==='Escape') closeLB(); return; }
     if(panel.classList.contains('open')){ if(e.key==='Escape') closeMenu(); return; }
     if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); next(); }
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prev(); }
