@@ -81,6 +81,19 @@
     <ellipse cx="443" cy="200" rx="7" ry="11" fill="#ffd9d2" opacity="0.7"/>
   </g>
 
+  <!-- ===== LED leg polarity + insertion markers ===== -->
+  <g>
+    <!-- insertion rings where the legs enter the holes -->
+    <circle cx="432" cy="214" r="8" fill="none" stroke="#c0322a" stroke-width="2.5"/>
+    <circle cx="470" cy="257" r="8" fill="none" stroke="#3f74b0" stroke-width="2.5"/>
+    <!-- long leg (+) label -->
+    <text x="372" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#c0322a">pata LARGA (+)</text>
+    <path d="M372 158 C 400 180, 420 195, 432 208" fill="none" stroke="#c0322a" stroke-width="1.6" stroke-dasharray="3 4"/>
+    <!-- short leg (−) label -->
+    <text x="540" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#3f74b0">pata CORTA (−)</text>
+    <path d="M505 292 C 490 278, 478 268, 470 262" fill="none" stroke="#3f74b0" stroke-width="1.6" stroke-dasharray="3 4"/>
+  </g>
+
   <!-- ===== BATTERY pack bottom-right ===== -->
   <g filter="url(#soft3)">
     <rect x="600" y="330" width="150" height="72" rx="11" fill="url(#battBody3)"/>
