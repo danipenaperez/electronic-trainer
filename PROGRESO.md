@@ -101,7 +101,28 @@ python3 -m http.server 8000
 
 > ~~Versión imprimible A4~~ — **descartada** por el usuario (2026-08-19). No retomar.
 
-## HECHO ✅ — Rediseño a "curso por capítulos" (2026-08-19, verificado en navegador)
+## HECHO ✅ — Deck a pantalla completa "slide a slide" (2026-08-19, verificado en navegador)
+Evolución pedida por el usuario: quitar el scroll y pasar a **presentación a pantalla
+completa, un contenido por slide, con "siguiente siguiente"**. Implementado sobre el
+mismo `index.html` (sustituye al controlador de capítulos con scroll). Decisiones:
+**una idea por slide** y **una pregunta por pantalla** (feedback al instante, hay que
+acertar para avanzar, reintentos ilimitados). Detalles:
+- El JS trocea el contenido existente en slides: portada + 4 slides de intro
+  (método/seguridad/materiales/agua) + por capítulo: portada(dibujo) · Hazlo · Observa ·
+  ¿Por qué? · Ve más allá · N preguntas · + final (celebración/proyecto/glosario).
+- Layout: `.deck` fixed a pantalla completa (`html.deck-on{overflow:hidden}`), topbar +
+  `.deck-area` (única zona con scroll de reserva) + `.deck-nav` (Atrás / puntos / Siguiente).
+- Navegación: botones, **teclado** (← →, espacio, RePág/AvPág) y **swipe** en móvil.
+  Menú lateral de capítulos con candado/✓. Estado en `localStorage` clave `electro-deck-v1`
+  (`{passed, current}`), reanuda en el slide donde lo dejaste.
+- Bug corregido: al mover `.exp-head`/`.part` fuera del `article.exp`, dejaban de aplicar
+  las 3 reglas scopeadas bajo `.exp ` (`.concept`, `h3`, `.metrics`) → el concepto salía
+  como texto plano y las métricas se solapaban. Solución: ampliar esos selectores a `.slide`.
+- Verificado en navegador: intro → capítulo (portada+pasos) → examen pregunta a pregunta
+  (acertar desbloquea) → aprobar marca capítulo y avanza → menú con candados → teclado →
+  persistencia. Sin scroll de página.
+
+### Versión anterior (histórico) — "curso por capítulos" con scroll (2026-08-19, verificado)
 Implementado y desplegado. Flujo probado: intro → capítulo → examen (fallar/reintentar/
 aprobar) → gating → Siguiente → menú con candados → persistencia y reanudar → un capítulo
 aprobado se muestra ya resuelto. Todo en `index.html` (un `<script>` controlador + los
