@@ -96,8 +96,17 @@ python3 -m http.server 8000
       **https://danipenaperez.github.io/electronic-trainer/** (14/14 imágenes OK,
       progreso/localStorage OK). Un `git push` a `main` redespliega solo.
 - [ ] Opcional: adaptar la lista de materiales a las **piezas exactas** del kit real.
-- [ ] Opcional: más ilustraciones de refuerzo (p. ej. cómo va la protoboard por dentro
-      con las tiras metálicas visibles).
+- [~] **Más ilustraciones de refuerzo** (en curso, 2026-08-19). El usuario dio la pauta
+      "una buena guía de electrónica siempre tiene refuerzo visual" (ver memoria
+      [[visual-reinforcement]]). Hechas:
+      - `img/agua-analogia.svg`: diagrama de la analogía del agua (la sección no tenía
+        imagen); slide a dos columnas (diagrama + las 4 filas).
+      - `img/p3b-protoboard-dentro.svg`: corte interior de la protoboard (tiras
+        escondidas), en el slide "¿Por qué?" del cap. 3.
+      - Mecanismo `STEP_IMG` en el JS: mapa `{capítulo: {paso: {src,alt}}}` para poner
+        imágenes de refuerzo específicas por capítulo y paso (has/obs/why/more).
+      Pendiente/ideas: revisar dónde más el texto va "desnudo" y añadir diagramas
+      (p. ej. serie vs paralelo, dentro del condensador, cómo mira la LDR).
 
 > ~~Versión imprimible A4~~ — **descartada** por el usuario (2026-08-19). No retomar.
 
