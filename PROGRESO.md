@@ -211,6 +211,20 @@ existe aún, así que la navegación por capítulos no se activa. Por eso no se 
 - Pendiente (opcional): el top-view `p3-protoboard.svg` es correcto y ya lleva etiquetas de
   patas, pero se podría pulir más para que se vea aún más claro dónde se pincha en la columna.
 
+## Ampliación: Bloque F — circuitos aplicados / juegos (2026-08-20)
+El usuario pidió capítulos de "circuito aplicado que puedas usar" y aportó más piezas
+(buzzer, motor, hélice, LEDs colores, cables con pinzas). Añadidos **4 capítulos** (curso
+pasa de 13 a **17**), cada uno con su ilustración, examen y contenido:
+- **14 Conmutador** (`p14-conmutador-2leds.svg`): elige qué LED enciende.
+- **15 Motor + hélice** (`p15-ventilador-motor.svg`): un ventilador (la corriente mueve).
+- **16 Zumbador** (`p16-timbre-alarma.svg`): timbre con pulsador, alarma con la LDR.
+- **17 Juego del pulso firme / cable trampa** (`p17-juego-pulso.svg`): circuito que se
+  cierra al tocar (usa buzzer + cables con pinzas). Es el broche del curso.
+Actualizado a 17 en hero/footer/finale; añadidos Motor+hélice y Cables con pinzas a
+materiales (rejilla a 3 col para seguir sin scroll); teaser del **2º curso** (sensores +
+Arduino) al final del proyecto. `TOTAL` del deck es dinámico, así que navegación,
+progreso y menú se ajustan solos. Verificado en producción (17 caps, 51 exámenes, 0 scroll).
+
 ## Contexto extra
 - Nació al buscar un "manual de electrónica para niños" que el usuario recordaba: no
   estaba en el ordenador ni en su Google Drive (allí solo hay libros de Arduino para
