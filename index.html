@@ -397,6 +397,16 @@
   .slide.titleslide .metric{font-size:.82rem}
   .slide.titleslide .figcaption,.slide figcaption{font-size:1rem}
   .slide .exp-fig img{max-height:46vh}
+  /* portada de capítulo: ilustración algo menor para que quepa sin scroll */
+  .slide.titleslide .exp-fig{margin-top:10px}
+  .slide.titleslide .exp-fig img{max-height:40vh}
+  /* glosario final: compacto para caber sin scroll */
+  .slide .glos{gap:10px;margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .slide .gitem{padding:1px 0 1px 12px}
+  .slide .gitem dt{font-size:.94rem}
+  .slide .gitem dd{font-size:.85rem;margin-top:1px}
+  .slide footer{margin-top:12px}
+  .slide footer .note,.slide footer p{font-size:.84rem;margin:4px 0;line-height:1.45}
   /* Slides de paso a dos columnas: la ilustración se mantiene junto al texto */
   .slide-2col{display:flex;gap:40px;align-items:center;width:100%}
   .s2-media{flex:0 0 43%;max-width:43%}
@@ -413,6 +423,14 @@
     .slide #agua .water{overflow:hidden;margin-top:14px}
     .slide #agua .water .wk,.slide #agua .water .wv{padding-top:11px;padding-bottom:11px}
     .slide #agua .intro-copy{max-width:60ch;margin:10px 0 2px}
+    /* Materiales: la vitrina a un lado, las tarjetas al otro */
+    .slide #materiales .exp-fig{float:left;width:38%;margin:2px 26px 6px 0}
+    .slide #materiales .exp-fig img{max-height:46vh}
+    .slide #materiales .tools{overflow:hidden;margin-top:12px;gap:8px;grid-template-columns:repeat(3,1fr)}
+    .slide #materiales .intro-copy{max-width:64ch;margin:8px 0 2px !important}
+    .slide #materiales .tool{padding:8px 11px}
+    .slide #materiales .tool .t-n{font-size:.9rem}
+    .slide #materiales .tool .t-d{font-size:.76rem}
   }
   @media (max-width:820px){
     .slide-2col{flex-direction:column;gap:16px;align-items:stretch}
