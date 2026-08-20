@@ -30,20 +30,23 @@
   <path d="M300 150 l-4 -14 l14 4 z" fill="#8a7c5c"/>
   <text x="225" y="130" text-anchor="middle" font-size="15" font-weight="700" fill="#8a7c5c">gíralo</text>
 
-  <!-- wire to LED -->
-  <path d="M265 392 C 340 420, 430 400, 470 340" fill="none" stroke="#3b3f45" stroke-width="9" stroke-linecap="round"/>
-  <path d="M185 392 C 150 430, 520 460, 560 380" fill="none" stroke="#c0322a" stroke-width="9" stroke-linecap="round"/>
-
-  <!-- LED brightness scale (three ghost states + one strong) -->
+  <!-- pila -->
+  <g filter="url(#soft)">
+    <rect x="300" y="418" width="132" height="42" rx="9" fill="url(#potBody)"/>
+    <rect x="312" y="427" width="108" height="10" rx="3" fill="#eef0ec"/><rect x="312" y="441" width="108" height="10" rx="3" fill="#eef0ec"/>
+    <text x="307" y="413" font-size="12" font-weight="700" fill="#254a75">＋</text><text x="420" y="413" font-size="13" font-weight="700" fill="#254a75">−</text>
+  </g>
+  <!-- loop: pila+ -> pot end -> (wiper) -> LED -> pila- -->
+  <path d="M312 419 C 268 407, 214 400, 185 394" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M225 394 C 360 428, 490 388, 548 302" fill="none" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M574 302 C 566 372, 476 414, 420 419" fill="none" stroke="#1c1f24" stroke-width="8" stroke-linecap="round"/>
+  <!-- LED (connected) -->
   <g>
-    <circle cx="560" cy="250" r="70" fill="url(#glowB)"/>
-    <g filter="url(#soft)"><ellipse cx="560" cy="250" rx="26" ry="9" fill="#d94636"/><path d="M535 250 Q535 212 560 208 Q585 212 585 250 Z" fill="url(#dome)"/>
+    <path d="M550 300 L554 262" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M572 300 L568 264" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="560" cy="250" r="66" fill="url(#glowB)"/>
+    <g filter="url(#soft)"><ellipse cx="560" cy="250" rx="26" ry="9" fill="#d94636"/><path d="M534 250 Q534 212 560 208 Q586 212 586 250 Z" fill="url(#dome)"/>
       <ellipse cx="551" cy="228" rx="7" ry="11" fill="#ffd9d2" opacity="0.7"/></g>
   </g>
-  <!-- dimmer scale bar -->
-  <g transform="translate(430,392)">
-    <rect x="0" y="0" width="300" height="20" rx="10" fill="#e2ddcf"/>
-    <rect x="0" y="0" width="210" height="20" rx="10" fill="#e08a3c"/>
-    <text x="150" y="48" text-anchor="middle" font-size="14" font-weight="600" fill="#5f6b5f">de brillo fuerte a casi apagado, suave</text>
-  </g>
+  <text x="470" y="488" text-anchor="middle" font-size="14" font-weight="600" fill="#5f6b5f">giras el mando → cambias el brillo del LED: de fuerte a casi apagado</text>
 </svg>
