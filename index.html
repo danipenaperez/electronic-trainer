@@ -902,7 +902,7 @@
       <h3>La LDR: una resistencia que "ve" la luz</h3>
       <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> medio</span></div>
     </div>
-    <div class="parts"><span class="pl">Necesitas</span><span class="chip">LDR (sensor de luz)</span><span class="chip">LED + 220Ω</span><span class="chip">Portapilas 4,5V</span><span class="chip">Linterna</span></div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">LDR (sensor de luz)</span><span class="chip">LED + 220Ω</span><span class="chip">Portapilas 4,5V</span><span class="chip">Linterna</span><span class="chip">Transistor NPN (opcional)</span></div>
     <figure class="exp-fig"><img src="img/p10-ldr.svg" alt="A la izquierda la LDR iluminada por el sol deja pasar la corriente y el LED brilla; a la derecha la LDR tapada, a oscuras, frena la corriente y el LED se apaga"><figcaption>Con luz la LDR deja pasar; tapada, frena la corriente y el LED se apaga</figcaption></figure>
     <div class="exp-body">
       <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
@@ -921,6 +921,13 @@
       </div>
       <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
         <p>Con el multímetro en ohmios, mide la LDR tapada y destapada. Apunta los dos números: verás la diferencia enorme entre "a oscuras" y "con luz".</p>
+      </div>
+      <div class="part" data-img="img/p10c-sombra-simple.svg" data-alt="Sin sombra, el sol da en la LDR y el LED brilla; al poner la mano encima, su sombra tapa la luz de la LDR y el LED baja"><span class="step-label" style="--pc:var(--copper)">Detector de sombra</span>
+        <p>Con la LDR y el LED en serie (justo lo que ya montaste), <b>acerca la mano por encima de la LDR sin tocarla</b>: tu sombra le tapa la luz y el LED <b>baja</b>; apartas la mano y <b>sube</b>. Ya tienes un detector de sombra: reacciona a lo que le pasa por delante. Aquí, más sombra = menos luz = menos brillo.</p>
+      </div>
+      <div class="part" data-img="img/p10d-sombra-transistor.svg" data-alt="Con luz, la LDR mantiene el transistor abierto y el LED apagado; a oscuras, el transistor se cierra y el LED se enciende, como una luz de noche"><span class="step-label" style="--pc:var(--plum)">Al revés: con transistor</span>
+        <p>¿Y si quieres que el LED se <b>ENCIENDA</b> justo cuando hay sombra (una <b>luz de noche</b>)? Hay que <strong>invertir</strong> la señal con un <strong>transistor</strong>: un <strong>interruptor electrónico</strong> que una corriente diminuta abre o cierra. La LDR y una resistencia fija le "avisan" de cuánta luz hay: <b>a oscuras el transistor se cierra y enciende el LED</b>; con luz, se abre y lo apaga.</p>
+        <div class="aha"><span class="a-l">Pieza estrella</span>El transistor es la base de toda la electrónica moderna: dentro de un móvil hay miles de millones. Aquí lo usas como un grifo que una corrientita abre para dejar pasar otra más grande. Si tu kit no trae uno (NPN, tipo PN2222 o BC547), guárdalo para el segundo curso.</div>
       </div>
     </div>
   </article>
@@ -1258,7 +1265,8 @@
     10: [
       { p:"Una LDR cambia su resistencia según…", o:["la luz que recibe","la temperatura","el sonido"], a:0, why:"LDR = resistencia dependiente de la luz (Light Dependent Resistor)." },
       { p:"Al tapar la LDR (menos luz), su resistencia sube.", o:["Verdadero","Falso"], a:0, vf:true, why:"A oscuras la LDR tiene mucha resistencia; con luz, poca." },
-      { p:"Una LDR sirve para, por ejemplo…", o:["una luz que se enciende sola de noche","cargar el móvil","medir el peso"], a:0, why:"Detecta cuánta luz hay: base de farolas y luces automáticas." }
+      { p:"Una LDR sirve para, por ejemplo…", o:["una luz que se enciende sola de noche","cargar el móvil","medir el peso"], a:0, why:"Detecta cuánta luz hay: base de farolas y luces automáticas." },
+      { p:"Para que el LED se ENCIENDA al hacer sombra (una luz de noche) necesitas…", o:["un transistor, que invierte la señal","otra pila","una LDR más grande"], a:0, why:"El transistor es un interruptor electrónico: a oscuras se cierra y enciende el LED." }
     ],
     11: [
       { p:"Un condensador es como…", o:["un pequeño depósito que guarda carga y la suelta poco a poco","una pila que nunca se gasta","un cable más grueso"], a:0, why:"Almacena electricidad y la devuelve gradualmente." },
@@ -1396,7 +1404,7 @@
 
     // Slides de los 4 pasos (imagen del circuito + texto en dos columnas)
     [].slice.call(node.querySelectorAll('.exp-body > .part')).forEach(function(p){
-      var override = (STEP_IMG[ch] || {})[partKey(p)];
+      var override = p.dataset.img ? { src:p.dataset.img, alt:p.dataset.alt||'' } : (STEP_IMG[ch] || {})[partKey(p)];
       var hasMedia = !!(override || figTemplate);
       var s=makeSlide('partslide'+(hasMedia?' has-media':''));
       var row=el('div','slide-2col');
