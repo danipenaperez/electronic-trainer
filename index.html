@@ -1211,6 +1211,9 @@
     var ch=i+1, node=entry.node;
     var conceptEl=node.querySelector('.concept');
     var concept=conceptEl?conceptEl.textContent:'';
+    var h3El=node.querySelector('.exp-head h3');
+    entry.title = h3El ? h3El.textContent : ('Capítulo '+ch); // capturar antes de mover la cabecera
+    entry.concept = concept;
     var eyebrow=(entry.block?entry.block+'<span class="dot"></span>':'')+'Capítulo '+ch+' de '+TOTAL;
 
     // Portada del capítulo
@@ -1371,11 +1374,10 @@
     var list=document.getElementById('menu-list'); list.innerHTML='';
     exps.forEach(function(entry,i){
       var ch=i+1, passed=state.passed.has(ch), acc=chAccessible(ch), current=(slides[cur].ch===ch);
-      var h3=entry.node.querySelector('.exp-head h3'); // ya movido, seguirá referenciando el nodo
       var item=el('button','m-item'+(passed?' passed':'')+(current?' current':''));
       item.type='button'; item.disabled=!acc;
-      var ic=passed?'✓':(acc?ch:'🔒');
-      item.innerHTML='<span class="m-ic">'+ic+'</span><span class="m-tt">'+(h3?h3.textContent:('Capítulo '+ch))+'<small>Capítulo '+ch+'</small></span>';
+      var ic=passed?'✓':(acc?'':'🔒');
+      item.innerHTML='<span class="m-ic">'+ic+'</span><span class="m-tt">'+(entry.title||('Capítulo '+ch))+(entry.concept?'<small>'+entry.concept+'</small>':'')+'</span>';
       if(acc) item.addEventListener('click', function(){ closeMenu(); goTo(chFirst[ch]); });
       list.appendChild(item);
     });
