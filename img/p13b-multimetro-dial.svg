@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" width="820" height="500" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="panelMm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
+    <linearGradient id="mmBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2cf5e"/><stop offset="1" stop-color="#d8a92f"/></linearGradient>
+    <linearGradient id="dialG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#41454c"/><stop offset="1" stop-color="#26292e"/></linearGradient>
+    <radialGradient id="jackR" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#e6564a"/><stop offset="1" stop-color="#9a241c"/></radialGradient>
+    <radialGradient id="jackK" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#5a5f66"/><stop offset="1" stop-color="#1c1f24"/></radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panelMm)"/>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
+
+  <!-- ===== MULTIMETER BODY ===== -->
+  <rect x="90" y="78" width="290" height="366" rx="22" fill="url(#mmBody)" stroke="#b8912f" stroke-width="2"/>
+  <!-- display -->
+  <rect x="120" y="98" width="230" height="62" rx="8" fill="#20302a"/>
+  <text x="335" y="145" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="34" font-weight="700" fill="#7ee08a">4.5</text>
+  <text x="150" y="140" font-family="'IBM Plex Mono',monospace" font-size="18" fill="#5f9a6a">V</text>
+
+  <!-- dial -->
+  <circle cx="235" cy="278" r="86" fill="#efe7cf" stroke="#c9b98a" stroke-width="2"/>
+  <circle cx="235" cy="278" r="52" fill="url(#dialG)"/>
+  <!-- pointer to V (upper-right) -->
+  <line x1="235" y1="278" x2="272" y2="240" stroke="#f3efe6" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="235" cy="278" r="7" fill="#8f939a"/>
+  <!-- mode labels around the dial -->
+  <text x="235" y="208" text-anchor="middle" font-size="13" font-weight="700" fill="#6b7280">OFF</text>
+  <text x="300" y="238" text-anchor="middle" font-size="16" font-weight="800" fill="#B0562A">V</text>
+  <text x="320" y="286" text-anchor="middle" font-size="16" font-weight="800" fill="#9E7115">Ω</text>
+  <text x="304" y="332" text-anchor="middle" font-size="16" font-weight="800" fill="#0E6274">A</text>
+  <text x="240" y="356" text-anchor="middle" font-size="15" font-weight="800" fill="#853B6E">•)))</text>
+
+  <!-- jacks -->
+  <circle cx="175" cy="410" r="15" fill="url(#jackK)"/><text x="175" y="438" text-anchor="middle" font-size="11" font-weight="700" fill="#5a4a1e">COM</text>
+  <circle cx="235" cy="410" r="15" fill="url(#jackR)"/><text x="235" y="438" text-anchor="middle" font-size="11" font-weight="700" fill="#5a4a1e">VΩ</text>
+  <circle cx="300" cy="410" r="15" fill="url(#jackR)"/><text x="300" y="438" text-anchor="middle" font-size="11" font-weight="700" fill="#5a4a1e">A</text>
+
+  <!-- callouts -->
+  <path d="M322 278 C 360 278, 380 250, 410 250" fill="none" stroke="#7B857D" stroke-width="1.5"/>
+  <text x="418" y="238" font-size="14" font-weight="700" fill="#1B2320">El dial: elige QUÉ mides</text>
+  <text x="418" y="258" font-size="12.5" fill="#4E5852">V voltaje · Ω resistencia · A corriente · •))) pitido</text>
+
+  <path d="M300 425 C 360 440, 390 430, 418 420" fill="none" stroke="#7B857D" stroke-width="1.5"/>
+  <text x="426" y="410" font-size="14" font-weight="700" fill="#1B2320">Las puntas</text>
+  <text x="426" y="430" font-size="12.5" fill="#4E5852">negra en COM; roja en VΩ</text>
+  <text x="426" y="447" font-size="12.5" fill="#4E5852">(muévela a A solo para amperios)</text>
+
+  <!-- golden rule box -->
+  <rect x="430" y="96" width="356" height="112" rx="14" fill="#fbfaf6" stroke="#d8d4c6" stroke-width="1.5"/>
+  <text x="450" y="124" font-size="13" font-weight="800" letter-spacing="0.08em" fill="#B0562A">REGLA DE ORO</text>
+  <text x="450" y="152" font-size="14.5" fill="#1B2320"><tspan font-weight="700" fill="#0E6274">Voltaje</tspan> → en PARALELO: tocas los dos</text>
+  <text x="450" y="171" font-size="14.5" fill="#4E5852">lados de la pieza, sin cortar nada.</text>
+  <text x="450" y="192" font-size="14.5" fill="#1B2320"><tspan font-weight="700" fill="#c0322a">Corriente</tspan> → en SERIE: el multímetro,</text>
+  <text x="450" y="211" font-size="14.5" fill="#4E5852">en medio del circuito, como una pieza más.</text>
+</svg>

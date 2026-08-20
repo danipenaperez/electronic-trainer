@@ -1025,6 +1025,14 @@
       <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
         <p>Mide la corriente con 220Ω, luego con 1kΩ, luego con 10kΩ. Haz una tablita. ¿Se cumple que a más ohmios, menos miliamperios? Acabas de hacer ciencia con datos.</p>
       </div>
+      <div class="part" data-img="img/p13b-multimetro-dial.svg" data-alt="El multímetro por partes: la pantalla, el dial para elegir qué medir (V voltaje, ohmios resistencia, A corriente, y el modo pitido), y las puntas en sus agujeros (negra en COM, roja en VΩ, y a A para amperios); regla de oro: el voltaje se mide en paralelo y la corriente en serie"><span class="step-label" style="--pc:var(--copper)">Cómo se usa</span>
+        <p>El multímetro tiene una <b>rueda (el dial)</b> para elegir <b>QUÉ</b> mides: <b>V</b> voltaje, <b>Ω</b> resistencia, <b>A</b> (o mA) corriente. Las puntas van en dos agujeros: la <b>negra siempre en COM</b>; la <b>roja en VΩ</b> para voltaje y resistencia, y solo la cambias al agujero de <b>A</b> para medir amperios.</p>
+        <div class="aha"><span class="a-l">Regla de oro</span>El <b>voltaje</b> se mide <strong>en paralelo</strong> (tocas los dos lados de la pieza, sin cortar nada). La <b>corriente</b> se mide <strong>en serie</strong> (abres el circuito y metes el multímetro en medio). Nunca midas amperios tocando los dos polos de la pila directos: es un cortocircuito por el aparato.</div>
+      </div>
+      <div class="part" data-img="img/p13c-continuidad.svg" data-alt="Modo continuidad: si las dos puntas están unidas por algo que conduce (un cable entero), el multímetro pita; si el cable está cortado o es un aislante, se calla"><span class="step-label" style="--pc:var(--plum)">Modo continuidad (pitido)</span>
+        <p>Casi todos los multímetros traen un modo con un dibujito de sonido (<span class="mono">•)))</span>). En ese modo, si tocas dos puntos y entre ellos <b>hay camino</b> (algo que conduce), el aparato <b>PITA</b>; si no, se <b>calla</b>. Sirve para comprobar sin mirar: ¿este cable está roto por dentro? ¿estas dos patas están de verdad unidas en la protoboard? Tocas los dos extremos: si pita, hay conexión.</p>
+        <div class="aha"><span class="a-l">Ya lo conoces</span>Es un <strong>detector de circuito cerrado</strong> de bolsillo: justo lo de la práctica 1, pero te avisa con un pitido en vez de encender un LED.</div>
+      </div>
     </div>
   </article>
 
@@ -1283,7 +1291,9 @@
     13: [
       { p:"La Ley de Ohm dice que…", o:["Voltaje = Corriente × Resistencia (V = I × R)","Voltaje = Corriente + Resistencia","Corriente = Voltaje × Resistencia"], a:0, why:"V = I × R: más empuje → más corriente; más obstáculo → menos corriente." },
       { p:"Con más resistencia y el mismo voltaje, pasa menos corriente.", o:["Verdadero","Falso"], a:0, vf:true, why:"Es la Ley de Ohm en acción: I = V ÷ R, así que a más R, menos I." },
-      { p:"Un multímetro sirve para…", o:["medir voltaje, corriente y resistencia","dar corriente al circuito","sustituir a la pila"], a:0, why:"Mide V (voltios), A (amperios) y Ω (ohmios) para comprobar lo que ya sientes." }
+      { p:"Un multímetro sirve para…", o:["medir voltaje, corriente y resistencia","dar corriente al circuito","sustituir a la pila"], a:0, why:"Mide V (voltios), A (amperios) y Ω (ohmios) para comprobar lo que ya sientes." },
+      { p:"La corriente (amperios) se mide…", o:["en serie: el multímetro en medio del circuito","en paralelo, tocando los dos lados","tocando los dos polos de la pila"], a:0, why:"Regla de oro: voltaje en paralelo, corriente en serie (nunca los polos de la pila directos)." },
+      { p:"En el modo continuidad, el multímetro pita cuando…", o:["entre las dos puntas hay un camino que conduce","no toca nada","la pila está llena"], a:0, why:"Es un detector de circuito cerrado: si hay conexión, suena." }
     ],
     14: [
       { p:"¿Qué hace un conmutador?", o:["desvía la corriente por un camino u otro","da más voltaje","hace ruido"], a:0, why:"Es como un cambio de agujas: manda la corriente por donde apunta la palanca." },
