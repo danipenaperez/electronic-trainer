@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" width="820" height="500" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="panelSw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
+    <radialGradient id="ledGreen" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#a7e6a0"/><stop offset="0.5" stop-color="#3fb24f"/><stop offset="1" stop-color="#227a33"/></radialGradient>
+    <radialGradient id="ledRedOff" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#d9b3ae"/><stop offset="0.5" stop-color="#b07d76"/><stop offset="1" stop-color="#7d534d"/></radialGradient>
+    <radialGradient id="glowGreen" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#4fd15f" stop-opacity="0.7"/><stop offset="1" stop-color="#4fd15f" stop-opacity="0"/></radialGradient>
+    <linearGradient id="battSw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ea5"/><stop offset="1" stop-color="#254a75"/></linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panelSw)"/>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
+  <text x="410" y="474" text-anchor="middle" font-size="14" font-weight="700" fill="#853B6E">EL CONMUTADOR DESVÍA LA CORRIENTE POR UN CAMINO U OTRO</text>
+
+  <!-- wires common -->
+  <g stroke="#6b7280" stroke-width="6" fill="none" stroke-linecap="round">
+    <!-- left LED branch -->
+    <path d="M225 150 V 210"/>
+    <!-- right LED branch -->
+    <path d="M595 150 V 210"/>
+    <!-- contacts to pivot -->
+    <path d="M225 210 L390 288"/>
+    <path d="M595 210 L430 288"/>
+    <!-- pivot to battery + -->
+    <path d="M410 300 V 356"/>
+    <!-- return rail: LEDs bottoms to battery − -->
+    <path d="M225 210 Q 120 340, 340 396"/>
+    <path d="M595 210 Q 700 340, 480 396"/>
+  </g>
+
+  <!-- contacts -->
+  <circle cx="390" cy="288" r="6" fill="#2e8b57"/>
+  <circle cx="430" cy="288" r="6" fill="#9aa0a6"/>
+
+  <!-- switch lever (pointing to LEFT contact = green) -->
+  <circle cx="410" cy="300" r="8" fill="#363b41"/>
+  <line x1="410" y1="300" x2="388" y2="286" stroke="#363b41" stroke-width="8" stroke-linecap="round"/>
+  <!-- ghost: can swing right -->
+  <path d="M420 296 A 22 22 0 0 1 432 286" fill="none" stroke="#853B6E" stroke-width="2" stroke-dasharray="2 4"/>
+  <path d="M429 283 L435 286 L431 291" fill="none" stroke="#853B6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- green LED (lit) -->
+  <circle cx="225" cy="150" r="40" fill="url(#glowGreen)"/>
+  <circle cx="225" cy="150" r="20" fill="url(#ledGreen)" stroke="#1c5a26" stroke-width="1.5"/>
+  <text x="225" y="98" text-anchor="middle" font-size="14" font-weight="700" fill="#227a33">LED verde: ENCENDIDO</text>
+
+  <!-- red LED (off) -->
+  <circle cx="595" cy="150" r="20" fill="url(#ledRedOff)" stroke="#5b4642" stroke-width="1.5"/>
+  <text x="595" y="98" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3b34">LED rojo: apagado</text>
+
+  <!-- battery -->
+  <g><rect x="330" y="356" width="160" height="44" rx="9" fill="url(#battSw)"/><rect x="342" y="364" width="136" height="12" rx="4" fill="#eef0ec"/><rect x="342" y="380" width="136" height="12" rx="4" fill="#eef0ec"/><text x="348" y="352" font-size="12" font-weight="700" fill="#254a75">＋</text><text x="470" y="352" font-size="14" font-weight="700" fill="#254a75">−</text></g>
+
+  <!-- label -->
+  <text x="410" y="330" text-anchor="middle" font-size="13.5" font-weight="700" fill="#853B6E">mueve la palanca → eliges qué LED enciende</text>
+</svg>

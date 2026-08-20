@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" width="820" height="500" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="panelJu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#e8e2d4"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9b483"/><stop offset="1" stop-color="#bd9058"/></linearGradient>
+    <linearGradient id="metalJ" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfd3d6"/><stop offset="0.5" stop-color="#9aa0a6"/><stop offset="1" stop-color="#c4c9cd"/></linearGradient>
+    <radialGradient id="buzzerJ" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#4a4f57"/><stop offset="1" stop-color="#26292e"/></radialGradient>
+    <linearGradient id="battJ" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ea5"/><stop offset="1" stop-color="#254a75"/></linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panelJu)"/>
+  <rect x="0" y="0" width="820" height="500" rx="22" fill="none" stroke="#d3cbb8" stroke-width="2"/>
+  <text x="410" y="474" text-anchor="middle" font-size="14" font-weight="700" fill="#853B6E">SI EL ARO TOCA EL ALAMBRE, EL CIRCUITO SE CIERRA Y SUENA</text>
+
+  <!-- base board -->
+  <rect x="150" y="372" width="540" height="26" rx="6" fill="url(#wood)" stroke="#a67c46" stroke-width="1"/>
+
+  <!-- posts -->
+  <rect x="272" y="220" width="12" height="154" rx="4" fill="url(#metalJ)"/>
+  <rect x="646" y="220" width="12" height="154" rx="4" fill="url(#metalJ)"/>
+
+  <!-- wavy track wire -->
+  <path d="M278 224 Q 330 176, 385 224 Q 440 272, 495 224 Q 550 176, 605 224 Q 640 252, 652 224" fill="none" stroke="url(#metalJ)" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- ring/loop on a handle, touching the wire near x=440 -->
+  <g>
+    <line x1="440" y1="250" x2="512" y2="150" stroke="#8a5a2b" stroke-width="7" stroke-linecap="round"/>
+    <ellipse cx="440" cy="250" rx="20" ry="14" fill="none" stroke="url(#metalJ)" stroke-width="6"/>
+    <!-- contact spark -->
+    <circle cx="440" cy="255" r="6" fill="#ffd34d"/>
+    <g stroke="#e0a72a" stroke-width="2.5" stroke-linecap="round"><line x1="440" y1="238" x2="440" y2="230"/><line x1="426" y1="248" x2="418" y2="244"/><line x1="454" y1="248" x2="462" y2="244"/></g>
+  </g>
+  <text x="540" y="140" text-anchor="middle" font-size="12.5" font-weight="700" fill="#8a5a2b">el aro (en un mango)</text>
+
+  <!-- buzzer top-left with sound waves -->
+  <g><circle cx="150" cy="150" r="36" fill="url(#buzzerJ)"/><circle cx="150" cy="141" r="4" fill="#8f939a"/>
+    <g stroke="#B0562A" stroke-width="3.5" fill="none" stroke-linecap="round"><path d="M198 130 A 28 28 0 0 1 198 170"/><path d="M214 120 A 44 44 0 0 1 214 180"/></g>
+    <text x="150" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#B0562A">¡BZZZ!</text></g>
+
+  <!-- battery bottom-left -->
+  <g><rect x="96" y="300" width="120" height="42" rx="8" fill="url(#battJ)"/><rect x="107" y="308" width="98" height="11" rx="3" fill="#eef0ec"/><rect x="107" y="323" width="98" height="11" rx="3" fill="#eef0ec"/><text x="102" y="296" font-size="11" font-weight="700" fill="#254a75">＋</text><text x="200" y="296" font-size="13" font-weight="700" fill="#254a75">−</text></g>
+
+  <!-- wires: track left post -> buzzer -> battery+ ; battery- -> loop handle -->
+  <path d="M278 300 C 240 240, 200 200, 170 184" fill="none" stroke="#c0322a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M150 186 L150 300" fill="none" stroke="#c0322a" stroke-width="5" stroke-linecap="round" opacity="0"/>
+  <path d="M134 300 L134 186" fill="none" stroke="#c0322a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M210 320 C 320 350, 470 300, 510 156" fill="none" stroke="#3b3f45" stroke-width="5" stroke-linecap="round"/>
+  <!-- connect track-left-post bottom to red wire start -->
+  <path d="M278 300 L278 374" fill="none" stroke="#c0322a" stroke-width="5" stroke-linecap="round"/>
+</svg>

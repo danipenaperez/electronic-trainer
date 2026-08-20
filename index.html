@@ -487,12 +487,12 @@
   <header class="hero">
     <div class="kicker">Electrónica de verdad · sin ordenador · sin código</div>
     <h1>Taller de <span class="spark">Electrónica</span></h1>
-    <p class="lead">13 experimentos para tocar la electricidad con las manos. Primero se hace, luego se entiende.</p>
+    <p class="lead">17 experimentos para tocar la electricidad con las manos. Primero se hace, luego se entiende.</p>
     <div class="facts">
       <span class="fact"><b>Edad:</b> desde 12 años</span>
       <span class="fact"><b>Con:</b> tu kit de Arduino (sin programar)</span>
       <span class="fact"><b>Método:</b> hacer → observar → entender</span>
-      <span class="fact"><b>Sesiones:</b> 13 prácticas + proyecto</span>
+      <span class="fact"><b>Sesiones:</b> 17 prácticas + proyecto</span>
     </div>
   </header>
 
@@ -557,6 +557,8 @@
       <div class="tool"><div class="t-n">Zumbador</div><div class="t-d">buzzer o motorcito</div></div>
       <div class="tool"><div class="t-n">Portapilas</div><div class="t-d">2–4 pilas AA · comprar</div></div>
       <div class="tool"><div class="t-n">Multímetro</div><div class="t-d">recomendado · comprar</div></div>
+      <div class="tool"><div class="t-n">Motor + hélice</div><div class="t-d">para el ventilador</div></div>
+      <div class="tool"><div class="t-n">Cables con pinzas</div><div class="t-d">para el juego del pulso</div></div>
       <div class="tool"><div class="t-n">Chatarra</div><div class="t-d">monedas, llaves, papel Alu…</div></div>
     </div>
   </section>
@@ -1018,6 +1020,132 @@
     </div>
   </article>
 
+  <!-- =================== BLOQUE F =================== -->
+  <div class="stage"><span class="s-tag">Bloque F</span><h2>Circuitos que puedes usar</h2></div>
+
+  <!-- EXP 14 -->
+  <article class="exp" id="p14">
+    <div class="exp-head">
+      <div class="exp-num">14</div>
+      <div class="concept">El conmutador</div>
+      <h3>Elige qué LED enciende</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">2 LEDs de colores</span><span class="chip">2 resistencias 220Ω</span><span class="chip">Interruptor o cable</span><span class="chip">Portapilas</span></div>
+    <figure class="exp-fig"><img src="img/p14-conmutador-2leds.svg" alt="Un conmutador con una palanca en el centro que envía la corriente a un LED verde encendido (a la izquierda) o a un LED rojo apagado (a la derecha); al mover la palanca se elige qué LED enciende"><figcaption>La palanca desvía la corriente: enciende el verde o el rojo, a elegir</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Monta dos LEDs (uno verde y uno rojo), cada uno con su <b>resistencia</b>. Une las dos <b>patas cortas (−)</b> y llévalas al <b>− de la pila</b>.</li>
+          <li>La <b>pata larga</b> de cada LED va a un lado de un <b>conmutador</b> (o toca con un cable un punto u otro).</li>
+          <li>El punto común del conmutador, al <b>+ de la pila</b>. Ahora <b>mueve la palanca</b> de un lado a otro.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Solo enciende el LED al que apunta la palanca. Al cambiarla, uno se apaga y el otro se enciende. Nunca los dos a la vez.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Un <strong>conmutador desvía la corriente por un camino u otro</strong>, como un cambio de agujas en las vías del tren. La corriente solo puede ir por donde la palanca la manda. Así funcionan un montón de selectores que usas cada día.</p>
+        <div class="aha"><span class="a-l">Idea</span>Con esto ya tienes medio semáforo: rojo o verde, a tu voluntad.</div>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>¿Y si quieres que los <b>dos</b> LEDs enciendan a la vez? Ya sabes cómo: eso es conectarlos en <strong>paralelo</strong> (práctica 7), sin el conmutador.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 15 -->
+  <article class="exp" id="p15">
+    <div class="exp-head">
+      <div class="exp-num">15</div>
+      <div class="concept">El motor</div>
+      <h3>Haz girar una hélice: tu ventilador</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 15 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Motor</span><span class="chip">Hélice</span><span class="chip">Interruptor</span><span class="chip">Portapilas (2–3 pilas)</span></div>
+    <figure class="exp-fig"><img src="img/p15-ventilador-motor.svg" alt="A la izquierda, el interruptor abierto y la hélice del motor parada; a la derecha, el interruptor cerrado y la hélice girando con líneas de movimiento: la corriente mueve el motor"><figcaption>Con el interruptor cerrado, la corriente hace girar el motor y la hélice</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Conecta el <b>motor</b> a la pila con un <b>interruptor</b> en medio (motor → interruptor → pila → motor).</li>
+          <li>Encaja la <b>hélice</b> en el eje del motor.</li>
+          <li>Cierra el interruptor y aparta la mano de la hélice.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>El motor gira y la hélice mueve el aire: notas la brisa. Al abrir el interruptor, se para poco a poco.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Dentro del motor, la corriente crea <strong>magnetismo</strong> que empuja y hace girar el eje. La electricidad <strong>no solo enciende luces: también mueve cosas</strong>. Es el mismo principio de los ventiladores, los juguetes y los coches eléctricos.</p>
+        <div class="aha"><span class="a-l">Ojo</span>El motor pide más corriente que un LED, así que <b>no lleva resistencia</b> (ya tiene la suya). Si se calienta o la hélice se atasca, desconéctalo.</div>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Da la vuelta a las pilas (+ y − al revés). ¿La hélice gira al contrario? Con los motores, <strong>cambiar el sentido de la corriente cambia el sentido del giro</strong>.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 16 -->
+  <article class="exp" id="p16">
+    <div class="exp-head">
+      <div class="exp-num">16</div>
+      <div class="concept">El zumbador</div>
+      <h3>Un timbre y una alarma</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 20 min</span><span class="metric"><b>Nivel:</b> fácil</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Zumbador (buzzer)</span><span class="chip">Pulsador</span><span class="chip">Portapilas</span><span class="chip">LDR (opcional)</span></div>
+    <figure class="exp-fig"><img src="img/p16-timbre-alarma.svg" alt="A la izquierda, un timbre: un zumbador con ondas de sonido y un pulsador que se aprieta. A la derecha, una alarma: el mismo zumbador y una LDR a la que le llega luz, que hace sonar el zumbador sola"><figcaption>Con el pulsador es un timbre; con la LDR, una alarma que suena sola</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Conecta el <b>zumbador</b> y el <b>pulsador</b> en serie con la pila (pila → pulsador → zumbador → pila).</li>
+          <li>Si el zumbador tiene pata + y −, respétalas (como el LED).</li>
+          <li>Aprieta el pulsador.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Suena mientras aprietas; al soltar, se calla. Acabas de montar un <b>timbre</b>.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>El zumbador <strong>convierte la corriente en sonido</strong>: por dentro vibra muy deprisa y empuja el aire. Con el pulsador decides <strong>cuándo</strong> pasa la corriente, y por eso suena solo al apretar.</p>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Cambia el pulsador por la <strong>LDR</strong> (práctica 10). Ahora el zumbador suena cuando le llega la luz (o cuando la tapas): acabas de construir una <strong>alarma</strong> que se dispara sola.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP 17 -->
+  <article class="exp" id="p17">
+    <div class="exp-head">
+      <div class="exp-num">17</div>
+      <div class="concept">Circuito y juego</div>
+      <h3>El juego del pulso firme (cable trampa)</h3>
+      <div class="metrics"><span class="metric"><b>Tiempo:</b> 30 min</span><span class="metric"><b>Nivel:</b> medio</span></div>
+    </div>
+    <div class="parts"><span class="pl">Necesitas</span><span class="chip">Alambre rígido</span><span class="chip">Cable con pinzas</span><span class="chip">Zumbador (o LED)</span><span class="chip">Aro de alambre + mango</span></div>
+    <figure class="exp-fig"><img src="img/p17-juego-pulso.svg" alt="Un alambre doblado en curvas sujeto entre dos soportes sobre una base de madera; un aro con mango rodea el alambre y, al tocarlo, salta una chispa y el zumbador conectado suena ¡BZZZ!"><figcaption>Pasa el aro por el alambre sin tocarlo; si lo rozas, se cierra el circuito y suena</figcaption></figure>
+    <div class="exp-body">
+      <div class="part"><span class="step-label" style="--pc:var(--copper)">Hazlo</span>
+        <ol class="steps">
+          <li>Dobla un <b>alambre largo</b> en curvas (el recorrido) y sujétalo de pie entre dos soportes.</li>
+          <li>Haz un <b>aro</b> con otro trozo de alambre, atado a un palito (el mango). Pásalo alrededor del recorrido.</li>
+          <li>Conecta en serie: <b>pila → zumbador → un extremo del recorrido</b>; y con el <b>cable de pinza</b>, del otro polo de la pila <b>al aro</b>.</li>
+          <li>Mueve el aro de un extremo al otro <b>sin tocar</b> el alambre.</li>
+        </ol>
+      </div>
+      <div class="part observe"><span class="step-label" style="--pc:var(--blue)">Observa</span>
+        <p>Mientras no lo tocas, silencio. En cuanto el aro roza el alambre… <b>¡BZZZ!</b> Has cerrado el circuito sin querer.</p>
+      </div>
+      <div class="part why"><span class="step-label" style="--pc:var(--gold)">¿Por qué?</span>
+        <p>Es un <strong>circuito normalmente abierto que se cierra al tocar</strong>. Justo lo contrario de la práctica 1: allí cerrabas el anillo a propósito; aquí <strong>ganas si NO lo cierras</strong>. Todo lo que has aprendido —circuito cerrado, conductores, el zumbador—, junto, en un juego.</p>
+      </div>
+      <div class="part more"><span class="step-label" style="--pc:var(--plum)">Ve más allá</span>
+        <p>Añade un <b>LED</b> además del zumbador, haz el recorrido más retorcido, o pon una regla de "3 toques y pierdes". Reta a tu familia a cruzarlo.</p>
+      </div>
+    </div>
+  </article>
+
   <!-- FINAL PROJECT -->
   <section class="block" id="proyecto">
     <span class="eyebrow">Reto final · elige uno</span>
@@ -1045,6 +1173,7 @@
         <p>Un probador con dos puntas y un LED: tócalo contra cualquier objeto de casa y descubre, en una tarde, qué cosas conducen y cuáles no.</p>
       </div>
     </div>
+    <p class="note" style="margin-top:24px">¿Y los muchos <strong>sensores</strong> del kit (temperatura, humedad, distancia…)? Esos piden un pequeño cerebro que los lea y decida qué hacer: el <strong>Arduino programado</strong>. Eso ya es el <strong>segundo curso</strong> — pero toda la electrónica que necesitas para entenderlo la acabas de aprender aquí.</p>
   </section>
 
   <!-- GLOSSARY -->
@@ -1069,7 +1198,7 @@
 
   <footer>
     <p class="note">Para quien acompaña: el orden importa. Cada práctica se apoya en la anterior, y varias “misterios” (el LED al revés, la resistencia doble) se resuelven prácticas más adelante a propósito, para que quede la curiosidad picando. <strong>No adelantes la explicación:</strong> deja que primero lo vea, lo diga con sus palabras, y solo entonces leed juntos el “¿por qué?”.</p>
-    <p><strong>Taller de Electrónica</strong> · 13 prácticas para aprender tocando · pensado para 12+ con un kit de Arduino, sin programación.</p>
+    <p><strong>Taller de Electrónica</strong> · 17 prácticas para aprender tocando · pensado para 12+ con un kit de Arduino, sin programación.</p>
   </footer>
 
 </div>
@@ -1145,6 +1274,26 @@
       { p:"La Ley de Ohm dice que…", o:["Voltaje = Corriente × Resistencia (V = I × R)","Voltaje = Corriente + Resistencia","Corriente = Voltaje × Resistencia"], a:0, why:"V = I × R: más empuje → más corriente; más obstáculo → menos corriente." },
       { p:"Con más resistencia y el mismo voltaje, pasa menos corriente.", o:["Verdadero","Falso"], a:0, vf:true, why:"Es la Ley de Ohm en acción: I = V ÷ R, así que a más R, menos I." },
       { p:"Un multímetro sirve para…", o:["medir voltaje, corriente y resistencia","dar corriente al circuito","sustituir a la pila"], a:0, why:"Mide V (voltios), A (amperios) y Ω (ohmios) para comprobar lo que ya sientes." }
+    ],
+    14: [
+      { p:"¿Qué hace un conmutador?", o:["desvía la corriente por un camino u otro","da más voltaje","hace ruido"], a:0, why:"Es como un cambio de agujas: manda la corriente por donde apunta la palanca." },
+      { p:"Con el conmutador a un lado enciende un LED; al cambiarlo, enciende el otro.", o:["Verdadero","Falso"], a:0, vf:true, why:"La corriente solo va por el camino que elige la palanca, nunca por los dos a la vez." },
+      { p:"Para que los DOS LEDs enciendan a la vez habría que conectarlos en…", o:["paralelo","serie","no se puede"], a:0, why:"En paralelo cada LED tiene su camino y reciben corriente los dos (práctica 7)." }
+    ],
+    15: [
+      { p:"Dentro de un motor, la corriente…", o:["crea magnetismo que hace girar el eje","se convierte en luz","se guarda como en un condensador"], a:0, why:"El magnetismo empuja el eje y lo hace girar: así la corriente mueve cosas." },
+      { p:"La corriente no solo enciende: también puede mover cosas, como un motor.", o:["Verdadero","Falso"], a:0, vf:true, why:"Motores, ventiladores y coches eléctricos funcionan así." },
+      { p:"Si das la vuelta a las pilas, el motor…", o:["gira al revés","gira igual","no gira nunca más"], a:0, why:"Cambiar el sentido de la corriente cambia el sentido del giro." }
+    ],
+    16: [
+      { p:"El zumbador convierte la corriente en…", o:["sonido","luz","frío"], a:0, why:"Por dentro vibra muy deprisa y empuja el aire: por eso suena." },
+      { p:"Con el pulsador, el timbre suena…", o:["solo mientras lo aprietas","para siempre","nunca"], a:0, why:"El pulsador solo deja pasar la corriente mientras lo mantienes apretado." },
+      { p:"Cambiando el pulsador por una LDR, el zumbador puede sonar solo al detectar luz.", o:["Verdadero","Falso"], a:0, vf:true, why:"La LDR nota la luz y cierra el paso de la corriente: una alarma automática." }
+    ],
+    17: [
+      { p:"En el juego del pulso, el zumbador suena cuando…", o:["el aro toca el alambre y cierra el circuito","sueltas el aro","hay mucha luz"], a:0, why:"Al tocarse los dos metales, el anillo se cierra y la corriente puede pasar." },
+      { p:"El juego es un circuito normalmente abierto que se cierra al tocar sin querer.", o:["Verdadero","Falso"], a:0, vf:true, why:"Al revés que la práctica 1: aquí no quieres cerrar el circuito." },
+      { p:"En el juego ganas si…", o:["NO cierras el circuito (no tocas el alambre)","cierras el circuito","tocas el alambre muchas veces"], a:0, why:"Cruzas sin que suene: mantienes el circuito abierto todo el recorrido." }
     ]
   };
 
@@ -1315,7 +1464,7 @@
 
   // Final
   var cele=makeSlide('celeslide');
-  cele.appendChild(el('div','finale','<div class="medal">🏅</div><h2>¡Curso completado!</h2><p>Has terminado las 13 prácticas y aprobado todos los exámenes. Ya sabes leer un circuito, medir con el multímetro y explicar por qué encienden (o no) las cosas. ¡Enhorabuena!</p>'));
+  cele.appendChild(el('div','finale','<div class="medal">🏅</div><h2>¡Curso completado!</h2><p>Has terminado las 17 prácticas y aprobado todos los exámenes. Ya sabes leer un circuito, medir con el multímetro, mover un motor, hacer sonar una alarma y hasta montar un juego. ¡Enhorabuena!</p>'));
   slides.push({ el:cele, type:'cele' });
   if(finalSecs.proyecto){ var sp=makeSlide('finalsec'); sp.appendChild(finalSecs.proyecto); slides.push({ el:sp, type:'extra' }); }
   if(finalSecs.glosario){ var sg=makeSlide('finalsec'); sg.appendChild(finalSecs.glosario); if(footer) sg.appendChild(footer); slides.push({ el:sg, type:'extra' }); }
