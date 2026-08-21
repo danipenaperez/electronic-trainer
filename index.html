@@ -392,6 +392,14 @@
 
   /* Tamaños ampliados para presentación */
   .slide .ch-eyebrow{font-size:.8rem;margin-bottom:18px}
+  /* Slide de materiales al inicio de cada capítulo */
+  .slide.matslide .mat-title{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:2.1rem;letter-spacing:-.01em;line-height:1.12;margin:2px 0 6px}
+  .slide.matslide .mat-sub{font-size:1.2rem;color:var(--ink-soft);margin:0 0 26px}
+  .slide.matslide .mat-grid{display:flex;flex-wrap:wrap;gap:14px;max-width:820px}
+  .slide.matslide .mat-chip{font-family:"IBM Plex Mono",monospace;font-size:1.08rem;
+    background:var(--card);border:1px solid var(--line-strong);border-radius:12px;
+    padding:14px 20px;color:var(--ink);box-shadow:var(--shadow)}
   .slide.titleslide .exp-head h3{font-size:2.1rem;line-height:1.12;margin-top:2px}
   .slide.titleslide .concept{font-size:.8rem}
   .slide.titleslide .metric{font-size:.82rem}
@@ -1403,15 +1411,29 @@
     entry.concept = concept;
     var eyebrow=(entry.block?entry.block+'<span class="dot"></span>':'')+'Capítulo '+ch+' de '+TOTAL;
 
+    // Slide de materiales al inicio del capítulo ("qué vas a necesitar")
+    var parts=node.querySelector('.parts');
+    var mat=makeSlide('matslide');
+    var ebm=el('div','ch-eyebrow'); ebm.innerHTML=eyebrow; mat.appendChild(ebm);
+    mat.appendChild(el('div','mat-title','Qué vas a necesitar'));
+    mat.appendChild(el('p','mat-sub','Para <b>'+entry.title+'</b> vas a usar:'));
+    if(parts){
+      var grid=el('div','mat-grid');
+      [].slice.call(parts.querySelectorAll('.chip')).forEach(function(c){
+        grid.appendChild(el('div','mat-chip', c.textContent));
+      });
+      mat.appendChild(grid);
+    }
+    chFirst[ch]=slides.length;
+    slides.push({ el:mat, type:'materials', ch:ch });
+
     // Portada del capítulo
     var t=makeSlide('titleslide');
     var eb=el('div','ch-eyebrow'); eb.innerHTML=eyebrow; t.appendChild(eb);
     var head=node.querySelector('.exp-head'); if(head) t.appendChild(head);
-    var parts=node.querySelector('.parts'); if(parts) t.appendChild(parts);
     var fig=node.querySelector('figure.exp-fig');
     var figTemplate = fig ? fig.cloneNode(true) : null; // plantilla para acompañar cada paso
     if(fig) t.appendChild(fig);
-    chFirst[ch]=slides.length;
     slides.push({ el:t, type:'title', ch:ch });
 
     // Slides de los 4 pasos (imagen del circuito + texto en dos columnas)
