@@ -7,6 +7,8 @@
     <linearGradient id="wireK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b3f45"/><stop offset="1" stop-color="#1c1f24"/></linearGradient>
     <linearGradient id="clip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7dade"/><stop offset="1" stop-color="#9aa0a6"/></linearGradient>
     <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9c98f"/><stop offset="1" stop-color="#d3a862"/></linearGradient>
+    <linearGradient id="resB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7d3ad"/><stop offset="0.5" stop-color="#d8bd8c"/><stop offset="1" stop-color="#bfa06b"/></linearGradient>
+    <linearGradient id="battB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ea5"/><stop offset="1" stop-color="#254a75"/></linearGradient>
     <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.18"/></filter>
   </defs>
   <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panel)"/>
@@ -24,6 +26,18 @@
     <path d="M198 160 L198 181" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
     <path d="M212 160 L212 181" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
     <g filter="url(#soft)"><ellipse cx="205" cy="160" rx="22" ry="8" fill="#d94636"/><path d="M183 160 Q183 128 205 125 Q227 128 227 160 Z" fill="url(#dome)"/></g>
+    <!-- resistor on top wire (left of the LED) -->
+    <g filter="url(#soft)">
+      <rect x="112" y="169" width="56" height="22" rx="11" fill="url(#resB)" stroke="#a98950"/>
+      <rect x="123" y="169" width="5" height="22" fill="#c0322a"/>
+      <rect x="132" y="169" width="5" height="22" fill="#c0322a"/>
+      <rect x="141" y="169" width="5" height="22" fill="#7a4a1e"/>
+    </g>
+    <!-- battery (pila) on the right wire -->
+    <rect x="312" y="242" width="16" height="26" fill="url(#panel)"/>
+    <line x1="302" y1="247" x2="338" y2="247" stroke="#254a75" stroke-width="3" stroke-linecap="round"/>
+    <line x1="311" y1="260" x2="329" y2="260" stroke="#254a75" stroke-width="8" stroke-linecap="round"/>
+    <text x="345" y="258" font-size="12" font-weight="700" fill="#254a75">pila</text>
     <!-- pushbutton on bottom wire -->
     <g filter="url(#soft)">
       <rect x="172" y="308" width="66" height="44" rx="6" fill="#e7e3d8" stroke="#c7c2b2"/>
@@ -41,6 +55,18 @@
     <path d="M608 160 L608 181" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
     <path d="M622 160 L622 181" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
     <g filter="url(#soft)"><ellipse cx="615" cy="160" rx="22" ry="8" fill="#d94636"/><path d="M593 160 Q593 128 615 125 Q637 128 637 160 Z" fill="url(#dome)"/></g>
+    <!-- resistor on top wire (left of the LED) -->
+    <g filter="url(#soft)">
+      <rect x="522" y="169" width="56" height="22" rx="11" fill="url(#resB)" stroke="#a98950"/>
+      <rect x="533" y="169" width="5" height="22" fill="#c0322a"/>
+      <rect x="542" y="169" width="5" height="22" fill="#c0322a"/>
+      <rect x="551" y="169" width="5" height="22" fill="#7a4a1e"/>
+    </g>
+    <!-- battery (pila) on the right wire -->
+    <rect x="722" y="242" width="16" height="26" fill="url(#panel)"/>
+    <line x1="712" y1="247" x2="748" y2="247" stroke="#254a75" stroke-width="3" stroke-linecap="round"/>
+    <line x1="721" y1="260" x2="739" y2="260" stroke="#254a75" stroke-width="8" stroke-linecap="round"/>
+    <text x="755" y="258" font-size="12" font-weight="700" fill="#254a75">pila</text>
     <!-- gap in bottom wire filled by clothespin with foil contacts -->
     <rect x="560" y="318" width="110" height="18" fill="url(#panel)"/>
     <g filter="url(#soft)">

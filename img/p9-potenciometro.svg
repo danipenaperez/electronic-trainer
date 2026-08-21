@@ -7,6 +7,7 @@
     <radialGradient id="knob" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#4a90c2"/><stop offset="1" stop-color="#25547d"/></radialGradient>
     <linearGradient id="potBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ea5"/><stop offset="1" stop-color="#254a75"/></linearGradient>
     <linearGradient id="leg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfd3d6"/><stop offset="0.5" stop-color="#9aa0a6"/><stop offset="1" stop-color="#c4c9cd"/></linearGradient>
+    <linearGradient id="resB9" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7d3ad"/><stop offset="0.5" stop-color="#d8bd8c"/><stop offset="1" stop-color="#bfa06b"/></linearGradient>
     <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.18"/></filter>
   </defs>
   <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panel)"/>
@@ -38,7 +39,17 @@
   </g>
   <!-- loop: pila+ -> pot end -> (wiper) -> LED -> pila- -->
   <path d="M312 419 C 268 407, 214 400, 185 394" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
-  <path d="M225 394 C 360 428, 490 388, 548 302" fill="none" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
+  <!-- gray wire pot -> resistor -> LED (resistor in series) -->
+  <path d="M225 394 C 300 402, 356 372, 396 356" fill="none" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M458 352 C 500 340, 526 320, 548 302" fill="none" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
+  <!-- resistor -->
+  <g filter="url(#soft)">
+    <rect x="394" y="341" width="66" height="24" rx="12" fill="url(#resB9)" stroke="#a98950"/>
+    <rect x="406" y="341" width="6" height="24" fill="#c0322a"/>
+    <rect x="417" y="341" width="6" height="24" fill="#c0322a"/>
+    <rect x="428" y="341" width="6" height="24" fill="#7a4a1e"/>
+    <rect x="444" y="341" width="5" height="24" fill="#d4af37"/>
+  </g>
   <path d="M574 302 C 566 372, 476 414, 420 419" fill="none" stroke="#1c1f24" stroke-width="8" stroke-linecap="round"/>
   <!-- LED (connected) -->
   <g>
