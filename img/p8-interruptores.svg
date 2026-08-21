@@ -19,9 +19,11 @@
   <!-- LEFT: pushbutton in circuit -->
   <g>
     <rect x="90" y="180" width="230" height="150" rx="14" fill="none" stroke="url(#wireK)" stroke-width="9"/>
-    <!-- LED top -->
-    <circle cx="205" cy="180" r="44" fill="url(#glowB)"/>
-    <g filter="url(#soft)"><ellipse cx="205" cy="180" rx="22" ry="8" fill="#d94636"/><path d="M183 180 Q183 148 205 145 Q227 148 227 180 Z" fill="url(#dome)"/></g>
+    <!-- LED top (standing, with legs to the wire) -->
+    <circle cx="205" cy="158" r="46" fill="url(#glowB)"/>
+    <path d="M198 160 L198 181" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
+    <path d="M212 160 L212 181" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
+    <g filter="url(#soft)"><ellipse cx="205" cy="160" rx="22" ry="8" fill="#d94636"/><path d="M183 160 Q183 128 205 125 Q227 128 227 160 Z" fill="url(#dome)"/></g>
     <!-- pushbutton on bottom wire -->
     <g filter="url(#soft)">
       <rect x="172" y="308" width="66" height="44" rx="6" fill="#e7e3d8" stroke="#c7c2b2"/>
@@ -35,8 +37,10 @@
   <!-- RIGHT: clothespin / clip switch -->
   <g>
     <rect x="500" y="180" width="230" height="150" rx="14" fill="none" stroke="url(#wireK)" stroke-width="9"/>
-    <circle cx="615" cy="180" r="44" fill="url(#glowB)"/>
-    <g filter="url(#soft)"><ellipse cx="615" cy="180" rx="22" ry="8" fill="#d94636"/><path d="M593 180 Q593 148 615 145 Q637 148 637 180 Z" fill="url(#dome)"/></g>
+    <circle cx="615" cy="158" r="46" fill="url(#glowB)"/>
+    <path d="M608 160 L608 181" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
+    <path d="M622 160 L622 181" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
+    <g filter="url(#soft)"><ellipse cx="615" cy="160" rx="22" ry="8" fill="#d94636"/><path d="M593 160 Q593 128 615 125 Q637 128 637 160 Z" fill="url(#dome)"/></g>
     <!-- gap in bottom wire filled by clothespin with foil contacts -->
     <rect x="560" y="318" width="110" height="18" fill="url(#panel)"/>
     <g filter="url(#soft)">
