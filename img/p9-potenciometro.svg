@@ -16,10 +16,10 @@
   <!-- potentiometer left -->
   <g filter="url(#soft)">
     <rect x="150" y="230" width="150" height="120" rx="14" fill="url(#potBody)"/>
-    <!-- 3 legs bottom -->
-    <line x1="185" y1="350" x2="185" y2="392" stroke="url(#leg)" stroke-width="7"/>
-    <line x1="225" y1="350" x2="225" y2="392" stroke="url(#leg)" stroke-width="7"/>
-    <line x1="265" y1="350" x2="265" y2="392" stroke="url(#leg)" stroke-width="7"/>
+    <!-- 3 legs bottom (se usan la izquierda y la del medio; la 3ª queda libre) -->
+    <line x1="185" y1="346" x2="185" y2="402" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
+    <line x1="225" y1="346" x2="225" y2="402" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
+    <line x1="265" y1="346" x2="265" y2="384" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
     <!-- knob -->
     <circle cx="225" cy="230" r="58" fill="url(#knob)" stroke="#1c3d5c" stroke-width="2"/>
     <circle cx="225" cy="230" r="46" fill="none" stroke="#5fa0d0" stroke-width="2" opacity="0.5"/>
@@ -37,11 +37,14 @@
     <rect x="312" y="427" width="108" height="10" rx="3" fill="#eef0ec"/><rect x="312" y="441" width="108" height="10" rx="3" fill="#eef0ec"/>
     <text x="307" y="413" font-size="12" font-weight="700" fill="#254a75">＋</text><text x="420" y="413" font-size="13" font-weight="700" fill="#254a75">−</text>
   </g>
-  <!-- loop: pila+ -> pot end -> (wiper) -> LED -> pila- -->
-  <path d="M312 419 C 268 407, 214 400, 185 394" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
-  <!-- gray wire pot -> resistor -> LED (resistor in series) -->
-  <path d="M225 394 C 300 402, 356 372, 396 356" fill="none" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
+  <!-- red wire: pila+ -> pot left leg -->
+  <path d="M312 421 C 262 416, 208 412, 185 402" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
+  <!-- gray wire: pot middle leg (cursor) -> resistor -> LED -->
+  <path d="M225 402 C 288 412, 356 374, 396 356" fill="none" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
   <path d="M458 352 C 500 340, 526 320, 548 302" fill="none" stroke="#9aa0a6" stroke-width="8" stroke-linecap="round"/>
+  <!-- connection dots on the pot legs -->
+  <circle cx="185" cy="401" r="5.5" fill="#9a241c"/>
+  <circle cx="225" cy="401" r="5.5" fill="#5a5f66"/>
   <!-- resistor -->
   <g filter="url(#soft)">
     <rect x="394" y="341" width="66" height="24" rx="12" fill="url(#resB9)" stroke="#a98950"/>
