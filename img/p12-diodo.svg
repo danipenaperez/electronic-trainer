@@ -6,6 +6,7 @@
     <radialGradient id="domeOff" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#e7b2ab"/><stop offset="0.5" stop-color="#c98379"/><stop offset="1" stop-color="#9c5a52"/></radialGradient>
     <linearGradient id="battBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ea5"/><stop offset="1" stop-color="#254a75"/></linearGradient>
     <linearGradient id="leg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfd3d6"/><stop offset="0.5" stop-color="#9aa0a6"/><stop offset="1" stop-color="#c4c9cd"/></linearGradient>
+    <linearGradient id="resB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e7d3ad"/><stop offset="0.5" stop-color="#d8bd8c"/><stop offset="1" stop-color="#bfa06b"/></linearGradient>
     <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.18"/></filter>
   </defs>
   <rect x="0" y="0" width="820" height="500" rx="22" fill="url(#panel)"/>
@@ -23,6 +24,13 @@
     <!-- wires -->
     <path d="M140 330 C 120 250, 160 190, 200 178" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
     <path d="M270 330 C 300 260, 260 200, 232 190" fill="none" stroke="#3b3f45" stroke-width="8" stroke-linecap="round"/>
+    <!-- resistor on the red wire -->
+    <g filter="url(#soft)">
+      <rect x="122" y="240" width="24" height="52" rx="12" fill="url(#resB)" stroke="#a98950"/>
+      <rect x="122" y="252" width="24" height="6" fill="#c0322a"/>
+      <rect x="122" y="262" width="24" height="6" fill="#c0322a"/>
+      <rect x="122" y="272" width="24" height="6" fill="#7a4a1e"/>
+    </g>
     <circle cx="205" cy="160" r="66" fill="url(#glowB)"/>
     <path d="M192 178 L188 152" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
     <path d="M220 178 L224 156" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
@@ -38,6 +46,13 @@
       <text x="560" y="356" font-size="14" font-weight="700" fill="#fff">＋</text><text x="662" y="378" font-size="15" font-weight="700" fill="#fff">−</text></g>
     <path d="M550 330 C 530 250, 570 190, 610 178" fill="none" stroke="#c0322a" stroke-width="8" stroke-linecap="round"/>
     <path d="M680 330 C 710 260, 670 200, 642 190" fill="none" stroke="#3b3f45" stroke-width="8" stroke-linecap="round"/>
+    <!-- resistor on the red wire -->
+    <g filter="url(#soft)">
+      <rect x="532" y="240" width="24" height="52" rx="12" fill="url(#resB)" stroke="#a98950"/>
+      <rect x="532" y="252" width="24" height="6" fill="#c0322a"/>
+      <rect x="532" y="262" width="24" height="6" fill="#c0322a"/>
+      <rect x="532" y="272" width="24" height="6" fill="#7a4a1e"/>
+    </g>
     <!-- reversed: short leg to + (draw dome darker, no glow) -->
     <path d="M602 178 L598 152" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
     <path d="M630 178 L634 156" stroke="url(#leg)" stroke-width="5" stroke-linecap="round"/>
