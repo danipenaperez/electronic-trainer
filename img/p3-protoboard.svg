@@ -73,8 +73,8 @@
   <!-- ===== LED (vertical, standing): legs into col 425 (anode, long) and col 447 (cathode) row 227 ===== -->
   <circle cx="436" cy="190" r="66" fill="url(#ledGlow3)"/>
   <!-- legs -->
-  <path d="M425 227 L425 196" stroke="url(#leg3)" stroke-width="5" stroke-linecap="round"/>
-  <path d="M447 227 L447 200" stroke="url(#leg3)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M425 227 L425 196" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M447 227 L447 200" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
   <!-- dome standing up -->
   <g filter="url(#soft3)">
     <ellipse cx="436" cy="196" rx="26" ry="9" fill="#d94636"/>

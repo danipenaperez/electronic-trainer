@@ -36,8 +36,8 @@
     </g>
     <g transform="translate(408,24)">
       <rect width="180" height="156" rx="14" fill="#fbfaf6" stroke="#e0dccf" filter="url(#soft)"/>
-      <line x1="80" y1="66" x2="80" y2="104" stroke="url(#leg)" stroke-width="5"/>
-      <line x1="100" y1="66" x2="100" y2="104" stroke="url(#leg)" stroke-width="5"/>
+      <line x1="80" y1="66" x2="80" y2="104" stroke="#9aa0a6" stroke-width="5"/>
+      <line x1="100" y1="66" x2="100" y2="104" stroke="#9aa0a6" stroke-width="5"/>
       <ellipse cx="90" cy="66" rx="24" ry="8" fill="#d94636"/>
       <path d="M66 66 Q66 30 90 26 Q114 30 114 66 Z" fill="url(#dome)"/>
       <ellipse cx="81" cy="46" rx="6" ry="9" fill="#ffd9d2" opacity="0.7"/>
@@ -45,7 +45,7 @@
     </g>
     <g transform="translate(600,24)">
       <rect width="180" height="156" rx="14" fill="#fbfaf6" stroke="#e0dccf" filter="url(#soft)"/>
-      <line x1="34" y1="70" x2="146" y2="70" stroke="url(#leg)" stroke-width="5"/>
+      <line x1="34" y1="70" x2="146" y2="70" stroke="#9aa0a6" stroke-width="5"/>
       <rect x="54" y="52" width="72" height="36" rx="18" fill="url(#resB)" stroke="#a98950"/>
       <rect x="64" y="52" width="7" height="36" fill="#c0322a"/><rect x="76" y="52" width="7" height="36" fill="#c0322a"/><rect x="88" y="52" width="7" height="36" fill="#7a4a1e"/><rect x="112" y="52" width="6" height="36" fill="#d4af37"/>
       <text x="90" y="130">Resistencias</text>
@@ -68,16 +68,16 @@
     </g>
     <g transform="translate(408,196)">
       <rect width="180" height="156" rx="14" fill="#fbfaf6" stroke="#e0dccf" filter="url(#soft)"/>
-      <line x1="80" y1="70" x2="80" y2="104" stroke="url(#leg)" stroke-width="5"/>
-      <line x1="100" y1="70" x2="100" y2="104" stroke="url(#leg)" stroke-width="5"/>
+      <line x1="80" y1="70" x2="80" y2="104" stroke="#9aa0a6" stroke-width="5"/>
+      <line x1="100" y1="70" x2="100" y2="104" stroke="#9aa0a6" stroke-width="5"/>
       <circle cx="90" cy="56" r="26" fill="#e6d19a" stroke="#a98950" stroke-width="2"/>
       <path d="M68 56 q6 -12 11 0 q6 12 11 0 q6 -12 11 0" fill="none" stroke="#8a6a2e" stroke-width="3"/>
       <text x="90" y="130">LDR (luz)</text>
     </g>
     <g transform="translate(600,196)">
       <rect width="180" height="156" rx="14" fill="#fbfaf6" stroke="#e0dccf" filter="url(#soft)"/>
-      <line x1="82" y1="98" x2="82" y2="112" stroke="url(#leg)" stroke-width="5"/>
-      <line x1="100" y1="98" x2="100" y2="112" stroke="url(#leg)" stroke-width="5"/>
+      <line x1="82" y1="98" x2="82" y2="112" stroke="#9aa0a6" stroke-width="5"/>
+      <line x1="100" y1="98" x2="100" y2="112" stroke="#9aa0a6" stroke-width="5"/>
       <rect x="70" y="44" width="44" height="58" rx="14" fill="url(#cap)" stroke="#1c274a"/>
       <rect x="70" y="44" width="12" height="58" rx="6" fill="#aab2c0" opacity="0.85"/>
       <ellipse cx="92" cy="44" rx="22" ry="6" fill="#4a63a8"/>
